@@ -5,7 +5,7 @@
 
 Little Steps follows Kristie, a curious little robot, through a five-chapter watercolor-inspired garden. Each chapter teaches something about growing up while allowing the player to compare real navigation algorithms and train a learning agent.
 
-## 🌷 Play Season One (v0.3)
+## 🌷 Play Season One
 
 1. Unzip the project and open `index.html` in a browser. The game runs offline without npm, a backend, or a network connection.
 2. Choose **Start Adventure** and complete **Chapter 1 — The First Flower** with BFS, Dijkstra, A* or Q-Learning.
@@ -23,7 +23,7 @@ Little Steps follows Kristie, a curious little robot, through a five-chapter wat
 
 **Season 2 — Beyond the Garden** and **Season 3 — Little Robots, Big Dreams** appear only as *future story teasers*. They are not playable or implemented yet.
 
-## 🧠 What is implemented
+## What is implemented
 
 - **BFS**: minimum steps on a grid with obstacles (ignores mud costs).
 - **Dijkstra**: minimum movement cost with grass cost 1 and mud cost 3.
