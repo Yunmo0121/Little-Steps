@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fff5d9" />
+  <meta name="description" content="Little Steps: Kristie’s Wondergarden — Season One, five little adventures, pathfinding and reinforcement learning." />
+  <title>Little Steps · Kristie’s Wondergarden</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <!-- A fully interactive menu; the watercolor art is decorative, not fake UI. -->
+  <main id="menu-screen" class="screen menu-screen" aria-label="Little Steps main menu">
+    <div class="menu-page">
+      <div class="menu-topline"><span>✧ A STORYBOOK ROBOT ADVENTURE ✧</span><span>SEASON ONE · THE WONDERGARDEN ADVENTURES</span></div>
+      <div class="menu-logo-wrap"><img class="menu-logo" src="assets/little-steps-logo-transparent.webp" alt="Little Steps — Kristie’s Wondergarden. Every little step helps Kristie grow." /></div>
+      <div class="menu-body">
+        <div class="menu-illustration">
+          <img src="assets/kristie-storybook.webp" alt="Kristie, the little cream-and-teal robot with a pink scarf and flower satchel, in her watercolor garden" />
+          <div class="menu-illustration-caption"><span>✿ Meet Kristie</span><strong>Every adventure begins with a little step.</strong></div>
+        </div>
+        <nav class="menu-actions" aria-label="Main menu">
+          <div class="menu-intro"><span class="kicker">✦ ONCE UPON A LITTLE GARDEN...</span><h1>Welcome, little explorer!</h1><p>There are winding paths to discover, tiny lessons to learn, and a whole garden waiting for you.</p></div>
+          <button id="new-game" class="storybook-button main-action" type="button"><span class="button-icon">✦</span><span>Start Adventure<small>Begin a new journey</small></span><span aria-hidden="true">›</span></button>
+          <button id="continue-game" class="storybook-button" type="button" disabled><span class="button-icon">▤</span><span>Continue<small id="continue-hint">No saved adventure yet</small></span><span aria-hidden="true">›</span></button>
+          <button data-open-screen="chapters" class="storybook-button" type="button"><span class="button-icon">⌂</span><span>Chapters<small>Choose a little story</small></span><span aria-hidden="true">›</span></button>
+          <button data-open-screen="diary" class="storybook-button" type="button"><span class="button-icon">♡</span><span>Robot Diary<small>Remember how far you've come</small></span><span aria-hidden="true">›</span></button>
+          <div class="menu-mini-actions">
+            <button id="builder-entry" type="button">✿ Garden Builder</button>
+            <button data-open-screen="settings" type="button">⚙ Settings</button>
+          </div>
+        </nav>
+      </div>
+      <div class="menu-bottomline">Made with curiosity, courage & a little garden magic. <span>♡</span> Season One · v0.3</div>
+    </div>
+  </main>
+
+  <section id="chapters-screen" class="screen sub-screen" aria-labelledby="chapters-title" hidden>
+    <div class="sub-page"><button class="back-link" data-open-screen="menu" type="button">← Back to the garden gate</button>
+      <div class="sub-title"><span class="kicker">✿ LITTLE ADVENTURES</span><h1 id="chapters-title">Chapters in the garden</h1><p>One gentle story at a time.</p></div>
+      <div id="chapter-cards" class="chapter-cards" aria-label="Season One chapters"></div>
+      <div class="season-future">
+        <article class="future-card"><span class="kicker">A STORY STILL TO COME</span><h2>☁️ Season 2 — Beyond the Garden</h2><p>After mastering her first garden, Kristie may one day visit distant skies and islands. Coming in the future.</p></article>
+        <article class="future-card"><span class="kicker">DREAMS FOR ANOTHER DAY</span><h2>🤝 Season 3 — Little Robots, Big Dreams</h2><p>Some adventures might be better with friends. A future dream, not yet playable.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="diary-screen" class="screen sub-screen" aria-labelledby="journal-title" hidden>
+    <div class="sub-page"><button class="back-link" data-open-screen="menu" type="button">← Back to the garden gate</button>
+      <div class="sub-title"><span class="kicker">♡ KRISTIE'S LITTLE MEMORIES</span><h1 id="journal-title">Robot Diary</h1><p>Progress isn't always a straight line. Every step matters.</p></div>
+      <div class="journal-layout"><div class="journal-card"><span class="kicker">YOUR JOURNEY SO FAR</span><div class="journal-stats"><div><strong id="journal-xp">0</strong><span>Little stars · XP</span></div><div><strong id="journal-best">—</strong><span>Best steps</span></div><div><strong id="journal-episodes">0</strong><span>Practice episodes</span></div></div><p id="journal-progress">Kristie's story is waiting to begin.</p><button id="journal-play" class="storybook-button main-action" type="button">Visit the Garden <span>›</span></button></div><div class="journal-card"><span class="kicker">PAGES FROM THE GARDEN</span><h2>Little memories</h2><div id="journal-badges" class="journal-badges"></div><div id="journal-entries" class="journal-list"><p>✿ Every adventure begins with a first step.</p></div></div></div>
+    </div>
+  </section>
+
+  <section id="settings-screen" class="screen sub-screen" aria-labelledby="settings-title" hidden>
+    <div class="sub-page settings-page"><button class="back-link" data-open-screen="menu" type="button">← Back to the garden gate</button>
+      <div class="sub-title"><span class="kicker">✿ MAKE YOURSELF AT HOME</span><h1 id="settings-title">Settings</h1><p>A little control over how the garden moves.</p></div>
+      <div class="journal-card settings-card"><label for="menu-speed"><strong>Path animation speed</strong><span id="menu-speed-label">Medium</span></label><input type="range" id="menu-speed" min="1" max="100" value="52" /><p>The same setting is used when Kristie explores a map.</p><div class="settings-row"><div><strong>Start again?</strong><p>This will erase your saved garden and journey on this browser.</p></div><button id="erase-save" class="erase-save" type="button">Reset save</button></div><p class="save-note" id="storage-note">Progress saves locally in this browser; it is not synced to GitHub.</p></div>
+    </div>
+  </section>
+
+  <section id="game-screen" class="screen" aria-labelledby="hero-title" hidden>
+  <div class="page-shell">
+
+    <header class="topbar">
+      <button class="brand brand-button" id="back-to-menu" type="button" aria-label="Return to Little Steps main menu">
+        <span class="brand-icon" aria-hidden="true"><img src="assets/favicon.svg" alt="" /></span>
+        <span><strong>Little Steps</strong><small>Kristie's Wondergarden</small></span>
+      </button>
+      <div class="top-note"><span class="tiny-sparkle">✧</span> A little world to grow in <span class="tiny-sparkle">✧</span></div>
+      <div class="chapter-pill">✿ <span id="chapter-pill-number">Chapter 01</span> <span>·</span> <span id="chapter-pill-name">The First Flower</span></div>
+    </header>
+
+    <main id="home">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="eyebrow">✿ Once upon a little garden...</div>
+          <h1 id="hero-title">Every little step<br /><em>helps Kristie grow.</em></h1>
+          <p>Meet Kristie, a tiny robot learning to find her way. Build a garden, explore winding paths, and discover how every little mistake can become a new beginning.</p>
+        </div>
+        <div class="hero-art watercolor-hero" aria-hidden="true">
+          <img class="hero-storybook" src="assets/kristie-storybook.webp" alt="" />
+          <div class="hero-art-softwash"></div>
+          <span class="hero-star storybook-star-a">✦</span><span class="hero-star storybook-star-b">✧</span>
+        </div>
+      </section>
+
+      <section class="story-chapter-note" aria-label="Chapter story">
+        <div class="story-chapter-bloom" id="story-chapter-icon" aria-hidden="true">🌼</div>
+        <div class="story-chapter-copy"><span class="kicker" id="story-chapter-kicker">CHAPTER ONE · COURAGE</span><h2 id="story-chapter-title">The First Flower</h2><p id="story-chapter-text">Every adventure begins with a little step.</p><p class="story-task" id="story-chapter-task">✧ Find the glowing flower.</p></div>
+        <button id="story-back-chapters" class="story-chapters-link" type="button">📖 Chapters</button>
+      </section>
+      <section class="game-layout" aria-label="Garden adventure">
+        <div class="garden-card paper-card">
+          <div class="section-heading">
+            <div><span class="kicker">YOUR LITTLE WORLD</span><h2 id="game-level-title">🌼 The First Flower</h2><p id="game-level-subtitle">Can you help Kristie reach the glowing flower?</p></div>
+            <span class="tag" id="game-level-tag">Level 01 <span>♥</span></span>
+          </div>
+
+          <div class="garden-frame">
+            <div class="garden-decor decor-left" aria-hidden="true">✿</div>
+            <div class="garden-decor decor-right" aria-hidden="true">✾</div>
+            <div id="garden" class="garden-grid" role="group" aria-label="Editable garden map, 10 columns by 8 rows"></div>
+            <div class="garden-ground" aria-hidden="true"></div>
+          </div>
+
+          <div class="legend" aria-label="Garden legend">
+            <span><b>🤖</b> Kristie</span><span><b>🌼</b> Flower</span><span><b>🌳</b> Hedge</span><span><b>🟤</b> Mud (cost 3)</span>
+          </div>
+
+          <div class="toolbar-label">✏️ Make your own garden</div>
+          <div class="tools" id="tools" role="group" aria-label="Map editing tools">
+            <button class="tool active" data-tool="hedge" aria-pressed="true">🌳 Hedge</button>
+            <button class="tool" data-tool="mud" aria-pressed="false">🟤 Mud</button>
+            <button class="tool" data-tool="erase" aria-pressed="false">🧽 Erase</button>
+            <button class="tool" data-tool="start" aria-pressed="false">🤖 Start</button>
+            <button class="tool" data-tool="goal" aria-pressed="false">🌼 Flower</button>
+          </div>
+          <div class="garden-footer">
+            <span id="map-help">Choose a tool, then click a garden square.</span>
+            <button id="reset" class="text-button">↻ Reset this chapter</button>
+          </div>
+        </div>
+
+        <aside class="side-column">
+          <section class="control-card paper-card">
+            <div class="eyebrow small">✦ KRISTIE'S EXPLORER KIT</div>
+            <h2>Which way shall we go?</h2>
+            <p class="subtle">Watch a planner find a route, or let Kristie discover one through practice.</p>
+            <div class="little-divider"><span>✿</span></div>
+
+            <h3>🧭 Smart Explorer</h3>
+            <p class="hint">Classic pathfinding on the current garden.</p>
+            <div class="algorithm-actions">
+              <button class="primary algorithm" data-algorithm="bfs">BFS</button>
+              <button class="primary algorithm" data-algorithm="dijkstra">Dijkstra</button>
+              <button class="primary algorithm" data-algorithm="astar">A*</button>
+            </div>
+            <label for="speed" class="speed-label">Animation speed <span id="speed-label">Medium</span></label>
+            <input id="speed" type="range" min="1" max="100" value="52" />
+
+            <div class="little-divider"><span>✿</span></div>
+            <h3>🌱 Little Learner</h3>
+            <p class="hint">Q-Learning: Kristie tries, learns, and improves.</p>
+            <button id="train" class="primary train-button">✦ Train Kristie</button>
+            <button id="learned" class="outline-button" disabled>▶ Show Learned Route</button>
+            <button id="wind-shift" class="wind-button" type="button" hidden>🍃 The wind rearranges the woods</button>
+            <p class="explain">Different methods, different knowledge: planners see the whole map; Kristie learns by experience.</p>
+          </section>
+
+          <section class="diary-card paper-card" aria-label="Robot diary">
+            <div class="diary-header"><div><div class="eyebrow small">NOTES FROM THE GARDEN</div><h2>📖 Robot Diary</h2></div><span class="diary-heart">♡</span></div>
+            <div class="message" id="status" role="status" aria-live="polite">Hello, little explorer! Choose an algorithm or train Kristie to begin. 🌼</div>
+            <div class="stat-grid">
+              <div><span>Explored</span><strong id="stat-explored">—</strong></div>
+              <div><span>Path steps</span><strong id="stat-steps">—</strong></div>
+              <div><span>Path cost</span><strong id="stat-cost">—</strong></div>
+            </div>
+            <div class="training-block">
+              <div class="training-heading"><strong>Learning journey</strong><span id="episode-label">0 episodes</span></div>
+              <div class="training-stats"><span>Recent success <b id="success">—</b></span><span>Avg. reward <b id="reward">—</b></span></div>
+              <canvas id="chart" width="420" height="145" role="img" aria-label="Q-Learning training success rate chart"></canvas>
+              <div class="chart-caption">Success rate across the latest 100 episodes</div>
+            </div>
+            <div class="diary-entries" id="diary-entries" aria-live="polite"><p>✿ Every adventure starts with a first step.</p></div>
+          </section>
+        </aside>
+      </section>
+    </main>
+    <footer>Every little step helps Kristie grow. <span>✿</span> Little Steps · Season One · v0.3</footer>
+  </div>
+  </section>
+  <div id="finish-overlay" class="finish-overlay" role="dialog" aria-modal="true" aria-labelledby="finish-title" hidden>
+    <div class="finish-card">
+      <div id="finish-illustration" class="finish-illustration" aria-hidden="true">🌼</div>
+      <span class="kicker" id="finish-kicker">A LITTLE STEP FORWARD</span>
+      <h2 id="finish-title">Kristie did it!</h2>
+      <p id="finish-description">She found her way, one little step at a time.</p>
+      <p id="finish-quote" class="finish-quote" hidden></p>
+      <p id="finish-reward" class="finish-reward">✦ +50 XP · A new chapter unlocked</p>
+      <div class="finish-actions">
+        <button id="finish-next" class="storybook-button main-action" type="button">Next chapter <span>›</span></button>
+        <button id="finish-chapters" class="storybook-button" type="button">Visit Chapters <span>›</span></button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
