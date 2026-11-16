@@ -1,0 +1,126 @@
+/* Little Steps · Season 1.5 — Cozy Cottage Home v1.2.2 */
+.corner-actions{display:flex;justify-content:flex-end;gap:9px;margin:-6px 0 10px;align-items:center;flex-wrap:wrap}
+.time-toggle,.home-link,.home-soft-button{border:1px solid #d6c69e;background:#fff9e9;color:#745d46;font-weight:800;font-size:12px;border-radius:999px;padding:9px 14px;box-shadow:0 3px 0 #e7d9be;transition:transform .16s,background .16s,border-color .16s}
+.time-toggle:hover,.home-link:hover,.home-soft-button:hover{background:#f7ebce;transform:translateY(-2px)}
+.time-toggle:focus-visible,.home-link:focus-visible,.home-soft-button:focus-visible,.cozy-home-tab:focus-visible{outline:3px solid #4793af;outline-offset:3px}
+.home-soft-button.secondary{background:#f8f4eb;color:#826b53}
+
+.corner-scene{background:#bfe8e4;box-shadow:0 5px 15px rgba(100,119,97,.14);border:2px solid #e1d3a9}
+.corner-painting{width:100%;height:100%;left:0;top:0;object-fit:cover;object-position:32% 59%;filter:saturate(1.03) contrast(1.02);-webkit-mask-image:none;mask-image:none;transition:filter .35s}
+.corner-scene:before{content:"";z-index:1;inset:0;position:absolute;pointer-events:none;opacity:0;background:linear-gradient(110deg,rgba(11,31,65,.3),rgba(13,37,76,.67));transition:opacity .4s}
+.corner-scene:after{display:none}
+.corner-quote{z-index:3;background:rgba(255,253,240,.96);backdrop-filter:none;border:2px solid rgba(223,196,151,.85);box-shadow:0 6px 16px #6b563624}
+.corner-quote:before{opacity:.3}
+.corner-twinkle{z-index:2}
+ .corner-night-star,.corner-night-moon,.corner-lantern-glow{position:absolute;opacity:0;pointer-events:none;transition:opacity .35s ease}
+.corner-night-star{z-index:2;color:#fff2b2;text-shadow:0 0 10px rgba(255,241,177,.72)}
+.corner-night-star-one{right:15%;top:18px;font-size:18px}
+.corner-night-star-two{right:24%;top:34px;font-size:13px}
+.corner-night-star-three{right:31%;top:14px;font-size:16px}
+.corner-night-star-four{right:7%;top:48px;font-size:11px}
+.corner-night-moon{right:10%;top:18px;z-index:2;color:#ffe9b0;font-size:18px;text-shadow:0 0 12px rgba(255,234,176,.65)}
+.corner-lantern-glow{left:35%;top:8%;width:90px;height:90px;z-index:1;background:radial-gradient(circle,#ffe8af 0%,rgba(255,230,166,.55) 34%,rgba(255,230,166,.08) 70%,transparent 78%);filter:blur(5px)}
+body[data-garden-time="night"] .corner-scene{background:#2b4065}
+body[data-garden-time="night"] .corner-scene:before{opacity:1;background:linear-gradient(180deg,rgba(8,24,61,.84) 0%,rgba(16,39,84,.58) 34%,rgba(18,33,56,.18) 74%,rgba(15,24,40,0) 100%),radial-gradient(circle at 78% 18%,rgba(95,131,200,.25) 0%,rgba(95,131,200,.08) 18%,transparent 30%)}
+body[data-garden-time="night"] .corner-painting{filter:saturate(.78) brightness(.68) hue-rotate(6deg)}
+body[data-garden-time="night"] .corner-twinkle{color:#fff0af;text-shadow:0 0 12px #ffe8a2}
+body[data-garden-time="night"] .corner-night-star,body[data-garden-time="night"] .corner-night-moon,body[data-garden-time="night"] .corner-lantern-glow{opacity:1}
+body[data-garden-time="night"] .corner-quote{background:rgba(255,248,231,.96)}
+body[data-garden-time="night"] .time-toggle{background:#324c6d;color:#fff4db;border-color:#566a88;box-shadow:0 3px 0 #273957}
+
+.homebase-screen{padding:22px 20px 50px;background:radial-gradient(circle at 14% 9%,#ffefcfbb,transparent 31%),radial-gradient(circle at 92% 4%,#c2e8d2aa,transparent 33%),#fff9eb}
+.cozy-home-shell{max-width:1320px;margin:auto;background:#fffdf6d9;border:1px solid #e8d8b8;border-radius:30px;padding:22px clamp(15px,3vw,32px) 18px;box-shadow:0 20px 48px #8c71552a;color:#6e5a43}
+.homebase-header{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.homebase-kicker{color:#ba9977;font-size:10px;letter-spacing:2px;font-weight:800;text-align:center}
+.cozy-home-head{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;margin:20px 0 18px;flex-wrap:wrap}
+.cozy-home-titlewrap{max-width:760px}
+.cozy-home-titlewrap .kicker{display:inline-block;margin-bottom:8px}
+.cozy-home-titlewrap h1{font-size:clamp(28px,3.4vw,46px);line-height:1.15;margin:0 0 10px;color:#655540}
+.cozy-home-titlewrap h1 span{color:#df9eb0}
+.cozy-home-titlewrap p{margin:0;color:#8f7d6d;font-size:14px;line-height:1.7}
+.cozy-home-toolbar{display:flex;flex-direction:column;align-items:flex-end;gap:12px;min-width:280px}
+.cozy-home-tabs{display:flex;gap:10px;flex-wrap:wrap}
+.cozy-home-tab{border:1px solid #ddcba8;background:#fff8ec;color:#7a664f;font-weight:800;font-size:15px;border-radius:999px;padding:12px 20px;box-shadow:0 4px 0 #e9dcc0;transition:transform .16s,background .16s,border-color .16s,color .16s}
+.cozy-home-tab:hover{background:#fbf0da;transform:translateY(-2px)}
+.cozy-home-tab.is-active{background:#f7e7be;border-color:#dca755;color:#6e522d}
+.cozy-home-progress{display:flex;align-items:center;gap:10px;border:1px solid #eadcc4;background:#fffaf2;padding:10px 14px;border-radius:18px;box-shadow:0 4px 0 #f1e5cf}
+.cozy-progress-label{font-size:11px;letter-spacing:.8px;text-transform:uppercase;color:#a18e7a;font-weight:800}
+.cozy-home-progress strong{font-size:18px;color:#6a8d67}
+.cozy-home-stage{display:grid;grid-template-columns:minmax(0,1.35fr) 340px;gap:20px;align-items:start}
+.cozy-home-artboard{position:relative;border:2px solid #e1d2b5;border-radius:28px;overflow:hidden;background:linear-gradient(180deg,#fdf9ef,#f6eddd);box-shadow:0 14px 34px rgba(141,112,76,.16);aspect-ratio:1400/1000;isolation:isolate}
+.cozy-home-panel{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .28s ease;pointer-events:none}
+.cozy-home-panel.is-active{opacity:1;pointer-events:auto}
+.cozy-home-panel img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;transition:filter .35s ease,transform .35s ease}
+.cozy-home-panel[data-home-panel="indoor"] img{object-position:center center}
+.cozy-night-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,31,54,.18),rgba(18,33,58,.34));opacity:0;pointer-events:none;transition:opacity .35s ease;z-index:2}
+.cozy-night-stars{position:absolute;top:24px;right:34px;display:flex;gap:14px;align-items:flex-start;font-size:20px;color:#fff2b3;opacity:0;pointer-events:none;transition:opacity .35s ease;z-index:3;text-shadow:0 0 14px rgba(255,241,176,.78)}
+.cozy-night-stars span:nth-child(2),.cozy-night-stars span:nth-child(4),.cozy-night-stars span:nth-child(6){transform:translateY(8px);font-size:15px}
+.cozy-lantern-glow,.cozy-window-glow,.cozy-lamp-glow{position:absolute;opacity:0;pointer-events:none;transition:opacity .35s ease;z-index:3}
+.cozy-lantern-glow{left:34%;top:16%;width:120px;height:120px;background:radial-gradient(circle,#ffe6a8 0%,rgba(255,225,163,.54) 32%,rgba(255,225,163,.12) 57%,rgba(255,225,163,0) 74%);filter:blur(6px)}
+.cozy-window-glow-outdoor{left:6.5%;top:33%;width:132px;height:102px;background:radial-gradient(circle,#fff5c8 0%,rgba(255,232,170,.86) 38%,rgba(255,220,144,.12) 72%,transparent 78%);filter:blur(4px)}
+.cozy-window-glow-round{left:42%;top:15%;width:86px;height:86px;background:radial-gradient(circle,#ffeec0 0%,rgba(255,226,160,.82) 36%,rgba(255,226,160,.1) 72%,transparent 79%);filter:blur(4px)}
+.cozy-lamp-glow-hanging{left:26%;top:43%;width:96px;height:96px;background:radial-gradient(circle,#ffe6ae 0%,rgba(255,221,156,.64) 34%,rgba(255,221,156,.10) 70%,transparent 76%);filter:blur(5px)}
+.cozy-lamp-glow-chair{left:14%;top:31%;width:118px;height:118px;background:radial-gradient(circle,#ffe2a6 0%,rgba(255,218,148,.44) 34%,rgba(255,218,148,.08) 70%,transparent 76%);filter:blur(7px)}
+.cozy-lamp-glow-table{left:46%;top:11%;width:120px;height:120px;background:radial-gradient(circle,#ffe3a7 0%,rgba(255,219,150,.52) 36%,rgba(255,219,150,.08) 72%,transparent 78%);filter:blur(7px)}
+.cozy-home-shell[data-home-time="night"][data-home-view="outdoor"] .cozy-home-artboard img{filter:saturate(.8) brightness(.72) hue-rotate(6deg)}
+.cozy-home-shell[data-home-time="night"][data-home-view="indoor"] .cozy-home-artboard img{filter:saturate(.82) brightness(.80) hue-rotate(2deg)}
+.cozy-home-shell[data-home-time="night"][data-home-view="outdoor"] .cozy-night-overlay{opacity:1;background:linear-gradient(180deg,rgba(7,23,61,.86) 0%,rgba(15,39,83,.66) 28%,rgba(18,38,72,.24) 60%,rgba(15,24,39,.08) 100%),radial-gradient(circle at 84% 16%,rgba(103,139,214,.22) 0%,rgba(103,139,214,.08) 16%,transparent 28%)}
+.cozy-home-shell[data-home-time="night"][data-home-view="indoor"] .cozy-night-overlay{opacity:1;background:linear-gradient(180deg,rgba(29,24,37,.34),rgba(26,22,32,.24) 56%,rgba(23,19,28,.10) 100%)}
+.cozy-home-shell[data-home-time="night"] .cozy-night-stars{opacity:1}
+.cozy-home-shell[data-home-time="night"][data-home-view="outdoor"] .cozy-lantern-glow,.cozy-home-shell[data-home-time="night"][data-home-view="outdoor"] .cozy-window-glow-outdoor{opacity:1}
+.cozy-home-shell[data-home-time="night"][data-home-view="indoor"] .cozy-lantern-glow{opacity:0}
+.cozy-home-shell[data-home-time="night"][data-home-view="indoor"] .cozy-lamp-glow-hanging,.cozy-home-shell[data-home-time="night"][data-home-view="indoor"] .cozy-lamp-glow-chair,.cozy-home-shell[data-home-time="night"][data-home-view="indoor"] .cozy-lamp-glow-table,.cozy-home-shell[data-home-time="night"][data-home-view="indoor"] .cozy-window-glow-round{opacity:1}
+.cozy-home-shell[data-home-view="indoor"] .cozy-night-stars{right:28px;top:22px}
+.cozy-home-sidebar{display:grid;gap:16px}
+.cozy-side-card{background:#fffef9;border:1px solid #e6d8bf;border-radius:22px;padding:18px 18px 16px;box-shadow:0 10px 24px #8b775321}
+.cozy-side-card h2{margin:8px 0 8px;font:700 28px Georgia,serif;color:#655540;line-height:1.16}
+.cozy-side-card p{margin:0;color:#8d7b69;font-size:13px;line-height:1.65}
+.cozy-note-card #home-note-quote{font:italic 23px/1.45 Georgia,serif;color:#725742;margin:10px 0}
+.cozy-feature-list{margin:10px 0 0;padding-left:18px;color:#8d7b69;font-size:13px;line-height:1.7}
+.cozy-feature-list strong{color:#6d583f}
+.cozy-action-buttons{display:grid;gap:10px;margin-top:12px}
+.cozy-home-bottom{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:20px}
+.cozy-summary-card{background:#fffef8;border:1px solid #e7dbc6;border-radius:20px;padding:17px 17px 16px;box-shadow:0 8px 22px rgba(139,119,83,.12)}
+.cozy-summary-card h3{margin:8px 0 8px;font:700 24px Georgia,serif;color:#63513f;line-height:1.2}
+.cozy-summary-card p{margin:0;color:#8f7d6c;font-size:13px;line-height:1.65}
+.homebase-footer{padding:22px 0 8px;text-align:center;font:italic 13px Georgia,serif;color:#a6977a}.homebase-footer span{color:#e3a2ad}
+
+@media(max-width:1050px){.cozy-home-stage{grid-template-columns:1fr}.cozy-home-sidebar{grid-template-columns:repeat(3,minmax(0,1fr))}.cozy-home-toolbar{align-items:flex-start}.cozy-home-progress{align-self:flex-start}}
+@media(max-width:780px){.cozy-home-sidebar{grid-template-columns:1fr}.cozy-home-bottom{grid-template-columns:1fr}.cozy-home-tab{font-size:14px;padding:11px 16px}.cozy-home-progress{width:100%;justify-content:space-between}.cozy-home-titlewrap h1{font-size:30px}}
+@media(max-width:540px){.homebase-screen{padding:10px}.cozy-home-shell{padding:15px 10px;border-radius:20px}.homebase-header{gap:7px}.homebase-header .back-link,.time-toggle,.home-soft-button{font-size:11px;padding:10px 12px}.cozy-home-head{margin-top:14px}.cozy-home-titlewrap p{font-size:13px}.cozy-home-tabs{width:100%}.cozy-home-tab{flex:1 1 0}.cozy-home-artboard{border-radius:20px}.corner-actions{justify-content:flex-start}.corner-scene{height:194px}.corner-quote{width:52%;right:3%;padding:10px 12px}}
+@media(prefers-reduced-motion:reduce){.time-toggle,.home-link,.home-soft-button,.cozy-home-tab,.cozy-home-panel img{transition:none}}
+
+
+/* v1.2.2: daytime-only cozy cottage */
+.time-toggle{display:none !important}
+.corner-actions{justify-content:flex-end}
+body[data-garden-time="day"] .corner-night-star, body[data-garden-time="day"] .corner-night-moon, body[data-garden-time="day"] .corner-lantern-glow{opacity:0}
+.cozy-home-shell[data-home-time="day"] .cozy-night-overlay,.cozy-home-shell[data-home-time="day"] .cozy-night-stars,.cozy-home-shell[data-home-time="day"] .cozy-lantern-glow,.cozy-home-shell[data-home-time="day"] .cozy-window-glow,.cozy-home-shell[data-home-time="day"] .cozy-lamp-glow{opacity:0 !important}
+
+/* v1.2.3 — gentle storybook corner with a real text overlay (not an image of UI) */
+.corner-scene{height:206px;background:#d7eaf2;border:1px solid #ded5bd;border-radius:22px;box-shadow:0 4px 14px rgba(103,81,51,.08)}
+.corner-painting{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;filter:saturate(.86) contrast(.99) brightness(1.025);-webkit-mask-image:none;mask-image:none;transition:none}
+.corner-scene:before,.corner-scene:after{display:none!important}
+.corner-quote{background:rgba(255,252,241,.94);border:1px solid #dfceb0;border-radius:22px;box-shadow:0 5px 16px rgba(106,85,56,.11);backdrop-filter:none}
+.corner-quote:before{opacity:.35}
+.corner-twinkle{z-index:2}
+.corner-night-star,.corner-night-moon,.corner-lantern-glow{display:none}
+
+/* The approved images are used as artwork only. Buttons, notes and tabs are real HTML. */
+.cozy-home-artboard{display:block;aspect-ratio:auto;background:#fff9ed;border:1px solid #e5d5b9;box-shadow:0 10px 26px #85694a1c;padding:12px;border-radius:25px}
+.cozy-home-panel{position:relative;inset:auto;display:grid;grid-template-columns:1fr;gap:10px;margin:0;opacity:1;pointer-events:auto;transition:none}
+.cozy-home-panel[hidden]{display:none!important}
+.cozy-home-illustration,.cozy-home-plan{overflow:hidden;border-radius:17px;border:1px solid #e7d7b7;background:#fff9ed}
+.cozy-home-illustration{height:auto;aspect-ratio:1.73/1}
+.cozy-home-plan{height:auto;aspect-ratio:2.82/1}
+.cozy-home-illustration img,.cozy-home-plan img{width:100%;height:100%;display:block;object-fit:cover;object-position:center center;filter:saturate(.94) contrast(.99)}
+.cozy-home-panel figcaption{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;color:#876b4e;padding:4px 7px 0}
+.cozy-home-panel figcaption span{font-size:10px;letter-spacing:1.6px;font-weight:900;color:#bc9978}
+.cozy-home-panel figcaption strong{font:italic 19px Georgia,serif;color:#735d48}
+.cozy-plan-hint{margin:0 5px 3px;color:#948270;text-align:center;font:italic 12px/1.5 Georgia,serif}
+.cozy-home-tabs{align-items:center}
+.cozy-home-tab{white-space:nowrap;transition:transform .16s ease,background .16s ease}
+.cozy-home-tab.is-active{background:#f6e5bb}
+.cozy-home-stage{grid-template-columns:minmax(0,1.35fr) minmax(270px,340px)}
+@media(max-width:1050px){.cozy-home-stage{grid-template-columns:1fr}}
+@media(max-width:620px){.corner-painting{width:100%;object-position:center center;-webkit-mask-image:none;mask-image:none}.corner-scene{height:185px}.corner-quote{width:55%;right:3%;padding:12px}.cozy-home-artboard{padding:8px}.cozy-home-panel figcaption strong{font-size:16px}}

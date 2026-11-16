@@ -5,20 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#fff5d9" />
   <meta name="description" content="Little Steps: Kristie’s Wondergarden — Season One, five little adventures, pathfinding and reinforcement learning." />
-  <title>Little Steps · Kristie’s Wondergarden</title>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <title>Little Steps · Kristie’s Wondergarden + Cozy Cottage Home</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="home.css" />
   <script src="app.js" defer></script>
+  <script src="home.js" defer></script>
 </head>
 <body>
   <!-- A fully interactive menu; the watercolor art is decorative, not fake UI. -->
   <main id="menu-screen" class="screen menu-screen" aria-label="Little Steps main menu">
     <div class="menu-page">
       <div class="menu-topline"><span>✧ A STORYBOOK ROBOT ADVENTURE ✧</span><span>SEASON ONE · THE WONDERGARDEN ADVENTURES</span></div>
-      <div class="menu-logo-wrap"><img class="menu-logo" src="little-steps-logo-transparent.webp" alt="Little Steps — Kristie’s Wondergarden. Every little step helps Kristie grow." /></div>
+      <div class="menu-logo-wrap"><img class="menu-logo" src="assets/little-steps-logo-transparent.webp" alt="Little Steps — Kristie’s Wondergarden. Every little step helps Kristie grow." /></div>
       <div class="menu-body">
         <div class="menu-illustration">
-          <img src="kristie-storybook.webp" alt="Kristie, the little cream-and-teal robot with a pink scarf and flower satchel, in her watercolor garden" />
+          <img src="assets/kristie-storybook.webp" alt="Kristie, the little cream-and-teal robot with a pink scarf and flower satchel, in her watercolor garden" />
           <div class="menu-illustration-caption"><span>✿ Meet Kristie</span><strong>Every adventure begins with a little step.</strong></div>
         </div>
         <nav class="menu-actions" aria-label="Main menu">
@@ -28,12 +30,13 @@
           <button data-open-screen="chapters" class="storybook-button" type="button"><span class="button-icon">⌂</span><span>Chapters<small>Choose a little story</small></span><span aria-hidden="true">›</span></button>
           <button data-open-screen="diary" class="storybook-button" type="button"><span class="button-icon">♡</span><span>Robot Diary<small>Remember how far you've come</small></span><span aria-hidden="true">›</span></button>
           <div class="menu-mini-actions">
-            <button id="builder-entry" type="button">✿ Garden Builder</button>
+            <button id="tutorial-menu" type="button">✧ How to Play</button>
+            <button id="builder-entry" type="button">⌂ My Little Home</button>
             <button data-open-screen="settings" type="button">⚙ Settings</button>
           </div>
         </nav>
       </div>
-      <div class="menu-bottomline">Made with curiosity, courage & a little garden magic. <span>♡</span> Season One · v0.3</div>
+      <div class="menu-bottomline">Made with curiosity, courage & a little garden magic. <span>♡</span> Season One + Cozy Cottage Home · v1.2.3</div>
     </div>
   </main>
 
@@ -52,13 +55,115 @@
     <div class="sub-page"><button class="back-link" data-open-screen="menu" type="button">← Back to the garden gate</button>
       <div class="sub-title"><span class="kicker">♡ KRISTIE'S LITTLE MEMORIES</span><h1 id="journal-title">Robot Diary</h1><p>Progress isn't always a straight line. Every step matters.</p></div>
       <div class="journal-layout"><div class="journal-card"><span class="kicker">YOUR JOURNEY SO FAR</span><div class="journal-stats"><div><strong id="journal-xp">0</strong><span>Little stars · XP</span></div><div><strong id="journal-best">—</strong><span>Best steps</span></div><div><strong id="journal-episodes">0</strong><span>Practice episodes</span></div></div><p id="journal-progress">Kristie's story is waiting to begin.</p><button id="journal-play" class="storybook-button main-action" type="button">Visit the Garden <span>›</span></button></div><div class="journal-card"><span class="kicker">PAGES FROM THE GARDEN</span><h2>Little memories</h2><div id="journal-badges" class="journal-badges"></div><div id="journal-entries" class="journal-list"><p>✿ Every adventure begins with a first step.</p></div></div></div>
+      <section id="journal-chapter-two" class="journal-card journal-chapter-two" hidden>
+        <span class="kicker">CHAPTER 02 · MUDDY MEADOW</span>
+        <h2>🍀 The Little Wisdom Page</h2>
+        <div class="journal-ch2-stars" id="journal-ch2-stars">☆ ☆ ☆</div>
+        <p id="journal-ch2-story">A rainy meadow, an old wooden bridge...</p>
+        <p id="journal-ch2-path">Find a route for Kristie!</p>
+        <p class="journal-ch2-lesson">“The shortest path is not always the least costly one.”</p>
+      </section>
+      <section id="journal-later-pages" class="journal-later-pages" aria-label="Chapters three through five of Kristie's diary"></section>
     </div>
   </section>
 
   <section id="settings-screen" class="screen sub-screen" aria-labelledby="settings-title" hidden>
     <div class="sub-page settings-page"><button class="back-link" data-open-screen="menu" type="button">← Back to the garden gate</button>
       <div class="sub-title"><span class="kicker">✿ MAKE YOURSELF AT HOME</span><h1 id="settings-title">Settings</h1><p>A little control over how the garden moves.</p></div>
-      <div class="journal-card settings-card"><label for="menu-speed"><strong>Path animation speed</strong><span id="menu-speed-label">Medium</span></label><input type="range" id="menu-speed" min="1" max="100" value="52" /><p>The same setting is used when Kristie explores a map.</p><div class="settings-row"><div><strong>Start again?</strong><p>This will erase your saved garden and journey on this browser.</p></div><button id="erase-save" class="erase-save" type="button">Reset save</button></div><p class="save-note" id="storage-note">Progress saves locally in this browser; it is not synced to GitHub.</p></div>
+      <div class="journal-card settings-card"><label for="menu-speed"><strong>Path animation speed</strong><span id="menu-speed-label">Medium</span></label><input type="range" id="menu-speed" min="1" max="100" value="52" /><p>The same setting is used when Kristie explores a map.</p><div class="settings-row"><div><strong>Start again?</strong><p>This will erase your saved journey and cottage layout on this browser.</p></div><button id="erase-save" class="erase-save" type="button">Reset save</button></div><p class="save-note" id="storage-note">Progress saves locally in this browser; it is not synced to GitHub.</p></div>
+    </div>
+  </section>
+
+
+  <section id="homebase-screen" class="screen homebase-screen" aria-labelledby="homebase-title" hidden>
+    <div class="homebase-shell cozy-home-shell" data-home-time="day" data-home-view="outdoor">
+      <header class="homebase-header">
+        <button class="back-link" id="home-back" type="button">← Back to Little Steps</button>
+        <span class="homebase-kicker">SEASON 1.5 · A LITTLE PLACE TO CALL HOME</span>
+      </header>
+
+      <div class="cozy-home-head">
+        <div class="cozy-home-titlewrap">
+          <span class="kicker">🏡 PART 1 · SEASON 1.5</span>
+          <h1 id="homebase-title">My Little Wondergarden — Kristie's Cozy Cottage <span aria-hidden="true">♡</span></h1>
+          <p>A calm little home base between Season One and Season Two. Switch between the outdoor cottage garden and the indoor loft, and keep the soft storybook style that fits the rest of Little Steps.</p>
+        </div>
+        <div class="cozy-home-toolbar">
+          <div class="cozy-home-tabs" role="tablist" aria-label="Choose between outdoor and indoor home views">
+            <button id="home-tab-outdoor" class="cozy-home-tab is-active" data-home-view-button="outdoor" type="button" role="tab" aria-controls="home-panel-outdoor" aria-selected="true">🌳 Outdoor</button>
+            <button id="home-tab-indoor" class="cozy-home-tab" data-home-view-button="indoor" type="button" role="tab" aria-controls="home-panel-indoor" aria-selected="false">🏠 Indoor Loft</button>
+          </div>
+          <div class="cozy-home-progress">
+            <span class="cozy-progress-label">Season One stars collected</span>
+            <strong id="homebase-stars">0 / 12</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="cozy-home-stage">
+        <section class="cozy-home-artboard" aria-label="Kristie's Cozy Cottage — picturebook home previews">
+          <figure class="cozy-home-panel is-active" id="home-panel-outdoor" role="tabpanel" aria-labelledby="home-tab-outdoor" data-home-panel="outdoor">
+            <div class="cozy-home-illustration"><img src="assets/home-outdoor-scene.webp" alt="A gentle two-storey cottage with a pink roof, roses, fence, potted flowers and a hanging lantern" /></div>
+            <figcaption><span>✿ OUTDOOR GARDEN</span><strong>Among the roses and clover</strong></figcaption>
+            <div class="cozy-home-plan"><img src="assets/home-outdoor-layout.webp" alt="A small layout illustration showing a cottage, tree, flowers, stepping stones and clover" /></div>
+            <p class="cozy-plan-hint">A little dream of the garden Kristie can one day decorate. ♡</p>
+          </figure>
+          <figure class="cozy-home-panel" id="home-panel-indoor" role="tabpanel" aria-labelledby="home-tab-indoor" data-home-panel="indoor" hidden>
+            <div class="cozy-home-illustration"><img src="assets/home-indoor-scene.webp" alt="A cozy wooden duplex loft with a tiny upstairs bed, staircase, armchair and tea table" /></div>
+            <figcaption><span>✿ INDOOR LOFT</span><strong>Where little dreams grow</strong></figcaption>
+            <div class="cozy-home-plan"><img src="assets/home-indoor-layout.webp" alt="A layout illustration of an attic bed upstairs and a cozy sitting room below" /></div>
+            <p class="cozy-plan-hint">A tiny place to read, rest, drink tea and get ready for the next adventure. ♡</p>
+          </figure>
+        </section>
+
+        <aside class="cozy-home-sidebar" aria-label="Notes about the home base mode">
+          <div class="cozy-side-card cozy-note-card">
+            <span class="kicker">♡ A LITTLE NOTE FROM KRISTIE</span>
+            <h2 id="home-note-title">Outdoor Cottage Garden</h2>
+            <p id="home-note-quote">“Every adventure begins with a little step.”</p>
+            <p id="home-note-body">A peaceful little garden where Kristie can return after every chapter and slowly make the world feel more like home.</p>
+          </div>
+
+          <div class="cozy-side-card">
+            <span class="kicker">✿ WHY THIS MODE MATTERS</span>
+            <ul class="cozy-feature-list">
+              <li><strong>Home Base:</strong> connects Season One and Season Two.</li>
+              <li><strong>Outdoor + Indoor:</strong> two cozy spaces with one consistent storybook tone.</li>
+              <li><strong>Bright Storybook Days:</strong> keeps the garden light, peaceful and clear.</li>
+              <li><strong>Future Builder Mode:</strong> can later grow into a fuller decorating mini-game.</li>
+            </ul>
+          </div>
+
+          <div class="cozy-side-card cozy-action-card">
+            <span class="kicker">🌷 NEXT LITTLE STEPS</span>
+            <p>This version focuses on presentation and atmosphere, so it blends gently with the rest of the game.</p>
+            <div class="cozy-action-buttons">
+              <button type="button" id="home-visit-chapters" class="home-soft-button">Explore Season One ↗</button>
+              <button type="button" id="home-open-roadmap" class="home-soft-button secondary">Open Kristie’s Diary ♡</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <section class="cozy-home-bottom" aria-label="Design summary for the cottage mode">
+        <article class="cozy-summary-card">
+          <span class="kicker">🌳 OUTDOOR FEEL</span>
+          <h3>Soft cottage garden</h3>
+          <p>Pink roof, gentle sky blue, ivory fence, clover pots, and a quieter palette that sits naturally beside the main game.</p>
+        </article>
+        <article class="cozy-summary-card">
+          <span class="kicker">🪜 INDOOR FEEL</span>
+          <h3>Warm loft with a little ladder dream</h3>
+          <p>A duplex-style loft with a bed upstairs, a tiny reading corner, soft wood tones, and a cozy table for tea and rest.</p>
+        </article>
+        <article class="cozy-summary-card">
+          <span class="kicker">🕯 STORY PURPOSE</span>
+          <h3>Between chapters and bigger adventures</h3>
+          <p>This is Kristie's resting place now, and it can later become the launching point for island maps, world maps, or a magical Season Two.</p>
+        </article>
+      </section>
+
+      <footer class="homebase-footer">Home is where little adventures begin. <span>♡</span> Season One + Cozy Cottage Home · v1.2.3</footer>
     </div>
   </section>
 
@@ -67,7 +172,7 @@
 
     <header class="topbar">
       <button class="brand brand-button" id="back-to-menu" type="button" aria-label="Return to Little Steps main menu">
-        <span class="brand-icon" aria-hidden="true"><img src="favicon.svg" alt="" /></span>
+        <span class="brand-icon" aria-hidden="true"><img src="assets/favicon.svg" alt="" /></span>
         <span><strong>Little Steps</strong><small>Kristie's Wondergarden</small></span>
       </button>
       <div class="top-note"><span class="tiny-sparkle">✧</span> A little world to grow in <span class="tiny-sparkle">✧</span></div>
@@ -82,7 +187,7 @@
           <p>Meet Kristie, a tiny robot learning to find her way. Build a garden, explore winding paths, and discover how every little mistake can become a new beginning.</p>
         </div>
         <div class="hero-art watercolor-hero" aria-hidden="true">
-          <img class="hero-storybook" src="kristie-storybook.webp" alt="" />
+          <img class="hero-storybook" src="assets/kristie-storybook.webp" alt="" />
           <div class="hero-art-softwash"></div>
           <span class="hero-star storybook-star-a">✦</span><span class="hero-star storybook-star-b">✧</span>
         </div>
@@ -91,9 +196,33 @@
       <section class="story-chapter-note" aria-label="Chapter story">
         <div class="story-chapter-bloom" id="story-chapter-icon" aria-hidden="true">🌼</div>
         <div class="story-chapter-copy"><span class="kicker" id="story-chapter-kicker">CHAPTER ONE · COURAGE</span><h2 id="story-chapter-title">The First Flower</h2><p id="story-chapter-text">Every adventure begins with a little step.</p><p class="story-task" id="story-chapter-task">✧ Find the glowing flower.</p></div>
-        <button id="story-back-chapters" class="story-chapters-link" type="button">📖 Chapters</button>
+        <div class="story-chapter-actions">
+          <button id="replay-story" class="story-chapters-link" type="button" hidden>✧ Read the story</button>
+          <button id="tutorial-open" class="story-chapters-link" type="button" hidden>✧ How to Play</button>
+          <button id="story-back-chapters" class="story-chapters-link" type="button">📖 Chapters</button>
+        </div>
+      </section>
+      <div class="kristie-dialogue" aria-live="polite" aria-atomic="true">
+        <div class="dialogue-portrait" aria-hidden="true"><span class="portrait-antenna"></span><span class="portrait-face"><i></i><i></i><b></b></span></div>
+        <div class="dialogue-copy"><span class="kicker">KRISTIE SAYS...</span><p id="kristie-line">I wonder where this little path will lead...</p></div>
+        <span class="dialogue-blossom" aria-hidden="true">✿</span>
+      </div>
+      <!-- Contextual onboarding: the player can skip or replay this at any time. -->
+      <section id="tutorial-panel" class="tutorial-panel" aria-label="Interactive beginner guide" aria-live="polite" hidden>
+        <div class="tutorial-avatar" aria-hidden="true"><span class="tutorial-avatar-heart">♡</span><img src="assets/kristie-storybook.webp" alt="" /></div>
+        <div class="tutorial-content">
+          <div class="tutorial-eyebrow"><span>✦ KRISTIE'S LITTLE GUIDE</span><span id="tutorial-counter">STEP 1 OF 6</span></div>
+          <h2 id="tutorial-title">A little hello!</h2>
+          <p id="tutorial-text">We can learn the garden together, one little step at a time.</p>
+          <p class="tutorial-hint" id="tutorial-hint"></p>
+        </div>
+        <div class="tutorial-actions">
+          <button id="tutorial-advance" class="tutorial-next" type="button">Next step <span aria-hidden="true">›</span></button>
+          <button id="tutorial-skip" class="tutorial-skip" type="button">Skip guide</button>
+        </div>
       </section>
       <section class="game-layout" aria-label="Garden adventure">
+        <div class="garden-column">
         <div class="garden-card paper-card">
           <div class="section-heading">
             <div><span class="kicker">YOUR LITTLE WORLD</span><h2 id="game-level-title">🌼 The First Flower</h2><p id="game-level-subtitle">Can you help Kristie reach the glowing flower?</p></div>
@@ -108,16 +237,16 @@
           </div>
 
           <div class="legend" aria-label="Garden legend">
-            <span><b>🤖</b> Kristie</span><span><b>🌼</b> Flower</span><span><b>🌳</b> Hedge</span><span><b>🟤</b> Mud (cost 3)</span>
+            <span><b>🤖</b> Kristie</span>            <span><b id="legend-goal">🌼</b> <span id="legend-goal-name">Goal</span></span><span><b>🌿</b> Hedge</span><span><b>🟤</b> Mud (cost 3)</span>
           </div>
 
           <div class="toolbar-label">✏️ Make your own garden</div>
           <div class="tools" id="tools" role="group" aria-label="Map editing tools">
-            <button class="tool active" data-tool="hedge" aria-pressed="true">🌳 Hedge</button>
+            <button class="tool active" data-tool="hedge" aria-pressed="true">🌿 Hedge</button>
             <button class="tool" data-tool="mud" aria-pressed="false">🟤 Mud</button>
             <button class="tool" data-tool="erase" aria-pressed="false">🧽 Erase</button>
             <button class="tool" data-tool="start" aria-pressed="false">🤖 Start</button>
-            <button class="tool" data-tool="goal" aria-pressed="false">🌼 Flower</button>
+            <button class="tool" id="goal-tool" data-tool="goal" aria-pressed="false">🌼 Destination</button>
           </div>
           <div class="garden-footer">
             <span id="map-help">Choose a tool, then click a garden square.</span>
@@ -125,7 +254,89 @@
           </div>
         </div>
 
+        <!-- The Little Garden Corner balances the garden/diary columns while offering
+             a small live adventure dashboard. Its values come from saved progress. -->
+        <section id="little-garden-corner" class="little-corner paper-card" aria-labelledby="little-corner-title">
+          <div class="corner-heading">
+            <div>
+              <span class="kicker">✿ A LITTLE PLACE TO REST</span>
+              <h2 id="little-corner-title">Little Garden Corner <span aria-hidden="true">♡</span></h2>
+            </div>
+            <span class="corner-season">SEASON ONE</span>
+          </div>
+          <div class="corner-actions"><button id="corner-visit-home" class="home-link" type="button">⌂ Visit my cottage ›</button></div>
+          <div class="corner-scene">
+            <!-- A real watercolor scene instead of separate emoji props; text remains selectable and dynamic. -->
+            <img class="corner-painting" src="assets/garden-corner-cozy.webp" alt="" aria-hidden="true" loading="lazy" />
+            <span class="corner-twinkle corner-twinkle-one" aria-hidden="true">✧</span>
+            <span class="corner-twinkle corner-twinkle-two" aria-hidden="true">✦</span>
+            <span class="corner-night-star corner-night-star-one" aria-hidden="true">✦</span>
+            <span class="corner-night-star corner-night-star-two" aria-hidden="true">✧</span>
+            <span class="corner-night-star corner-night-star-three" aria-hidden="true">✦</span>
+            <span class="corner-night-star corner-night-star-four" aria-hidden="true">✧</span>
+            <span class="corner-night-moon" aria-hidden="true">☾</span>
+            <div class="corner-lantern-glow" aria-hidden="true"></div>
+            <div class="corner-quote">
+              <span class="corner-quote-label">♡ A NOTE FROM KRISTIE</span>
+              <p id="corner-message">“Let's take one little step at a time.”</p>
+              <span class="corner-quote-sprig" aria-hidden="true">✿</span>
+            </div>
+          </div>
+          <div class="corner-guide">
+            <div class="corner-guide-icon" aria-hidden="true">✧</div>
+            <div><strong>Little Tip</strong><p>Choose <b>Let Me Try</b>, then use <kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd> or <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> to move. Try your own path before asking an algorithm!</p></div>
+          </div>
+          <div class="corner-collect-header"><span>✧ YOUR LITTLE TREASURES</span><span id="corner-progress-note">Every step counts</span></div>
+          <div class="corner-collectibles" aria-label="Collected treasures across the five chapters">
+            <div class="corner-collectible"><span class="corner-collect-icon" aria-hidden="true">⭐</span><strong id="corner-stars">0 / 12</strong><small>Challenge stars</small></div>
+            <div class="corner-collectible"><span class="corner-collect-icon" aria-hidden="true">🍀</span><strong id="corner-clovers">0 / 1</strong><small>Lucky clover</small></div>
+            <div class="corner-collectible"><span class="corner-collect-icon" aria-hidden="true">📖</span><strong id="corner-pages">0 / 5</strong><small>Diary pages</small></div>
+          </div>
+        </section>
+        </div><!-- /.garden-column -->
+
         <aside class="side-column">
+          <section class="manual-card paper-card" aria-label="Try moving Kristie yourself">
+            <span class="kicker">🎮 A LITTLE ADVENTURE OF YOUR OWN</span>
+            <h2>Let Me Try</h2>
+            <p>Walk with Kristie before comparing her route with the algorithms!</p>
+            <button id="manual-toggle" class="manual-toggle" type="button" aria-pressed="false">🎮 Let Me Try · Move Kristie</button>
+            <div id="manual-panel" class="manual-panel" hidden>
+              <p class="manual-tip">Use <strong>arrow keys / WASD</strong>, or tap a direction below. 🌸</p>
+              <div class="direction-pad" aria-label="Direction controls">
+                <button data-move="0" class="up" type="button" aria-label="Walk up">↑</button>
+                <button data-move="3" class="left" type="button" aria-label="Walk left">←</button>
+                <span class="direction-center" aria-hidden="true">♡</span>
+                <button data-move="1" class="right" type="button" aria-label="Walk right">→</button>
+                <button data-move="2" class="down" type="button" aria-label="Walk down">↓</button>
+              </div>
+              <p class="manual-readout" id="manual-readout">0 steps · cost 0</p>
+            </div>
+          </section>
+          <section id="ch2-tips" class="chapter-two-tips paper-card" hidden>
+            <span class="kicker">🌦️ A LITTLE RAIN, A LITTLE COURAGE</span>
+            <h2>Muddy Meadow</h2>
+            <p>Grass costs <strong>1</strong> to enter, mud costs <strong>3</strong>. The wooden bridge is sturdy, and a lucky clover is hidden nearby.</p>
+            <div class="ch2-story-choices"><span>What should we tell Kristie?</span>
+              <button type="button" data-encourage="brave">♡ One step at a time</button>
+              <button type="button" data-encourage="wise">✧ Let's choose wisely</button>
+            </div>
+          </section>
+          <section id="route-comparison" class="comparison-card paper-card" hidden>
+            <span class="kicker">✦ AFTER THE ADVENTURE</span>
+            <h2>A Tale of Two Paths</h2>
+            <p id="ch2-star-summary">☆ ☆ ☆ · 0/3 stars collected</p>
+            <div class="star-goals"><span>⭐ Reach the rainbow</span><span>⭐ Cost ≤ optimal + 2</span><span>⭐ Find the clover 🍀</span></div>
+            <button id="compare-reveal" class="comparison-toggle" type="button" aria-expanded="false">Reveal algorithm routes ▾</button>
+            <table id="comparison-table" hidden><thead><tr><th>Method</th><th>Steps</th><th>Cost</th></tr></thead><tbody id="comparison-rows"></tbody></table>
+          </section>
+          <section id="chapter-special-panel" class="chapter-special-panel paper-card" aria-label="Chapter special mission" hidden>
+            <span class="kicker" id="special-kicker">✦ A LITTLE ADVENTURE</span>
+            <h2 id="special-heading">A New Adventure</h2>
+            <p id="special-description">A new challenge is waiting in the garden.</p>
+            <p id="special-progress" class="special-progress">Your adventure awaits</p>
+            <p id="special-stars" class="special-stars">☆ ☆ ☆</p>
+          </section>
           <section class="control-card paper-card">
             <div class="eyebrow small">✦ KRISTIE'S EXPLORER KIT</div>
             <h2>Which way shall we go?</h2>
@@ -170,20 +381,43 @@
         </aside>
       </section>
     </main>
-    <footer>Every little step helps Kristie grow. <span>✿</span> Little Steps · Season One · v0.3</footer>
+    <footer>Every little step helps Kristie grow. <span>✿</span> Little Steps · Season One + Cozy Cottage Home · v1.2.3</footer>
   </div>
   </section>
   <div id="finish-overlay" class="finish-overlay" role="dialog" aria-modal="true" aria-labelledby="finish-title" hidden>
     <div class="finish-card">
+      <div class="finish-sparkles" aria-hidden="true"><span>✦</span><span>✿</span><span>✧</span><span>✦</span><span>✿</span></div>
+      <div class="finish-character" aria-hidden="true"><img src="assets/kristie-storybook.webp" alt=""/><span>✦</span></div>
       <div id="finish-illustration" class="finish-illustration" aria-hidden="true">🌼</div>
       <span class="kicker" id="finish-kicker">A LITTLE STEP FORWARD</span>
       <h2 id="finish-title">Kristie did it!</h2>
       <p id="finish-description">She found her way, one little step at a time.</p>
       <p id="finish-quote" class="finish-quote" hidden></p>
-      <p id="finish-reward" class="finish-reward">✦ +50 XP · A new chapter unlocked</p>
+      <div id="season-one-epilogue" class="season-one-epilogue" hidden aria-label="The distant island beyond the garden">
+        <div class="epilogue-moon">☾</div><div class="epilogue-cloud cloud-one">☁</div><div class="epilogue-cloud cloud-two">☁</div>
+        <div class="epilogue-island">🏝️</div>
+        <div class="epilogue-caption">SEASON ONE · THE END OF A FIRST ADVENTURE
+          <strong>Beyond the garden gate, another world is waiting.</strong>
+        </div>
+      </div>
+      <p id="finish-reward" class="finish-reward">✦ +50 XP · A new chapter unlocked</p><p id="finish-stars" class="finish-stars" hidden></p>
+      <div class="tutorial-finish-note" id="tutorial-finish-note" hidden>✧ Kristie learned how to find a path! Want to discover how she can learn by trying?</div>
       <div class="finish-actions">
+        <button id="finish-practice" class="storybook-button tutorial-practice" type="button" hidden>🌱 Practice Q-Learning with Kristie <span>›</span></button>
+        <button id="finish-tutorial-end" class="storybook-button tutorial-practice" type="button" hidden>✧ Finish my little guide <span>›</span></button>
         <button id="finish-next" class="storybook-button main-action" type="button">Next chapter <span>›</span></button>
         <button id="finish-chapters" class="storybook-button" type="button">Visit Chapters <span>›</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chapter One: three short playable-story pages, optional and skippable. -->
+  <div id="story-overlay" class="story-overlay" role="dialog" aria-modal="true" aria-labelledby="story-scene-title" aria-describedby="story-scene-text" hidden>
+    <div class="story-scene">
+      <div class="story-scene-toolbar"><span id="story-scene-toolbar-title">✧ CHAPTER ONE · A TINY BEGINNING</span><button id="story-skip" type="button">Skip story ×</button></div>
+      <div class="story-scene-body">
+        <div class="story-scene-image"><img src="assets/kristie-storybook.webp" alt="Kristie standing among flowers beside her little cottage"/><span class="scene-sparkle scene-sparkle-one">✦</span><span class="scene-sparkle scene-sparkle-two">✿</span></div>
+        <div class="story-scene-content"><div id="story-scene-count" class="scene-count">PAGE 1 OF 3</div><h2 id="story-scene-title">A little garden, a big world</h2><p id="story-scene-text">Once upon a little garden...</p><blockquote id="story-scene-quote" class="story-scene-quote"></blockquote><div id="story-scene-dots" class="story-scene-dots" aria-label="Story page progress"></div><button id="story-next" class="storybook-button main-action" type="button">Turn the page <span>›</span></button></div>
       </div>
     </div>
   </div>
