@@ -658,7 +658,7 @@ speedInput.addEventListener('input',()=>{
 // === Season One: chapter progression, safe local saves, menu and story pages ===
 const STORE_KEY='little-steps-kristie-v03';
 const LEGACY_STORE_KEY='little-steps-kristie-v02';
-const screenNames=['menu','game','chapters','diary','settings','homebase'];
+const screenNames=['menu','worldbook','collection','game','chapters','diary','settings','homebase','season2'];
 const defaultProgress=()=>({hasStarted:false,xp:0,completedChapters:[],chapterBest:{},stars:{},routeRecords:{},storySeen:{},chapter2StorySeen:false,activeChapter:1,lastPlayed:null});
 let progress=defaultProgress();
 let storageWorking=true;
@@ -749,9 +749,36 @@ function restoreFromSave(saved){
   return true;
 }
 function updateMenuStatus(){
-  document.querySelector('#continue-game').disabled=!progress.hasStarted;
-  document.querySelector('#continue-hint').textContent=progress.hasStarted?`Return to Chapter ${activeChapter} · ${chapterById(activeChapter).title}`:'No saved adventure yet';
+  const resumeButton=document.querySelector('#continue-game');
+  resumeButton.disabled=false;
+  document.querySelector('#menu-resume-label').textContent=progress.hasStarted?'Continue Journey':'Start Journey';
+  document.querySelector('#continue-hint').textContent=progress.hasStarted?`Return to Chapter ${activeChapter} · ${chapterById(activeChapter).title}`:'Begin with the first little step';
   document.querySelector('#storage-note').textContent=storageWorking?'Your progress is saved in this browser only (not GitHub or other devices).':'This browser is blocking local storage; your progress may not survive a refresh.';
+}
+function updateWorldBook(){
+  const label=document.querySelector('#worldbook-season1-progress');
+  if(label)label.textContent=`${progress.completedChapters.length} of 5 garden stories completed`;
+}
+function renderCollection(){
+  const allStars=[2,3,4,5].reduce((sum,chapter)=>{
+    const earned=Array.isArray(progress.stars?.[chapter])?progress.stars[chapter]:[];
+    return sum + new Set(earned.filter(n=>[1,2,3].includes(n))).size;
+  },0);
+  const lucky=Array.isArray(progress.stars?.[2]) && progress.stars[2].includes(3) ? 1 : 0;
+  document.querySelector('#collection-xp').textContent=String(progress.xp||0);
+  document.querySelector('#collection-stars').textContent=`${allStars} / 12`;
+  document.querySelector('#collection-clover').textContent=`${lucky} / 1`;
+  document.querySelector('#collection-pages').textContent=`${progress.completedChapters.length} / 5`;
+  const container=document.querySelector('#collection-badges');
+  container.replaceChildren();
+  for(const chapter of CHAPTERS){
+    const earned=progress.completedChapters.includes(chapter.id);
+    const item=document.createElement('div');item.className='collection-badge'+(earned?'':' is-locked');
+    const art=document.createElement('span');art.textContent=chapter.icon;
+    const name=document.createElement('strong');name.textContent=chapter.quality;
+    const state=document.createElement('small');state.textContent=earned?'Story remembered':'Not discovered yet';
+    item.append(art,name,state);container.append(item);
+  }
 }
 function renderChapters(){
   chapterCards.replaceChildren();
@@ -782,10 +809,13 @@ function showScreen(which){
   closeFinish();
   screenNames.forEach(n=>document.getElementById(`${n}-screen`).hidden=n!==which);
   if(which==='chapters')renderChapters();
+  if(which==='worldbook')updateWorldBook();
+  if(which==='collection')renderCollection();
   if(which==='diary')renderJournal();
   if(which==='settings')syncSpeed();
   if(which==='menu')updateMenuStatus();
   if(which==='homebase' && typeof renderHomeBase==='function')renderHomeBase();
+  if(which==='season2' && typeof window.renderSeasonTwo==='function')window.renderSeasonTwo();
   window.scrollTo({top:0,behavior:'instant'});
 }
 // Illustrated story scenes for all five chapters; first-chapter tutorial stays independent.
@@ -1165,7 +1195,7 @@ document.querySelector('#finish-tutorial-end').addEventListener('click',wrapUpTu
 
 // Events: menu, chapter progression, settings and the story finale.
 document.querySelector('#new-game').addEventListener('click',newAdventure);
-document.querySelector('#continue-game').addEventListener('click',continueAdventure);
+document.querySelector('#continue-game').addEventListener('click',()=>progress.hasStarted?continueAdventure():newAdventure());
 document.querySelector('#journal-play').addEventListener('click',()=>progress.hasStarted?continueAdventure():newAdventure());
 document.querySelector('#builder-entry').addEventListener('click',()=>showScreen('homebase'));
 document.querySelector('#back-to-menu').addEventListener('click',()=>showScreen('menu'));

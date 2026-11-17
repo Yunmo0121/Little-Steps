@@ -1,0 +1,45 @@
+/* Season 2 board-art replacement: 12 real local WebP sprites cropped from the approved icon sheet.
+   All images remain bundled for offline index.html use; loaded LAST after old icon CSS. */
+:root { --maze-art-radius: 9px; }
+/* Common scale and padding: watercolor icons have illustrated borders and should not overflow tiles. */
+.s2-boat,.tide-boat-symbol,.s2a-boat,.s2a-dock{pointer-events:none}
+.s2-boat::before,.tide-boat-symbol::before,.s2a-boat::before,.s2a-dock::before{
+  content:"" !important;display:block !important;position:absolute !important;
+  left:6% !important;top:4% !important;width:88% !important;height:88% !important;
+  background:url("assets/maze-icons/wooden-boat.webp") center/contain no-repeat !important;
+  filter:drop-shadow(0 2px 2px rgba(69,91,96,.14)) !important;
+  border:0 !important;clip-path:none !important;
+}
+.s2-boat::after,.tide-boat-symbol::after,.s2a-boat::after,.s2a-dock::after{content:none !important;display:none !important}
+/* Chapter 1 Lantern Bay: home, rocks and lighthouse goal. */
+.s2-cell.s2-reef::after{content:"";position:absolute;inset:10%;width:auto;height:auto;background:url("assets/maze-icons/reef-rocks.webp") center/contain no-repeat;opacity:1;pointer-events:none}
+.s2-cell.s2-dock::after{content:"";position:absolute;inset:8%;width:auto;height:auto;background:url("assets/maze-icons/harbor-home.webp") center/contain no-repeat;pointer-events:none}
+.s2-lighthouse{position:absolute;inset:7%;width:auto;height:auto;z-index:2;background:url("assets/maze-icons/lighthouse.webp") center/contain no-repeat !important;filter:drop-shadow(0 1px 1px rgba(80,73,69,.13))}
+.s2-lighthouse::before,.s2-lighthouse::after{content:none !important;display:none !important}
+/* Chapter 2 Tidal Island: actual in-game markers, not text glyphs. */
+.tide-port-symbol,.tide-goal-symbol,.tide-sand-symbol{
+  position:absolute;inset:8%;width:auto;height:auto;font-size:0 !important;line-height:0;color:transparent !important;
+  background-position:center !important;background-size:contain !important;background-repeat:no-repeat !important;pointer-events:none;
+}
+.tide-port-symbol{background-image:url("assets/maze-icons/harbor-home.webp") !important}
+.tide-goal-symbol{background-image:url("assets/maze-icons/lighthouse.webp") !important}
+.tide-sand-symbol{background-image:url("assets/maze-icons/sandbar.webp") !important}
+.tide-grid[data-tide-level="high"] .tide-sand-symbol{opacity:.43}
+.tide-cell-reef::after,.tide-cell-rough::after{content:"";position:absolute;inset:9%;background:center/contain no-repeat;opacity:.85;pointer-events:none}
+.tide-cell-reef::after{background-image:url("assets/maze-icons/reef-rocks.webp")}
+.tide-cell-rough::after{background-image:url("assets/maze-icons/rough-waves.webp");opacity:.69}
+/* Chapter 3–5: differentiate terrain, wind, beacons, silver bell and final harbor. */
+.s2a-cell.is-reef::after,.s2a-cell.is-rough::after{content:"";position:absolute;inset:10%;background:center/contain no-repeat;opacity:.78;pointer-events:none}
+.s2a-cell.is-reef::after{background-image:url("assets/maze-icons/coral-reef.webp")}
+.s2a-cell.is-rough::after{background-image:url("assets/maze-icons/rough-waves.webp")}
+.s2a-silver-bell{position:absolute;inset:6%;background:url("assets/maze-icons/silver-bell.webp") center/contain no-repeat !important;pointer-events:none}
+.s2a-goal{position:absolute;inset:6%;width:auto;height:auto;color:transparent !important;font-size:0 !important;background:url("assets/maze-icons/harbor-flag.webp") center/contain no-repeat !important}
+/* If a future config uses a G goal for Misty Reef, still show the silver bell. */
+#s2a-board[data-chapter="misty"] .s2a-goal{background-image:url("assets/maze-icons/silver-bell.webp") !important}
+.s2a-gust{position:absolute;inset:8%;width:auto;height:auto;color:transparent !important;font-size:0 !important;background:url("assets/maze-icons/wind.webp") center/contain no-repeat !important}
+.s2a-arrow{position:absolute;left:4%;top:4%;width:34%;height:34%;color:transparent !important;font-size:0 !important;background:url("assets/maze-icons/current.webp") center/contain no-repeat !important;opacity:.9}
+.s2a-beacon{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:76%;height:76%;font:700 clamp(9px,1.2vw,13px)/1 Georgia,serif;color:#63482d;background:url("assets/maze-icons/star-beacon.webp") center/contain no-repeat !important;border:0;border-radius:0;box-shadow:none;text-shadow:0 1px 3px #fff9e9,0 0 5px #fff9e9;display:flex;align-items:flex-end;justify-content:center;padding-bottom:2%}
+.s2a-cell.is-fog::after{content:none}
+/* Protect the functional grid's cell hit area and clear visual anchors. */
+.s2-cell.s2-dock,.tide-cell-start,.s2a-cell.is-beacon{outline-offset:-1px}
+@media(max-width:600px){.s2-boat::before,.tide-boat-symbol::before,.s2a-boat::before,.s2a-dock::before{left:1% !important;top:1% !important;width:98% !important;height:98% !important}}

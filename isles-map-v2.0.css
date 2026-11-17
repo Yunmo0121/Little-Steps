@@ -1,0 +1,71 @@
+/* Season Two v2.0 — illustrated island map, integrated into the existing World Book route. */
+.s2-map-wrap .s2-map {
+  position:relative;
+  width:100%;
+  aspect-ratio:1672 / 941;
+  border:0;
+  outline:0;
+  border-radius:22px;
+  padding:0;
+  background:transparent;
+  box-shadow:0 11px 28px rgba(78,103,111,.12);
+  transform:none;
+  overflow:hidden;
+}
+.s2-map-wrap .s2-map .s2-map-art {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:none;
+  user-select:none;
+  pointer-events:none;
+}
+/* The watercolor map includes its own chapter plaques.
+   The old HTML buttons remain as invisible, accessible clickable hotspots,
+   so image replacement cannot break season navigation. */
+.s2-map-wrap .s2-map .s2-island {
+  position:absolute;
+  display:block;
+  transform:translate(-50%,-50%);
+  width:19%;
+  height:14%;
+  min-height:27px;
+  min-width:0;
+  padding:0;
+  border:2px solid transparent;
+  border-radius:15px;
+  background:transparent;
+  box-shadow:none;
+  font:inherit;
+  color:transparent;
+  z-index:3;
+  cursor:pointer;
+  transition:border-color .15s,background .15s;
+}
+.s2-map-wrap .s2-map .s2-island span {
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+.s2-map-wrap .s2-map .s2-island:hover {
+  transform:translate(-50%,-50%);
+  background:rgba(255,248,223,.14);
+  border-color:rgba(252,246,224,.78);
+  box-shadow:0 0 0 2px rgba(121,151,151,.23);
+}
+.s2-map-wrap .s2-map .s2-island:focus-visible {
+  outline:3px solid #8babad;
+  outline-offset:2px;
+  background:rgba(255,255,255,.18);
+}
+@media(max-width:620px) {
+  .s2-map-wrap .s2-map {border-radius:13px;}
+  .s2-map-wrap .s2-map .s2-island {min-height:25px;border-radius:8px;}
+}

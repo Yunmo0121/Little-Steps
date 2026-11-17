@@ -1,0 +1,149 @@
+/* Season Two Alpha 1.3 — match Season One's story modal.
+   Visual-only adjustments: the reinforcement-learning engine is unchanged. */
+.s2-story-overlay {
+  z-index:10000;
+  padding:24px;
+  background:rgba(57,61,49,.65);
+  backdrop-filter:blur(8px);
+  align-items:center;
+  justify-content:center;
+}
+.s2-story-book {
+  box-sizing:border-box;
+  width:min(930px,100%);
+  max-height:calc(100dvh - 36px);
+  overflow-y:auto;
+  background:linear-gradient(125deg,#fffaf0,#fffef8 70%,#f5f8ed);
+  border:9px solid #fffaf0;
+  outline:2px solid #e3ceae;
+  border-radius:30px;
+  padding:0;
+  box-shadow:0 22px 70px #312b2160;
+  animation:page-enter .35s ease-out;
+}
+.s2-story-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin:0;
+  border:0;
+  padding:17px 25px 10px;
+  font:900 10px/1.5 'Trebuchet MS',sans-serif;
+  letter-spacing:1.6px;
+  color:#b68e65;
+}
+.s2-story-top button {
+  border:1px solid #e8d9c1;
+  background:#fff8eb;
+  border-radius:25px;
+  color:#9b836c;
+  padding:9px 13px;
+  font:700 12px 'Trebuchet MS',sans-serif;
+}
+.s2-story-spread {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:20px;
+  padding:11px 25px 27px;
+  align-items:stretch;
+}
+.s2-story-illustration {
+  position:relative;
+  min-height:410px;
+  height:100%;
+  border:7px solid #fff8e8;
+  outline:0;
+  border-radius:21px;
+  background:#dfedf0;
+  box-shadow:0 5px 0 #e5d3b5,0 14px 32px #87705330;
+  overflow:hidden;
+}
+.s2-story-illustration img {
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;min-height:0;max-height:none;
+  object-fit:cover;object-position:center center;
+  display:block;
+}
+/* The first season's illustrations do not carry a second superimposed caption. */
+.s2-story-photo-label {display:none}
+.s2-story-writing {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+  min-height:370px;
+  min-width:0;
+  padding:14px 15px 14px 10px;
+}
+.s2-story-counter {
+  font:900 10px 'Trebuchet MS',sans-serif;
+  color:#b39876;
+  letter-spacing:2px;
+  margin:0;
+}
+.s2-story-writing h2 {
+  font:700 clamp(28px,3vw,39px)/1.14 Georgia,serif;
+  color:#65523e;
+  letter-spacing:-1px;
+  margin:17px 0 12px;
+  max-width:none;
+}
+.s2-story-writing>p:not(.s2-story-counter) {
+  font:15px/1.85 Georgia,serif;
+  color:#8e7a62;
+  margin:0;
+}
+.s2-story-quote {
+  border-left:3px solid #dfacb3;
+  padding:10px 0 10px 20px;
+  margin:25px 0 19px;
+  font:italic 21px/1.5 Georgia,serif;
+  color:#668a74;
+}
+.s2-story-progress {
+  margin-top:0;
+  width:100%;
+}
+.s2-story-dots {display:flex;gap:8px;margin:3px 0 21px}
+.s2-story-dots span {width:9px;height:9px;border-radius:50%;background:#e9dece;border:1px solid #dbcab6}
+.s2-story-dots span.is-current {background:#e8aeb3;border-color:#d99fa8;box-shadow:0 0 0 3px #fff1f0}
+.s2-story-navigation {display:flex;align-items:stretch;gap:9px;max-width:100%}
+.s2-story-next {
+  display:flex;align-items:center;justify-content:center;
+  flex:1;min-height:54px;
+  background:linear-gradient(110deg,#fff0c6,#ffebcd);
+  border:1px solid #e6c58c;
+  border-radius:15px;
+  box-shadow:0 4px 0 #d5b778;
+  color:#80603b;
+  font:700 16px Georgia,serif;
+  padding:10px 14px;
+}
+.s2-story-prev {
+  border:1px solid #e8d9c1;
+  border-radius:15px;
+  background:#fff8eb;
+  color:#97816a;
+  min-width:72px;
+  padding:10px;
+  font:700 13px Georgia,serif;
+}
+.s2-story-prev:disabled {opacity:.38;cursor:default}
+.s2-story-next:hover:not(:disabled){background:#ffe5ab}
+@media(max-width:690px){
+ .s2-story-overlay {padding:10px;align-items:center}
+ .s2-story-book {width:100%;max-height:calc(100dvh - 20px);border-width:6px;border-radius:22px}
+ .s2-story-top {padding:12px 12px 4px;letter-spacing:.55px;font-size:9px}
+ .s2-story-top button {padding:8px 10px;font-size:11px}
+ .s2-story-spread {grid-template-columns:1fr;gap:12px;padding:7px 11px 16px}
+ .s2-story-illustration {height:clamp(170px,31dvh,265px);min-height:0;border-width:5px;border-radius:15px}
+ .s2-story-writing {min-height:0;padding:4px 6px 6px}
+ .s2-story-writing h2 {font-size:clamp(25px,6.8vw,32px);margin:9px 0 8px}
+ .s2-story-writing>p:not(.s2-story-counter) {font-size:14px;line-height:1.6}
+ .s2-story-quote {font-size:17px;line-height:1.38;padding:5px 0 5px 12px;margin:12px 0}
+ .s2-story-dots{margin:6px 0 12px}
+ .s2-story-next,.s2-story-prev{min-height:44px;font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){.s2-story-book{animation:none}}

@@ -1,78 +1,69 @@
-# Little Steps v1.2.3 · GitHub 发布指南
+# Little Steps v2.0.0 — GitHub 发布指南（Mac）
 
-**目标仓库：** https://github.com/Yunmo0121/Little-Steps  
-**游戏网址：** https://yunmo0121.github.io/Little-Steps/
+**仓库：** https://github.com/Yunmo0121/Little-Steps  
+**网站：** https://yunmo0121.github.io/Little-Steps/
 
-> 这个文件夹包含可以发布的完整静态网站。**ZIP 不是网页文件**：必须先解压，再将里面的文件放到 GitHub 仓库根目录。
+> 这里是完整的静态站点，包含 Season One、Cozy Cottage 和 Season Two 五章。请先解压 ZIP，再上传**解压后文件夹内的内容**到仓库根目录。不要只上传 ZIP，也不要额外嵌套一层目录。
 
-## 第一步：检查发布包
+## 先检查
 
-打开解压后的 `Little-Steps-v1.2.3-GitHub-Ready` 文件夹，确认里面有：
+解压后打开 `index.html`。检查主菜单、World Book、Cozy Cottage、Season Two 的五个岛屿及故事、RL 按钮，以及新绘本图片与迷宫图标是否能显示。
 
-```text
-index.html
-app.js
-styles.css
-home.js
-home.css
-assets/
-docs/
-tests/
-README.md
-开始使用_中文.md
-```
+已有浏览器存档时不要随意点击重新开始的选项。发布后的 GitHub Pages 站点和本地 `file://` 不共享进度。
 
-先双击 `index.html` 试玩：主菜单、Chapter 1、Little Garden Corner、**My Little Home → Outdoor / Indoor Loft** 都应正常显示。注意：当前版本是**纯白天场景预览**，还没有自由装修。
+## 建议：在原有 Git 工作副本中发布
 
-## 第二步：上传到现有 GitHub 仓库
-
-**推荐使用 Git 工作副本**，可完整保留 `assets/` 和 `docs/` 目录。打开 Mac 终端：
+如果之前已经在桌面创建过 `little-steps-release` 并且里面有 `.git`，可以直接使用。否则从 GitHub 克隆一个新的工作副本：
 
 ```bash
 cd ~/Desktop
 git clone https://github.com/Yunmo0121/Little-Steps.git little-steps-release
 ```
 
-接下来用 Finder：打开刚解压的发布包，**进入文件夹内部，选中全部内容**，复制到 `~/Desktop/little-steps-release` 文件夹中；提示同名文件时选择替换/合并。
-
-⚠️ 注意：不要把整个 `Little-Steps-v1.2.3-GitHub-Ready` 文件夹放进仓库再套一层，也不要删除 `little-steps-release` 中的隐藏 `.git` 目录。我们只是复制发布文件，而不是把源码文件夹本身作为子目录上传。
-
-回到终端：
+把本次 ZIP 解压到桌面后，**先确认文件夹实际名称**。下面的命令假设它叫 `Little-Steps-v2.0.0-Season-Two-Release`，并且和 `little-steps-release` 同级：
 
 ```bash
 cd ~/Desktop/little-steps-release
+# 建议先确保你在正确的仓库里
+git remote -v
 git status
+
+# 同步新版文件，不会删掉或覆盖 .git 目录
+rsync -av --exclude '.git/' \
+  ~/Desktop/Little-Steps-v2.0.0-Season-Two-Release/ \
+  ./
+
+git status
+```
+
+如果 `git status` 没有显示文件变化，检查你是否复制了正确的文件夹。确认后：
+
+```bash
 git add -A
-git commit -m "Release Little Steps Season One + Cozy Cottage v1.2.3"
+git commit -m "Release Little Steps v2.0.0: complete Season Two"
 git push origin main
 ```
 
-如提示认证，请在 GitHub 授权窗口完成登录。如果 `git clone` 时提示目标文件夹已经存在，请先选择其他名称，不要覆盖旧仓库目录。`git status` 是核对操作是否正确的关键一步。
+上面的 `rsync` **不会自动删除旧文件**，这是为了保护已有仓库内容。如果 GitHub 上还留着过时文件，请之后再有针对性地清理，不要直接删除 `.git`。
 
-## 第三步：验证发布
+## 验证线上网站
 
-1. 打开 [GitHub 仓库](https://github.com/Yunmo0121/Little-Steps)，确认 `index.html` 位于首页文件列表，图片存在于 `assets/` 目录，而不是全部散落在根目录。
-2. 打开 **Actions**，查看最新 GitHub Pages 部署是否成功。
-3. 如需确认 Pages 设置，进入 **Settings → Pages**，选择 `Deploy from a branch`，分支 `main`，目录 `/(root)`；如果旧设置已经如此，**不用更改**。
-4. 打开 https://yunmo0121.github.io/Little-Steps/，按 `Command + Shift + R` 强制刷新，最好再用无痕窗口打开测试。
-5. 测试 Logo、Kristie 插画、第一章、Cozy Cottage 的 Outdoor / Indoor Loft 按钮，以及中文 README 链接。
+- 打开仓库，确认根目录有 `index.html`、`README.md`、`开始使用_中文.md`，并保留 `assets/`、`tests/`、`docs/` 等文件夹。
+- 在 GitHub **Actions** 确认 Pages 部署成功。
+- 进入 **Settings → Pages** 核对发布源：如果原本是 `Deploy from a branch`、`main`、`/(root)`，无需修改。
+- 打开 https://yunmo0121.github.io/Little-Steps/，强制刷新 `Command + Shift + R`，最好再用无痕窗口检查主菜单、海岛地图和图片。
+- 使用线上网址走一遍 Lantern Bay 和 Tidal Island 的操作，再检查三至五章故事与训练按钮。
 
-GitHub Pages 从 `main` 根目录发布静态网站，符合 GitHub 官方的 **Deploy from a branch** 模式。
+## 创建 GitHub Release（建议）
 
-## 第四步（可选）：创建 Release
+在仓库右侧 **Releases → Draft a new release**：
 
-等线上版本确认无误后，在仓库 **Releases → Draft a new release**：
+- **Tag:** `v2.0.0`
+- **Title:** `Little Steps v2.0.0 — Season Two: The Enchanted Isles`
+- **Description:** 复制 [`RELEASE_NOTES_v2.0.0.md`](RELEASE_NOTES_v2.0.0.md) 的内容。
 
-- **Tag**：`v1.2.3`
-- **Release title**：`Little Steps v1.2.3 — The Wondergarden Adventures + Cozy Cottage`
-- **Description**：可复制 `RELEASE_NOTES_v1.2.3.md` 中的英文发布说明。
+Release 负责记录版本里程碑；GitHub Pages 的在线游玩由 `main` 分支的部署决定，两者不同。
 
-Release 适合记录版本里程碑，但不是朋友通过网址游玩所必需的。
+## 安全提醒
 
-## 常见注意事项
-
-- GitHub Pages 和本地文件是**不同的网站来源**，不共用存档。
-- **Start Adventure 会重置当前网站的冒险记录**，已有进度建议选 Continue。
-- 目前不能在线保存到 GitHub 账号；存档只在各自浏览器本地。
-- 如果只是发布文件但网页图片没显示，优先检查路径 `assets/...` 是否和仓库内实际目录一致。
-- 发布的是 v1.2.3，不是 Season Two；World Map、海岛章节和自由装修目前仍是未来规划。
+如果 GitHub 要求登录，请使用官方授权流程，不要把 Access Token 发给聊天助手。若 `git push` 被拒绝，先阅读错误，不要直接运行强制推送。过去在 `file://` 存的进度不会自动同步到线上网址。

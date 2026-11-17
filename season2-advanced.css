@@ -1,0 +1,94 @@
+
+/* Season Two advanced chapters: Misty Reef, Windward Passage, Starharbor */
+.s2a-storybook-button,
+.s2a-chip,
+.s2a-lab button{font:inherit}
+.s2a-lab{margin:2.2rem 0 1.4rem;padding:1.6rem 1.2rem 1.8rem;border-radius:28px;background:linear-gradient(180deg,#fffaf0,#f5fbfa);border:1px solid rgba(136,168,159,.28);box-shadow:0 22px 44px rgba(81,104,96,.08)}
+.s2a-lab-heading{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;flex-wrap:wrap;margin-bottom:1rem}
+.s2a-study-flag{padding:.45rem .8rem;border-radius:999px;background:#edf5f2;color:#57776c;font-size:.92rem}
+.s2a-notes{margin:.75rem 0 0;color:#5e716c;max-width:72ch}
+.s2a-learning-path{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem;margin:1rem 0 1rem}
+.s2a-learning-path div{display:flex;align-items:center;gap:.65rem;padding:.85rem .9rem;border-radius:18px;background:#f8fcfa;border:1px solid rgba(122,151,141,.18)}
+.s2a-learning-path strong{display:inline-flex;align-items:center;justify-content:center;width:1.9rem;height:1.9rem;border-radius:999px;background:#e3efea;color:#46695e;font-size:.95rem}
+.s2a-learning-path span{font-size:.94rem;color:#5c726c}
+.s2a-lab-actions-line{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap;margin-bottom:1rem}
+.s2a-lab-actions-line button,.s2a-desk-actions button,.s2a-train-actions button,.s2a-game-actions button,.s2a-story-navigation button,.s2a-story-top button{border:none;border-radius:16px;padding:.72rem 1rem;background:#eef5f1;color:#45665c;cursor:pointer}
+.s2a-lab-actions-line button:hover,.s2a-desk-actions button:hover,.s2a-train-actions button:hover,.s2a-game-actions button:hover,.s2a-story-navigation button:hover,.s2a-story-top button:hover{background:#e4efea}
+.s2a-layout{display:grid;grid-template-columns:minmax(280px,1.15fr) minmax(260px,.95fr);gap:1rem}
+.s2a-board-panel,.s2a-desk,.s2a-chart-panel,.s2a-inspector,.s2a-experiment-panel{background:#fffdf7;border:1px solid rgba(120,147,139,.18);border-radius:24px;padding:1rem;box-shadow:0 14px 28px rgba(92,114,107,.06)}
+.s2a-board-header{display:flex;justify-content:space-between;gap:.8rem;align-items:flex-start;margin-bottom:.7rem}
+.s2a-board-header span{color:#627671;font-size:.95rem;max-width:28rem}
+.s2a-board{display:grid;gap:.42rem;background:#edf5f3;border-radius:22px;padding:.8rem}
+.s2a-cell{position:relative;aspect-ratio:1/1;border:none;border-radius:16px;background:#dcefe7;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(117,148,138,.18)}
+.s2a-cell.is-reef{background:#97abb1;box-shadow:inset 0 0 0 1px rgba(80,91,98,.24)}
+.s2a-cell.is-rough{background:#bed8df}
+.s2a-cell.is-wind{background:#c8e0e4}
+.s2a-cell.is-goal{background:#e8efd4}
+.s2a-cell.is-beacon{background:#efe6cc}
+.s2a-cell.is-fog{background:#d2dfe2}
+.s2a-cell.is-selected{outline:3px solid #e0b685;outline-offset:1px}
+.s2a-cell.is-route{box-shadow:inset 0 0 0 3px rgba(227,171,107,.75)}
+.s2a-cell.is-visited{box-shadow:inset 0 0 0 2px rgba(132,176,165,.7)}
+.s2a-boat,.s2a-dock,.s2a-goal,.s2a-beacon,.s2a-arrow,.s2a-gust,.fog-dot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1.22rem}
+.s2a-boat,.s2a-dock{display:block;color:transparent;font-size:0;line-height:0;filter:drop-shadow(0 2px 2px rgba(63,87,97,.26))}
+.s2a-boat::before,.s2a-dock::before{content:"";position:absolute;left:14%;top:12%;width:72%;height:72%;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%2090%22%3E%0A%3Cpath%20d%3D%22M14%2050%20L60%2010%20L106%2050%22%20fill%3D%22%23e65b4f%22%20stroke%3D%22%232a2220%22%20stroke-width%3D%224.2%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M14%2050%20H106%20L91%2074%20H29%20Z%22%20fill%3D%22%23df5148%22%20stroke%3D%22%232a2220%22%20stroke-width%3D%224.2%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M60%2012%20V73%22%20stroke%3D%22%232a2220%22%20stroke-width%3D%223.8%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M14%2050%20L60%2073%20L106%2050%22%20fill%3D%22none%22%20stroke%3D%22%232a2220%22%20stroke-width%3D%223.2%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M29%2074%20L60%2050%20L91%2074%22%20fill%3D%22%23f07168%22%20opacity%3D%220.72%22%2F%3E%0A%3Ccircle%20cx%3D%2260%22%20cy%3D%228%22%20r%3D%224.6%22%20fill%3D%22%23ffe37a%22%20stroke%3D%22%23cba73d%22%20stroke-width%3D%221.8%22%2F%3E%0A%3C%2Fsvg%3E");background-repeat:no-repeat;background-position:center;background-size:contain}
+.s2a-boat::after,.s2a-dock::after{content:"";position:absolute;left:50%;top:7%;width:14%;height:14%;transform:translateX(-50%);border-radius:999px;background:radial-gradient(circle, rgba(255,235,132,.95) 0%, rgba(255,209,84,.78) 45%, rgba(255,209,84,0) 78%)}
+.s2a-arrow{position:absolute;left:.18rem;top:.18rem;width:1.35rem;height:1.35rem;font-size:0;color:transparent;background:url("data:image/svg+xml,%0A%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2064%2064%27%3E%0A%20%20%3Cpath%20d%3D%27M10%2026%20C22%2019%2C%2031%2020%2C%2042%2024%20C47%2026%2C%2051%2027%2C%2054%2025%27%20fill%3D%27none%27%20stroke%3D%27%237aa3b2%27%20stroke-width%3D%274%27%20stroke-linecap%3D%27round%27%2F%3E%0A%20%20%3Cpath%20d%3D%27M18%2038%20C29%2031%2C%2037%2032%2C%2050%2036%27%20fill%3D%27none%27%20stroke%3D%27%237aa3b2%27%20stroke-width%3D%274%27%20stroke-linecap%3D%27round%27%2F%3E%0A%3C%2Fsvg%3E%0A") center/contain no-repeat;opacity:.9}
+.s2a-gust{position:absolute;left:18%;top:18%;width:64%;height:40%;font-size:0;color:transparent;background:url("data:image/svg+xml,%0A%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2064%2064%27%3E%0A%20%20%3Cpath%20d%3D%27M10%2026%20C22%2019%2C%2031%2020%2C%2042%2024%20C47%2026%2C%2051%2027%2C%2054%2025%27%20fill%3D%27none%27%20stroke%3D%27%237aa3b2%27%20stroke-width%3D%274%27%20stroke-linecap%3D%27round%27%2F%3E%0A%20%20%3Cpath%20d%3D%27M18%2038%20C29%2031%2C%2037%2032%2C%2050%2036%27%20fill%3D%27none%27%20stroke%3D%27%237aa3b2%27%20stroke-width%3D%274%27%20stroke-linecap%3D%27round%27%2F%3E%0A%3C%2Fsvg%3E%0A") center/contain no-repeat;opacity:.95}.s2a-goal{position:absolute;left:18%;top:18%;width:64%;height:64%;font-size:0;color:transparent;background:url("data:image/svg+xml,%0A%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2064%2064%27%3E%0A%20%20%3Cpath%20d%3D%27M32%2010%20L38%2024%20L54%2025%20L42%2036%20L46%2052%20L32%2043%20L18%2052%20L22%2036%20L10%2025%20L26%2024%20Z%27%20fill%3D%27%23f2d56e%27%20stroke%3D%27%23b79448%27%20stroke-width%3D%273%27%20stroke-linejoin%3D%27round%27%2F%3E%0A%3C%2Fsvg%3E%0A") center/contain no-repeat}.s2a-beacon{position:absolute;inset:auto;left:50%;top:50%;transform:translate(-50%,-50%);width:1.7rem;height:1.7rem;border-radius:999px;background:#f6ecd0;border:1.5px solid #c6aa73;display:grid;place-items:center;font-weight:700;color:#8c6f49;font-size:.9rem;box-shadow:0 1px 0 rgba(157,136,92,.2)}.fog-dot{color:#6d8388}
+.s2a-legend{display:flex;gap:.75rem 1rem;flex-wrap:wrap;color:#60716d;font-size:.92rem;margin-top:.9rem}
+.s2a-legend i{display:inline-block;width:.9rem;height:.9rem;border-radius:999px;margin-right:.35rem;vertical-align:-.05rem}
+.i-water{background:#dcefe7}.i-reef{background:#97abb1}.i-rough{background:#bed8df}.i-goal{background:#e8efd4}.i-beacon{background:#efe6cc}.i-wind{background:#c8e0e4}
+.s2a-game-actions{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center;margin-top:.95rem}
+.s2a-pad{margin-top:.7rem;display:grid;grid-template-columns:repeat(4, minmax(0,56px));gap:.5rem;justify-content:start}
+.s2a-pad button{border:none;border-radius:16px;padding:.9rem 0;background:#eef5f2;color:#4c6d64;cursor:pointer;font-size:1.05rem}
+.s2a-pad .pad-up{grid-column:2}.s2a-pad .pad-left{grid-column:1;grid-row:2}.s2a-pad .pad-right{grid-column:3;grid-row:2}.s2a-pad .pad-down{grid-column:2;grid-row:3}
+.s2a-desk-sub{color:#617571;font-size:.94rem;margin:.35rem 0 1rem}
+.s2a-methods{display:flex;gap:1rem;flex-wrap:wrap;border:none;padding:0;margin:0 0 .9rem}
+.s2a-methods label{display:flex;align-items:center;gap:.42rem}
+.s2a-sliders{display:grid;gap:.75rem}.s2a-sliders label{display:grid;gap:.25rem}.s2a-sliders span{display:flex;justify-content:space-between;color:#58716a}.s2a-sliders output{font-weight:700}
+.s2a-seed-label{display:flex;justify-content:space-between;align-items:center;gap:.75rem;margin:.9rem 0;color:#5d726b}
+.s2a-seed-label input{width:9rem;padding:.45rem .55rem;border-radius:12px;border:1px solid rgba(113,138,130,.28);background:#fff}
+.s2a-exploration{color:#59726a}
+.s2a-train-actions,.s2a-desk-actions{display:flex;gap:.65rem;flex-wrap:wrap;margin:.95rem 0}
+.s2a-train-actions button:first-child,.s2a-desk-actions button:first-child,.s2a-story-navigation .primary{background:#dcefe7;color:#345d50}
+.s2a-model-status,.s2a-evaluation{color:#5c716c;font-size:.95rem}
+.s2a-insights{display:grid;grid-template-columns:1.2fr .85fr .95fr;gap:1rem;margin-top:1rem}
+.s2a-chart-panel header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:.5rem}
+.s2a-chart-switch{display:flex;gap:.4rem}.s2a-chart-switch button{border:none;border-radius:999px;padding:.45rem .75rem;background:#eef4f1;color:#56736a;cursor:pointer}.s2a-chart-switch .is-current{background:#dcefe7;color:#355c51;font-weight:700}
+.s2a-stats{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:.5rem}.s2a-stats div{display:flex;flex-direction:column}.s2a-stats strong{font-size:1.2rem;color:#46695f}.s2a-stats span{font-size:.82rem;color:#6f847e}
+#s2a-chart{width:100%;height:auto}
+.s2a-inspector label{display:flex;justify-content:space-between;gap:.6rem;align-items:center;margin:.55rem 0;color:#5f746d}.s2a-inspector select{padding:.42rem .5rem;border-radius:10px;border:1px solid rgba(112,138,130,.3)}
+.s2a-q-values{display:grid;gap:.5rem;margin-top:.7rem}.s2a-q-values div{display:flex;justify-content:space-between;gap:1rem;padding:.65rem .75rem;border-radius:14px;background:#f6faf8}.s2a-q-values .is-best{background:#e9f4ef}
+.s2a-experiment-panel table{width:100%;border-collapse:collapse;margin-top:.5rem;font-size:.92rem}.s2a-experiment-panel th,.s2a-experiment-panel td{padding:.5rem .4rem;border-bottom:1px solid rgba(125,149,140,.18);text-align:left}.s2a-experiment-summary,.s2a-empty{color:#60736d;margin-top:.75rem;font-size:.92rem}
+.s2a-story-overlay{position:fixed;inset:0;background:rgba(94,109,104,.44);backdrop-filter:blur(3px);padding:2.5rem 1rem;z-index:50;display:flex;align-items:center;justify-content:center}
+.s2a-story-book{width:min(980px,100%);background:#fffdf8;border-radius:30px;padding:1rem 1rem 1.1rem;border:1px solid rgba(205,189,163,.54);box-shadow:0 28px 56px rgba(64,74,71,.22)}
+.s2a-story-top{display:flex;justify-content:space-between;gap:1rem;align-items:center;margin-bottom:1rem;color:#60736d}
+.s2a-story-spread{display:grid;grid-template-columns:1.02fr .98fr;gap:1rem;align-items:stretch}
+.s2a-story-illustration{min-height:380px;border-radius:24px;background:linear-gradient(180deg,#f1f6f5,#ecf3f5);padding:.75rem;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.s2a-story-illustration svg{width:100%;height:auto;display:block;border-radius:18px}
+.s2a-story-writing{padding:.6rem .5rem .6rem .25rem;display:flex;flex-direction:column;justify-content:center}
+.s2a-story-counter{font-size:.85rem;letter-spacing:.08em;color:#7a8d87}.s2a-story-quote{margin:1rem 0 1.15rem;padding-left:1rem;border-left:3px solid rgba(204,171,143,.5);font-style:italic;color:#6a7c76}
+.s2a-story-progress{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}.s2a-story-dots{display:flex;gap:.45rem}.s2a-story-dots span{width:.6rem;height:.6rem;border-radius:999px;background:#d8e6e0}.s2a-story-dots .is-current{background:#89b0a2}
+@media (max-width: 980px){.s2a-layout,.s2a-insights{grid-template-columns:1fr}.s2a-story-spread{grid-template-columns:1fr}.s2a-story-illustration{min-height:280px}.s2a-learning-path{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width: 640px){.s2a-learning-path{grid-template-columns:1fr}.s2a-board{gap:.32rem;padding:.55rem}.s2a-lab{padding:1rem .85rem 1.2rem}.s2a-story-book{padding:.75rem}.s2a-game-actions,.s2a-lab-actions-line{align-items:flex-start}}
+
+/* Alpha 1.5.2: watercolor picture-book scenes shared across Chapter 3, 4, 5 */
+.s2a-story-overlay[hidden]{display:none!important}
+.s2a-story-book{width:min(930px,100%);background:linear-gradient(145deg,#fffaf1,#fffdf7 65%,#f2f8f3);border:2px solid #e7d3b4;box-shadow:0 26px 62px rgba(70,65,54,.25);font-family:Georgia,'Times New Roman',serif}
+.s2a-story-top{color:#b48a65;font-size:.83rem;letter-spacing:.09em;font-weight:700}
+.s2a-story-top button{background:#fff7e9;color:#8c705b;border:1px solid #e4d0b4}
+.s2a-story-writing h2{font-family:Georgia,'Times New Roman',serif;font-weight:700;color:#65523f;font-size:clamp(1.8rem,3vw,2.55rem);line-height:1.2;margin:.7rem 0 1rem}
+.s2a-story-writing p#s2a-story-text{font-size:clamp(1rem,1.6vw,1.19rem);line-height:1.58;color:#87745f}
+.s2a-story-counter{color:#b58c69;font-size:.82rem;font-weight:700}
+.s2a-story-quote{color:#698b7b;border-left:3px solid #e5afb8;font-size:clamp(1.04rem,1.7vw,1.28rem);line-height:1.55}
+.s2a-story-illustration{background:#f7f1e5;padding:.55rem;min-height:335px;border:1px solid #e8d7b9;box-shadow:0 6px 0 #eee0c6;}
+.s2a-story-illustration img{max-width:100%;height:auto;width:100%;border-radius:15px;display:block;object-fit:contain}
+.s2a-story-dots span{background:#eadccd;border:1px solid #d9c4ab}
+.s2a-story-dots .is-current{background:#e7acb8;border-color:#ce8e9a}
+.s2a-story-navigation .primary{background:#fff0ca;color:#806345;border:1px solid #e5c995;box-shadow:0 4px 0 #d8bd89;font-weight:700}
+.s2a-story-navigation .primary:hover{background:#fce7b6}
+@media(max-width:980px){.s2a-story-overlay{overflow-y:auto;align-items:flex-start;padding:.7rem}.s2a-story-illustration{min-height:0}.s2a-story-writing{padding:.6rem}}
+
+/* Chapter 03: The Silver Bell, distinct from Lantern Bay's lighthouse. */
+.s2a-cell.is-silver-bell{background:#e9e9df;box-shadow:inset 0 0 0 2px #d0bda0;}
+.s2a-silver-bell{position:absolute;inset:9%;background:url('assets/season2-storybook/silver-sea-bell.svg') center/contain no-repeat;filter:drop-shadow(0 2px 2px rgba(72,88,88,.18));pointer-events:none;}

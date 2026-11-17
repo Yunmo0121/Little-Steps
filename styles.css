@@ -451,3 +451,9 @@ footer{text-align:center;font-family:Georgia,serif;font-style:italic;color:#aa98
 @media(max-width:810px){.garden-column{gap:17px}.little-corner{max-width:none}.corner-scene{height:200px}.corner-quote{width:43%;right:4%}}
 @media(max-width:620px){.little-corner{padding:15px 14px}.corner-heading{align-items:flex-start}.corner-season{font-size:8px;padding:6px}.corner-heading h2{font-size:21px}.corner-scene{height:194px;border-radius:19px}.corner-painting{width:78%;object-position:20% 48%;-webkit-mask-image:linear-gradient(90deg,#000 0%,#000 54%,transparent 100%);mask-image:linear-gradient(90deg,#000 0%,#000 54%,transparent 100%)}.corner-quote{right:3%;width:54%;min-height:100px;top:55%;padding:11px 12px 15px}.corner-quote-label{font-size:8px;letter-spacing:.7px}.corner-quote p{font-size:12px;line-height:1.35;margin-top:6px}.corner-twinkle-one{right:13%;top:10px}.corner-guide{padding:11px}.corner-collectibles{gap:6px}.corner-collectible{padding:9px 2px}.corner-collectible strong{font-size:16px}.corner-collectible small{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.corner-twinkle{animation:none}}
+
+/* Neutral rose-paper shell for diary/collection; gameplay keeps its season palette. */
+.sub-screen{background:radial-gradient(circle at 8% 3%,rgba(245,206,218,.42),transparent 32%),radial-gradient(circle at 93% 80%,rgba(245,228,235,.82),transparent 37%),#fff4f7}
+.sub-screen .back-link{background:#fff9fb;border-color:#ead5dc;box-shadow:0 4px 0 #ead6dd}
+.sub-screen .journal-card{background:#fff9fb;border-color:#ead5dc;box-shadow:0 10px 24px rgba(137,88,95,.10)}
+.sub-screen .journal-stats>div{background:#faeef2;border:1px solid #ecd9df}

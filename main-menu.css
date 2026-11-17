@@ -1,0 +1,243 @@
+/* Little Steps · main menu and World Book
+   A season-neutral pink paper cover. The playable worlds retain their own themes. */
+#menu-screen.menu-screen {
+  padding: 26px 20px 34px;
+  background: radial-gradient(circle at 0 6%, rgba(243,195,201,.45), transparent 43%),
+              radial-gradient(circle at 100% 98%, rgba(251,219,220,.65), transparent 48%),
+              #fff5f5;
+}
+#menu-screen .menu-page {
+  max-width: 1140px;
+  padding: 28px 34px 22px;
+  border: 1px solid #e9cfc9;
+  border-radius: 34px;
+  background: linear-gradient(150deg,rgba(255,246,246,.98),rgba(255,250,244,.97));
+  box-shadow: 0 25px 70px rgba(137,88,95,.10), inset 0 0 0 7px #fffefe91;
+  overflow: hidden;
+}
+#menu-screen .menu-page::before {
+  content:""; position:absolute; width:270px; height:270px; pointer-events:none;
+  top:-112px; left:-85px; border-radius:50%;
+  background: radial-gradient(circle,rgba(251,204,211,.50),transparent 69%);
+}
+#menu-screen .menu-page::after {
+  content:""; position:absolute; width:190px; height:190px; pointer-events:none;
+  bottom:-80px; right:-55px; border-radius:50%;
+  background:radial-gradient(circle,rgba(248,217,223,.4),transparent 70%);
+}
+#menu-screen .menu-heading{position:relative;text-align:center;z-index:1;margin-bottom:14px}
+#menu-screen .menu-heading-bloom{display:inline-block;font:21px Georgia,serif;color:#cf9e94;margin:0 0 -3px}
+#menu-screen .menu-heading h1{font:700 clamp(50px,6vw,83px)/.99 Georgia,'Times New Roman',serif;color:#705342;letter-spacing:-2px;margin:0;text-shadow:0 3px 0 #fff8f1}
+#menu-screen .menu-subtitle{font:italic 24px/1.35 Georgia,serif;color:#9f7867;background:linear-gradient(90deg,transparent,#f7d6d6 26%,#f8dede 74%,transparent);display:table;padding:5px 48px;margin:7px auto 9px;border-radius:30px}
+#menu-screen .menu-quote{font:italic clamp(14px,1.7vw,19px)/1.5 Georgia,serif;color:#ac7b7f;margin:8px auto 0;letter-spacing:.1px}
+#menu-screen .menu-body{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:30px;max-width:1015px;margin:12px auto 7px;align-items:stretch}
+#menu-screen .menu-illustration{
+  position:relative;display:block;min-height:540px;max-height:none;height:100%;
+  border:0;border-radius:28px;background:#f6e7e4;
+  box-shadow:none;overflow:hidden;
+}
+#menu-screen .menu-illustration::after {content:"";position:absolute;inset:0;border-radius:28px;border:1px solid #e5cec7;pointer-events:none;box-shadow:inset 0 0 0 5px #fff8f66b}
+#menu-screen .menu-illustration img{
+  position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;
+  object-position:50% 57%;animation:none;transform:none;filter:saturate(.93);
+}
+#menu-screen .menu-illustration-caption{position:absolute;bottom:16px;left:18px;right:18px;max-width:none;
+  background:#fffbf5e8;border:1px solid #eed9cf;border-radius:16px;padding:10px 15px;
+  text-align:center;font:italic 16px/1.35 Georgia,serif;color:#916f62;backdrop-filter:blur(4px);
+  box-shadow:0 5px 15px #a8756b15}
+#menu-screen .menu-illustration-caption span{display:inline;letter-spacing:0;font:20px Georgia,serif;color:#dca1a4;margin-left:6px}
+#menu-screen .menu-actions{background:transparent;border:0;border-radius:0;box-shadow:none;display:flex;flex-direction:column;gap:13px;padding:9px 0 6px;justify-content:center;}
+#menu-screen .menu-route{display:flex;align-items:center;gap:17px;width:100%;min-height:82px;padding:13px 19px;appearance:none;
+ border:1px solid #ebd5c8;border-radius:23px;color:#795847;background:rgba(255,250,244,.9);
+ box-shadow:0 5px 0 #e8d3c4,0 10px 18px #9e746311;text-align:left;cursor:pointer;
+ transition:transform .16s,background-color .16s,box-shadow .16s,border-color .16s}
+#menu-screen .menu-route:hover{transform:translateY(-2px);background:#fffcf8;border-color:#ddaeb3;box-shadow:0 7px 0 #e8d3c4,0 12px 20px #9e746320}
+#menu-screen .menu-route:active{transform:translateY(3px);box-shadow:0 2px 0 #e8d3c4}
+#menu-screen .menu-route-primary{background:linear-gradient(108deg,#fff0ce,#ffecd9);border-color:#e4c5a6;box-shadow:0 5px 0 #dcbf9b,0 10px 18px #ae82541c}
+#menu-screen .menu-route-primary:hover{background:linear-gradient(108deg,#fff2d8,#ffead8);box-shadow:0 7px 0 #dcbf9b,0 12px 18px #ae82541c}
+#menu-screen .menu-route-icon{flex:0 0 56px;width:56px;height:56px;border-radius:17px;display:grid;place-items:center;background:#fbefdf;color:#bb906b}
+#menu-screen .menu-route-primary .menu-route-icon{color:#b68b50;background:#ffdfab75}
+#menu-screen .route-icon-svg{width:29px;height:29px;display:block}
+#menu-screen .menu-route-copy{display:block;flex:1;min-width:0}
+#menu-screen .menu-route-copy strong{display:block;font:700 clamp(20px,2.2vw,27px)/1.14 Georgia,serif;color:#795844;margin:0}
+#menu-screen .menu-route-copy small{display:block;font:13px/1.35 'Trebuchet MS',system-ui,sans-serif;color:#a18a7c;margin-top:5px}
+#menu-screen .menu-route-arrow{font:35px/1 Georgia,serif;color:#c39b81;align-self:center;margin-left:auto}
+#menu-screen .menu-utilities{display:flex;justify-content:center;gap:28px;margin:4px auto 0}
+#menu-screen .menu-utilities button{background:none;border:none;padding:10px;color:#ad8a84;font:600 13px 'Trebuchet MS',sans-serif;text-decoration:underline;text-decoration-color:#dfc9bb;text-underline-offset:4px;cursor:pointer}
+#menu-screen .menu-utilities button:hover{color:#895f61}
+#menu-screen .menu-page-note{position:relative;z-index:1;text-align:center;font:italic 13px/1.5 Georgia,serif;color:#b4988d;margin:17px auto 0}
+#menu-screen button:focus-visible,.worldbook-screen button:focus-visible,.collection-screen button:focus-visible{outline:3px solid #b98295;outline-offset:4px}
+
+/* World Book, not a blue ocean main menu. */
+#worldbook-screen,#collection-screen{padding:32px 20px 55px;background:radial-gradient(circle at 8% 4%,#ffe4eb80,transparent 40%),radial-gradient(circle at 88% 100%,#e8e8f688,transparent 40%),#fff7f4}
+#worldbook-screen .worldbook-page,#collection-screen .collection-page{max-width:1130px;margin:auto}
+.worldbook-title-wrap{text-align:center;margin:26px auto 35px;max-width:690px}
+.worldbook-eyebrow{font:700 11px/1.4 'Trebuchet MS',sans-serif;color:#ba927d;letter-spacing:2px}
+.worldbook-title-wrap h1{font:700 clamp(34px,4vw,52px)/1.13 Georgia,serif;color:#665245;margin:9px auto 13px}
+.worldbook-title-wrap p{font:italic 17px/1.5 Georgia,serif;color:#968375;margin:0}
+.worldbook-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
+.worldbook-card{display:flex;flex-direction:column;overflow:hidden;border:1px solid #e4d5c1;border-radius:25px;background:#fffcf5;box-shadow:0 8px 0 #eadccc,0 20px 28px #7a56451a;min-height:497px}
+.worldbook-art{position:relative;aspect-ratio:1.6 / 1;overflow:hidden;background:#f8e8d7;border-bottom:1px solid #ebdac8}
+.worldbook-art img{width:100%;height:100%;object-fit:cover;display:block}
+.worldbook-garden .worldbook-art img{object-position:50% 47%}
+.worldbook-sea .worldbook-art img{object-position:50% 52%}
+.worldbook-cloud-art svg{width:100%;height:100%;display:block}
+.worldbook-card-body{padding:24px 22px 21px;display:flex;flex-direction:column;flex:1}
+.worldbook-index{font:700 10px/1.3 'Trebuchet MS',sans-serif;letter-spacing:1.4px;color:#ae9781}
+.worldbook-card h2{font:700 29px/1.1 Georgia,serif;color:#685547;margin:11px 0 11px}
+.worldbook-card-body>p{font:14px/1.65 Georgia,serif;color:#8e7b6d;margin:0 0 17px;min-height:70px}
+.worldbook-meta{display:flex;flex-wrap:wrap;gap:7px 8px;margin-top:auto;margin-bottom:18px}
+.worldbook-meta span{background:#f5f0e6;border-radius:999px;padding:7px 10px;color:#867666;font:11px/1.1 'Trebuchet MS',sans-serif}
+.worldbook-garden .worldbook-meta span:first-child{background:#eef3e6;color:#64806d}
+.worldbook-sea .worldbook-meta span:first-child{background:#eaf3f5;color:#64868e}
+.worldbook-magic .worldbook-meta span:first-child{background:#f1ecf7;color:#8e7b9c}
+.worldbook-enter{appearance:none;min-height:53px;background:#fff0d3;border:1px solid #e2c7a1;border-radius:15px;padding:12px 15px;display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer;font:700 16px Georgia,serif;color:#785b45;box-shadow:0 4px 0 #e2c9a4;text-decoration:none}
+.worldbook-enter:hover{background:#ffe9bb;transform:translateY(-1px)}
+.worldbook-sea .worldbook-enter{background:#e5f0f2;border-color:#b4ced5;color:#557581;box-shadow:0 4px 0 #bad3d8}
+.worldbook-sea .worldbook-enter:hover{background:#d7e8ee}
+.worldbook-coming{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:53px;background:#f5f0f7;border:1px dashed #dbcee2;padding:12px 15px;border-radius:15px;color:#92849b;font:italic 14px Georgia,serif}
+.worldbook-bottom{text-align:center;color:#937d73;font:italic 15px Georgia,serif;margin:35px 0 0}
+.worldbook-bottom button{border:0;background:none;font:inherit;color:#9f7885;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+
+/* Collection: real Season One progress, not an invented achievement dashboard. */
+.collection-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px;margin:0 auto 28px}
+.collection-stats article{padding:25px 10px;border-radius:23px;border:1px solid #e9d7c8;background:#fffcf7;text-align:center;box-shadow:0 4px 0 #eadace}
+.collection-stat-icon{display:block;color:#cb9c9d;font:31px Georgia,serif;line-height:1.1}
+.collection-stats strong{display:block;color:#688976;font:700 32px Georgia,serif;margin:7px 0 4px}
+.collection-stats small{color:#9a8375;font:12px 'Trebuchet MS',sans-serif}
+.collection-chapters{border-radius:24px;border:1px solid #e6d6c6;padding:24px 26px;background:#fffcf6}
+.collection-chapters h2{font:700 28px Georgia,serif;color:#735748;margin:0 0 6px}
+.collection-chapters>p{color:#998676;font:italic 15px Georgia,serif;margin:0 0 22px}
+.collection-badges{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.collection-badge{border:1px solid #e3d2bb;border-radius:17px;padding:19px 12px;text-align:center;background:#fffaf0}
+.collection-badge.is-locked{opacity:.65;background:#f8f4ee}
+.collection-badge span{display:block;font-size:34px;line-height:1.3;margin-bottom:7px}
+.collection-badge strong{display:block;font:700 16px Georgia,serif;color:#806551}
+.collection-badge small{display:block;color:#a08c7c;font:11px 'Trebuchet MS',sans-serif;margin-top:5px}
+.collection-visit{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:24px}
+.collection-visit p{margin:0;color:#947d70;font:italic 17px Georgia,serif}
+.collection-visit .worldbook-enter{min-width:240px}
+
+@media(max-width:980px){
+ #menu-screen .menu-page{padding:22px}
+ #menu-screen .menu-body{gap:18px}
+ #menu-screen .menu-illustration{min-height:508px}
+ #menu-screen .menu-route{min-height:76px;padding:10px 13px;gap:12px}
+ #menu-screen .menu-route-icon{width:48px;height:48px;flex-basis:48px}
+ #menu-screen .menu-route-copy strong{font-size:23px}
+ .worldbook-grid{gap:13px}
+ .worldbook-card-body{padding:18px 15px}
+ .worldbook-card h2{font-size:25px}
+}
+@media(max-width:720px){
+ #menu-screen.menu-screen{padding:9px}
+ #menu-screen .menu-page{padding:19px 15px 17px;border-radius:22px}
+ #menu-screen .menu-heading h1{font-size:52px;letter-spacing:-1px}
+ #menu-screen .menu-subtitle{font-size:19px;padding:5px 25px}
+ #menu-screen .menu-quote{font-size:14px}
+ #menu-screen .menu-body{grid-template-columns:1fr;gap:14px;margin-top:18px}
+ #menu-screen .menu-illustration{min-height:230px;max-height:280px;height:270px;border-radius:20px}
+ #menu-screen .menu-illustration img{object-position:50% 64%}
+ #menu-screen .menu-illustration::after{border-radius:20px}
+ #menu-screen .menu-illustration-caption{font-size:13px;bottom:8px}
+ #menu-screen .menu-actions{padding:0;gap:10px}
+ #menu-screen .menu-route{min-height:70px;border-radius:18px}
+ #menu-screen .menu-route-copy strong{font-size:22px}
+ #menu-screen .menu-route-copy small{font-size:12px}
+ #menu-screen .menu-route-icon{width:48px;height:48px;flex-basis:48px;border-radius:13px}
+ #menu-screen .menu-page-note{font-size:11px;margin-top:17px}
+ .worldbook-grid{grid-template-columns:1fr;max-width:540px;margin:auto;gap:21px}
+ .worldbook-card{min-height:auto}
+ .worldbook-art{aspect-ratio:2.1/1}
+ .worldbook-card-body>p{min-height:0}
+ .collection-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .collection-badges{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .collection-visit{flex-direction:column;align-items:stretch;text-align:center}
+ .collection-visit .worldbook-enter{min-width:0}
+}
+@media(max-width:370px){#menu-screen .menu-heading h1{font-size:44px}.collection-stats strong{font-size:24px}}
+@media(prefers-reduced-motion:reduce){#menu-screen .menu-route{transition:none}}
+
+/* Unified rose-paper palette for the season-neutral hub. */
+:root{--ls-pink-bg:#fff4f7;--ls-pink-surface:#fff9fb;--ls-pink-border:#ead5dc;--ls-pink-shadow:#ead6dd}
+#menu-screen.menu-screen{background:radial-gradient(circle at 0 6%,rgba(243,195,201,.35),transparent 43%),radial-gradient(circle at 100% 98%,rgba(251,219,220,.45),transparent 48%),var(--ls-pink-bg)}
+#menu-screen .menu-page{background:linear-gradient(180deg,#fff9fb,#fffafd);border-color:var(--ls-pink-border)}
+#menu-screen .menu-heading{margin-bottom:22px}
+#menu-screen .menu-quote{margin-top:15px;color:#ad788c}
+#menu-screen .menu-route{background:#fff8fb;border-color:var(--ls-pink-border);box-shadow:0 5px 0 var(--ls-pink-shadow),0 10px 18px #9e746311}
+#menu-screen .menu-route:hover{background:#fffafd;border-color:#dfbcc8;box-shadow:0 7px 0 var(--ls-pink-shadow),0 12px 20px #9e746320}
+#menu-screen .menu-route-primary{background:linear-gradient(110deg,#fbe6ed,#f8dce5);border-color:#dfbcc8;box-shadow:0 5px 0 #e7cad3,0 10px 18px #ae82541c}
+#menu-screen .menu-route-primary:hover{background:linear-gradient(110deg,#fcecf2,#f8e2e9);box-shadow:0 7px 0 #e7cad3,0 12px 18px #ae82541c}
+#menu-screen .menu-route-icon{background:#fbecf1;color:#c08d98}
+#menu-screen .menu-route-primary .menu-route-icon{background:#f7e3ea;color:#be8694}
+#menu-screen .menu-illustration-caption{background:#fff9fbec;border-color:var(--ls-pink-border)}
+#worldbook-screen,#collection-screen{background:radial-gradient(circle at 8% 4%,rgba(248,211,223,.48),transparent 40%),radial-gradient(circle at 88% 100%,rgba(241,228,236,.78),transparent 40%),var(--ls-pink-bg)}
+.worldbook-card,.collection-stats article,.collection-chapters,.collection-badge{background:var(--ls-pink-surface);border-color:var(--ls-pink-border);box-shadow:0 5px 0 var(--ls-pink-shadow),0 18px 26px rgba(122,86,69,.07)}
+.worldbook-meta span{background:#faeef3}
+.worldbook-enter{background:linear-gradient(110deg,#fbe6ed,#f7dde6);border-color:#dfbcc8;box-shadow:0 4px 0 #e5c9d2}
+.worldbook-enter:hover{background:#fcecf2}
+.worldbook-sea .worldbook-enter{background:#e5f0f2;border-color:#b4ced5;box-shadow:0 4px 0 #bad3d8}
+.worldbook-sea .worldbook-enter:hover{background:#d7e8ee}
+
+
+/* v1.7 · Full-cottage art direction. The artwork is no longer cropped by cover. */
+#menu-screen .menu-body {
+  grid-template-columns: minmax(0, .90fr) minmax(0, 1.10fr);
+  gap: clamp(20px, 2.6vw, 36px);
+  align-items: center;
+}
+#menu-screen .menu-illustration {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1122 / 1402;
+  min-height: 0;
+  max-height: none;
+  overflow: hidden;
+  border: none;
+  border-radius: 18px;
+  box-shadow: none;
+  background: #fff3f6;
+}
+#menu-screen .menu-illustration::after { display: none; }
+#menu-screen .menu-illustration img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  filter: saturate(.94);
+  animation: none;
+  transform: none;
+}
+#menu-screen .menu-illustration-caption {
+  bottom: 10px;
+  left: 9%;
+  right: 9%;
+  max-width: unset;
+  border: 1px solid #ead2db;
+  background: rgba(255, 248, 251, .94);
+  box-shadow: 0 3px 12px rgba(130, 78, 85, .08);
+  font-size: 14px;
+}
+#menu-screen .menu-page {
+  background: linear-gradient(180deg, #fff9fc 0%, #fff8fb 66%, #fff2f7 100%);
+}
+@media (max-width: 980px) {
+  #menu-screen .menu-illustration { min-height: 0; height: auto; max-height: none; }
+}
+@media (max-width: 720px) {
+  #menu-screen .menu-body { grid-template-columns: 1fr; align-items: stretch; }
+  #menu-screen .menu-illustration {
+    aspect-ratio: 1122 / 1402;
+    width: min(100%, 410px);
+    height: auto;
+    max-height: none;
+    min-height: 0;
+    margin-inline: auto;
+  }
+  #menu-screen .menu-illustration img { object-position: center center; object-fit: contain; }
+  #menu-screen .menu-illustration-caption { font-size: 12px; bottom: 7px; }
+}

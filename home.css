@@ -124,3 +124,10 @@ body[data-garden-time="day"] .corner-night-star, body[data-garden-time="day"] .c
 .cozy-home-stage{grid-template-columns:minmax(0,1.35fr) minmax(270px,340px)}
 @media(max-width:1050px){.cozy-home-stage{grid-template-columns:1fr}}
 @media(max-width:620px){.corner-painting{width:100%;object-position:center center;-webkit-mask-image:none;mask-image:none}.corner-scene{height:185px}.corner-quote{width:55%;right:3%;padding:12px}.cozy-home-artboard{padding:8px}.cozy-home-panel figcaption strong{font-size:16px}}
+
+/* Cottage UI shares the neutral rose paper cover, but artwork keeps its original colors. */
+.homebase-screen{background:radial-gradient(circle at 14% 9%,rgba(247,208,218,.55),transparent 31%),radial-gradient(circle at 92% 4%,rgba(242,227,234,.85),transparent 33%),#fff4f7}
+.cozy-home-shell{background:rgba(255,249,251,.95);border-color:#ead5dc;box-shadow:0 20px 48px rgba(137,88,95,.12)}
+.cozy-side-card{background:#fff9fb;border-color:#ead5dc;box-shadow:0 10px 24px rgba(137,88,95,.10)}
+.cozy-home-tab{background:#fff7fa;border-color:#ead5dc;box-shadow:0 4px 0 #ead6dd}
+.cozy-home-tab.is-active{background:linear-gradient(120deg,#f9e4eb,#f6dbe4);border-color:#dfbcc8;color:#7a5564}

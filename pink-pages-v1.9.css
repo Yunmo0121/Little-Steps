@@ -1,0 +1,104 @@
+/* Little Steps — one coherent blush-paper palette for collection, World Book,
+   diary and Cozy Cottage. Does not recolor the actual Season 1/2 game boards. */
+:root{
+  --rose-background:#fdebf0;
+  --rose-paper:#fff8fa;
+  --rose-paper-light:#fffafd;
+  --rose-card:#fcf1f5;
+  --rose-border:#edced8;
+  --rose-depth:#e4c4ce;
+  --rose-ink:#6b5045;
+  --rose-muted:#9b8079;
+}
+/* Shared page backgrounds and paper shells */
+#worldbook-screen.screen,#collection-screen.screen,#diary-screen.screen,#homebase-screen.screen{
+  background: radial-gradient(circle at 9% 8%,#fae1e8 0,transparent 39%),
+              radial-gradient(circle at 88% 89%,#ffeef3 0,transparent 38%),
+              var(--rose-background) !important;
+  background-image:radial-gradient(circle at 9% 8%,#fae1e8 0,transparent 39%),radial-gradient(circle at 88% 89%,#ffeef3 0,transparent 38%) !important;
+  color:var(--rose-ink);
+}
+#worldbook-screen .worldbook-page,#collection-screen .collection-page,#diary-screen .sub-page,
+#homebase-screen .cozy-home-shell{
+  background:linear-gradient(180deg,var(--rose-paper),#fffafc) !important;
+  border:1px solid var(--rose-border) !important;
+  border-radius:32px;
+  padding:clamp(18px,3vw,32px);
+  box-shadow:0 16px 45px rgba(146,96,110,.07);
+}
+#worldbook-screen .back-link,#collection-screen .back-link,#diary-screen .back-link,#homebase-screen .back-link{
+  background:#fff6fa !important;
+  border:1px solid var(--rose-border) !important;
+  box-shadow:0 4px 0 var(--rose-depth) !important;
+  color:#856658;
+  border-radius:15px;
+}
+#worldbook-screen .worldbook-title-wrap,#collection-screen .worldbook-title-wrap{margin-top:28px;margin-bottom:29px}
+#worldbook-screen .worldbook-title-wrap h1,#collection-screen .worldbook-title-wrap h1{
+  color:var(--rose-ink);font-size:clamp(32px,3.6vw,49px);letter-spacing:-.35px
+}
+/* World Book: same blush card finish for all three seasons while retaining a gentle identity cue. */
+#worldbook-screen .worldbook-card{
+  border:1px solid var(--rose-border) !important;
+  background:var(--rose-paper-light) !important;
+  box-shadow:0 6px 0 var(--rose-depth),0 14px 24px rgba(132,84,104,.07) !important;
+  border-radius:24px;
+}
+#worldbook-screen .worldbook-card-body{background:var(--rose-paper-light)}
+#worldbook-screen .worldbook-art{border-bottom:1px solid var(--rose-border);background:#fcecf3}
+#worldbook-screen .worldbook-meta span{background:#f8e9ef;color:#896e77}
+#worldbook-screen .worldbook-garden .worldbook-meta span:first-child{background:#eef5e9;color:#617d66}
+#worldbook-screen .worldbook-sea .worldbook-meta span:first-child{background:#e8f1f6;color:#688594}
+#worldbook-screen .worldbook-magic .worldbook-meta span:first-child{background:#f0e9f7;color:#8a7697}
+#worldbook-screen .worldbook-enter{
+  background:linear-gradient(180deg,#fae7ee,#f7dce6) !important;
+  color:#755446;border:1px solid #e6bdcb !important;
+  box-shadow:0 4px 0 #e0becb !important;
+}
+#worldbook-screen .worldbook-sea .worldbook-enter{background:linear-gradient(180deg,#e9f2f5,#dff0f3) !important;border-color:#bad7db !important;box-shadow:0 4px 0 #bad2d7 !important;color:#5b7981}
+#worldbook-screen .worldbook-coming{background:#f7eff7;border-color:#e5d6e7;color:#917e99}
+/* Collection: pink panels and achievements — no cream/yellow mismatches. */
+#collection-screen .collection-stats article,#collection-screen .collection-chapters,
+#collection-screen .collection-badge{
+  background:linear-gradient(180deg,#fff5f8,#fbedf2) !important;
+  border:1px solid var(--rose-border) !important;
+  box-shadow:0 5px 0 var(--rose-depth) !important;
+}
+#collection-screen .collection-badge.is-locked{opacity:.72;background:#fff6f8 !important}
+#collection-screen .collection-stats strong{color:#64866e}
+#collection-screen .collection-visit .worldbook-enter{
+  background:#f8e1e9 !important;border:1px solid #e6bdcb !important;
+  box-shadow:0 4px 0 #e0becb !important;
+}
+/* Robot Diary: same cozy shell and rose inset cards as collection + cottage. */
+#diary-screen .journal-card,#diary-screen .journey-page{
+  background:linear-gradient(180deg,#fff7fa,#fceef3) !important;
+  border:1px solid var(--rose-border) !important;
+  box-shadow:0 6px 0 var(--rose-depth),0 12px 25px rgba(113,76,85,.05) !important;
+  border-radius:24px;
+}
+#diary-screen .journal-stats>div{background:#f8e9ee !important;border:1px solid #efd5de !important;border-radius:17px}
+#diary-screen .journal-badge.not-earned{background:#fff4f7 !important;border-color:#edcfd8}
+#diary-screen .journal-card .storybook-button{
+  background:linear-gradient(180deg,#fae4eb,#f7dce4) !important;
+  border-color:#e8c5d0 !important;box-shadow:0 4px 0 #e5c8d2 !important;
+}
+/* Cozy Cottage: shell and interface only; leave actual painted cottage and room art natural. */
+#homebase-screen .cozy-side-card,#homebase-screen .cozy-summary-card,
+#homebase-screen .cozy-home-progress{
+  background:var(--rose-paper-light) !important;
+  border-color:var(--rose-border) !important;
+  box-shadow:0 4px 0 rgba(224,194,204,.7);
+}
+#homebase-screen .cozy-home-tab{
+  background:#fff5f9 !important;border-color:#edced8 !important;
+  box-shadow:0 4px 0 #e9cad4 !important;
+}
+#homebase-screen .cozy-home-tab.is-active{background:#f8e1e9 !important;color:#805969}
+#homebase-screen .cozy-home-shell{max-width:1320px}
+@media(max-width:760px){
+  #worldbook-screen .worldbook-page,#collection-screen .collection-page,#diary-screen .sub-page,
+  #homebase-screen .cozy-home-shell{border-radius:20px;padding:15px}
+  #collection-screen .collection-stats{gap:12px}
+  #collection-screen .collection-badges{gap:9px}
+}

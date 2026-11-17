@@ -1,0 +1,123 @@
+/* Little Steps — Season Two, Storybook Edition · Alpha 1.1
+   One book, two seasons: cream paper, sage ink, ocean mist. The RL engine is unchanged.
+   Navigation and RL controls remain real DOM elements, never baked into images. */
+.s2-screen {
+  --s2-ink:#655743;
+  --s2-muted:#867e70;
+  --s2-soft-ink:#5d7777;
+  --s2-lake:#bcdde3;
+  --s2-ivory:#fffbf1;
+  --s2-outline:#e7dac2;
+  background:
+    radial-gradient(ellipse at 90% 1%,rgba(178,216,221,.50),transparent 38%),
+    linear-gradient(180deg,#e5f1f3 0%,#f1f6f2 25%,#fff9ed 76%,#fcf6e8 100%);
+  color:var(--s2-ink);
+  font-family:'Trebuchet MS',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  min-height:100vh;
+  padding:22px 24px 62px;
+}
+.s2-shell{max-width:1260px}
+.s2-topline{border-bottom:1px solid #d2dbd2;letter-spacing:.7px;color:#897c6e;font-size:12px;padding-bottom:16px;text-transform:none}
+.s2-back{display:inline-flex;align-items:center;gap:8px;padding:10px 13px;border:1px solid #e0d4bd;border-radius:25px;background:#fffdf7bb;color:#765e49;font-weight:700;transition:background .15s,transform .15s;box-shadow:0 2px 0 #e9dfce}
+.s2-back:hover{transform:translateY(-1px);text-decoration:none;background:#fff8e6}
+.s2-season-mark{color:#b7a08b;margin:0 8px}
+.s2-issue{border:1px solid #deccb1;background:#fff9eb;border-radius:30px;color:#88765b;padding:9px 13px;letter-spacing:0;font-family:Georgia,serif;font-style:italic;font-size:13px;text-transform:none}
+.s2-heading{grid-template-columns:minmax(310px,.84fr) minmax(440px,1.16fr);gap:46px;padding:42px 0 52px;align-items:center}
+.s2-overline{font-family:'Trebuchet MS',sans-serif;font-size:11px;letter-spacing:1.15px;color:#b89172;text-transform:none;margin-bottom:13px;font-weight:800}
+.s2-heading-copy{position:relative;min-width:0}
+.s2-heading-copy h1{font-family:Georgia,serif;font-size:clamp(47px,4.8vw,67px);color:#625442;letter-spacing:-2px;line-height:1.04;max-width:510px;margin:0 0 18px}
+.s2-heading-copy h1::after{content:'';display:block;width:100px;height:2px;margin-top:17px;background:#d6b2a1;border-radius:3px;transform:rotate(-1deg)}
+.s2-intro-line{color:#688a8c;font:italic 22px/1.45 Georgia,serif;margin-bottom:15px}
+.s2-heading-copy>p:not(.s2-overline):not(.s2-intro-line){font:14px/1.75 'Trebuchet MS',sans-serif;color:#82786c;max-width:450px;margin-bottom:20px}
+.s2-kristie-note{display:flex;align-items:center;gap:13px;border-left:3px solid #d9b5aa;margin:6px 0 22px;padding:4px 12px 4px 10px;max-width:440px;background:linear-gradient(90deg,rgba(255,253,245,.8),transparent)}
+.s2-kristie-note img{width:68px;height:68px;flex-shrink:0;object-fit:cover;object-position:50% 33%;border:2px solid #fff7ed;border-radius:15px;box-shadow:0 1px 3px #64513f25}
+.s2-kristie-note span{display:block;font-size:10px;color:#a98b72;font-weight:700;letter-spacing:.5px;margin-bottom:5px}
+.s2-kristie-note p{font:italic 14px/1.45 Georgia,serif;color:#776953;margin:0}
+.s2-primary,.s2-console-primary{background:#6f9295;border-color:#638a8c;color:#fffaf0;box-shadow:0 3px 0 #4f7779;border-radius:13px;padding:12px 18px;font-family:'Trebuchet MS',sans-serif;letter-spacing:0;font-weight:700;font-size:13px}
+.s2-primary:hover,.s2-console-primary:hover{background:#5f8285}
+.s2-map-header{padding:0 3px 11px;align-items:baseline;gap:8px}
+.s2-map-header strong{font:700 18px Georgia,serif;color:#66594a}
+.s2-map-header span{color:#8b8b7b;font:12px Georgia,serif;font-style:italic;text-align:right}
+.s2-map{border:8px solid #fff8e9;outline:1px solid #dcccb3;box-shadow:0 12px 30px #6e828527,0 3px 0 #e2d5bb;border-radius:25px;background:#bad9de;transform:rotate(-.2deg)}
+.s2-map-art{filter:saturate(.9)}
+.s2-island{border:1px solid #cfbea6;border-radius:10px;background:#fffcf2ee;color:#756950;box-shadow:0 2px 0 #d6c9b1;font-family:'Trebuchet MS',sans-serif;font-size:10px;font-weight:700;padding:7px 10px;gap:3px;min-width:69px}
+.s2-island-number{font:italic 12px Georgia,serif;color:#a09275}
+.s2-island-open{border:2px solid #8ba99a;box-shadow:0 2px 0 #8aa49b;background:#fff5e5;color:#566c65}
+.s2-island-open:hover{background:#fff1d9}
+.s2-island:disabled{opacity:.86}
+.s2-map-foot{font:italic 13px/1.5 Georgia,serif;text-align:right;color:#809390;margin-top:14px}
+.s2-lab{background:#fffdf7e8;border:1px solid #e7dcc7;border-radius:26px;padding:29px 30px 28px;box-shadow:0 14px 32px rgba(94,75,46,.07)}
+.s2-lab-heading{border-bottom:1px solid #e5ddcc;padding-bottom:17px;margin-bottom:22px}
+.s2-lab-heading h2{font:700 37px/1.12 Georgia,serif;letter-spacing:-.9px;color:#665846;margin-bottom:10px}
+.s2-lab-heading p:not(.s2-overline){font:13px/1.65 'Trebuchet MS',sans-serif;color:#887b70}
+.s2-study-flag{font:italic 13px/1.45 Georgia,serif;color:#a18d78;border-left:0;border-top:2px solid #dcbbac;margin-top:11px;padding:8px 0 0;max-width:185px;white-space:normal;text-align:right;letter-spacing:0}
+.s2-lab-main{grid-template-columns:minmax(410px,1.3fr) minmax(296px,.76fr);gap:26px}
+.s2-board-header strong{color:#695c4a;font:700 19px Georgia,serif}
+.s2-board-header span{color:#897e73}
+.s2-board{border:9px solid #d5e3d7;background:#b5d4d7;box-shadow:0 4px 0 #bbcdbd,inset 0 0 0 2px #f5f1dd;border-radius:19px;gap:3px;padding:4px}
+.s2-cell{border-radius:5px;border:1px solid #e7f6f377;background:#b9dce0}
+.s2-cell:before{opacity:.7}
+.s2-cell.s2-rough{background:repeating-linear-gradient(-45deg,#91bac1 0px,#91bac1 9px,#82afb7 10px,#82afb7 16px)}
+.s2-cell.s2-shallow{background:repeating-linear-gradient(45deg,#d9dfb9 0px,#d9dfb9 9px,#d0dcb6 10px,#d0dcb6 16px)}
+.s2-cell.s2-reef{background:#92a9a0}
+.s2-cell.s2-current{background:#b5dad9}
+.s2-cell.s2-dock{box-shadow:inset 0 0 0 2px #fff4d6c7}
+.s2-cell.s2-route:not(.s2-reef){box-shadow:inset 0 0 0 3px #f6dca3}
+.s2-cell.s2-selected{outline:3px solid #bf8b7b}
+.s2-board-legend{border-bottom:1px dashed #dcd6c4;color:#867c6c;font-size:11px;padding-top:15px}
+.s2-dot{border-radius:4px;background:#b9dce0}
+.s2-hands-on strong{color:#6a5c49;font:700 18px Georgia,serif}
+.s2-hands-on small{color:#897f70}
+.s2-hand-buttons button,.s2-console-actions button,.s2-dpad button{border:1px solid #d7cfb7;background:#fffaf0;border-radius:12px;color:#705f4e;padding:10px 12px;font:700 12px 'Trebuchet MS',sans-serif;box-shadow:0 2px 0 #e5ddc9}
+.s2-hand-buttons button:hover,.s2-console-actions button:hover,.s2-dpad button:hover{background:#f6f0e3}
+.s2-dpad button{min-width:45px;border-radius:12px;font-size:17px}
+/* The learning desk is paper, not a dark corporate dashboard. */
+.s2-console{background:#f5f4e9;color:#645746;border:1px solid #e2d8c3;border-top:4px solid #8eb0ac;box-shadow:0 4px 0 #e4dcc9;border-radius:17px;padding:20px 20px 21px}
+.s2-console-title{border-bottom:1px solid #e2dac9;padding-bottom:14px}
+.s2-console-title span{font:700 26px Georgia,serif;color:#655744}
+.s2-console-title small{color:#938978;font-family:Georgia,serif;font-size:11px}
+.s2-mode-select{padding:14px 0 10px;gap:7px 16px}
+.s2-mode-select legend{color:#9d886f;font-size:11px;letter-spacing:.4px}
+.s2-mode-select label{font-size:13px;color:#6a6456}
+.s2-mode-select input{accent-color:#769b95}
+.s2-setting{color:#68665a;font-size:12px;margin:11px 0 0}
+.s2-setting output,.s2-setting abbr{color:#7b9890}
+.s2-setting input{accent-color:#7daba7}
+.s2-seed{color:#726b5b}
+.s2-seed span small{color:#978b78}
+.s2-seed input{border-radius:8px;border:1px solid #d6cbb7;color:#6a5c49;background:#fffdf5}
+.s2-console-actions button{background:#fffaf0;color:#6d6553;border-color:#d7ccba;box-shadow:0 2px 0 #e4d9c9}
+.s2-console-actions .s2-console-primary{background:#739b98;border:1px solid #668c8c;box-shadow:0 2px 0 #567c79;color:#fffdf3}
+.s2-console-actions-secondary button{background:transparent;color:#69827d;border:1px solid #bacdc2}
+.s2-console-actions-secondary button:hover{color:#4e736e;background:#fffaf0}
+.s2-console-help{color:#807365;line-height:1.6}
+.s2-formula{border-top:1px dashed #d7cdbd;color:#827665;padding-top:16px;margin-top:16px}
+.s2-formula>span{font-size:11px;color:#b08d73;letter-spacing:.5px;text-transform:none}
+.s2-formula code{background:#fffdf7;color:#5a7b7b;padding:10px 12px;border-radius:10px;border:1px solid #ebe1cf;font-size:11px}
+.s2-formula small{color:#857b69}
+/* Data remains sharp and testable, more like a field notebook. */
+.s2-analysis{border-top:1px solid #e2dccc;margin-top:28px;padding-top:25px;gap:19px}
+.s2-analysis>section:not(:first-child){border-color:#e2dccc}
+.s2-analysis-head h3{color:#6a5a47;font:700 21px/1.2 Georgia,serif}
+.s2-analysis-head span{color:#978d7e;font-size:11px}
+.s2-stat-row>div{background:#f8f6eb;border:1px solid #e6e0cf;border-radius:10px}
+.s2-stat-row strong{color:#608c87}
+.s2-stat-row span,.s2-graph-caption{color:#948776}
+#s2-chart{background:#fffdf6;border:1px solid #e7decf;border-radius:10px}
+.s2-compare-table{color:#736c61}.s2-compare-table th{color:#948779;border-color:#dfd7c7}.s2-compare-table td{border-color:#e7e0d3}
+.s2-comparison-note,.s2-q-foot{color:#8a7f6d;font:italic 12px/1.6 Georgia,serif}
+#s2-selected{color:#7a867a}.s2-qs div{color:#5f7b7a;background:#f7f7ed;border-left:2px solid #abc5b7;border-radius:3px}
+.s2-disclaimer{color:#847a6b;border-top:1px dashed #e5dac6;padding-top:15px;font:12px/1.7 'Trebuchet MS',sans-serif}
+.s2-disclaimer strong{color:#7b947c}
+.s2-footer{font:italic 15px/1.5 Georgia,serif;color:#948a7b;padding-top:35px}
+.s2-screen button:focus-visible,.s2-screen input:focus-visible{outline:3px solid #b68c75}
+/* Entry from the first season: a new chapter tab, not a separate product identity. */
+.menu-actions .s2-menu-entry{background:#f4f8f3;border:1px solid #d5dfcc;border-left:4px solid #a6c7bd;border-radius:14px;box-shadow:0 3px 0 #e7e8d9;color:#6a765c;padding:12px 15px;align-items:center}
+.menu-actions .s2-menu-entry:hover{background:#eef4ed}
+.menu-actions .s2-menu-entry small{letter-spacing:.8px;color:#8d9e93;font-size:10px}
+.menu-actions .s2-menu-entry strong{font:700 18px Georgia,serif;color:#5b716c}
+.menu-actions .s2-menu-entry-arrow{font-size:19px;color:#7b9b90}
+@media(max-width:1080px){.s2-heading{grid-template-columns:1fr;gap:27px}.s2-heading-copy h1{font-size:56px}.s2-map-wrap{max-width:810px}.s2-lab-main{grid-template-columns:minmax(0,1fr) minmax(300px,.75fr)}.s2-lab{padding:24px}.s2-analysis{grid-template-columns:1fr 1fr}}
+@media(max-width:800px){.s2-lab-main{grid-template-columns:1fr}.s2-lab{padding:23px}.s2-board{max-width:630px}.s2-console{max-width:630px}.s2-heading-copy h1{font-size:52px}}
+@media(max-width:620px){.s2-screen{padding:14px 10px 35px}.s2-topline{gap:9px}.s2-topline>span:nth-child(2){font-size:11px;max-width:175px}.s2-topline .s2-issue{font-size:10px;padding:6px 9px}.s2-heading{padding:27px 0 32px;gap:22px}.s2-heading-copy h1{font-size:clamp(39px,10vw,54px)}.s2-intro-line{font-size:20px}.s2-map-header{flex-wrap:wrap}.s2-map{border-width:5px;border-radius:18px;transform:none}.s2-island{font-size:8px;padding:4px 5px;min-width:54px;border-radius:7px}.s2-island-number{font-size:9px}.s2-lab{padding:19px 13px;border-radius:20px}.s2-lab-heading h2{font-size:31px}.s2-study-flag{text-align:left}.s2-board{border-width:6px;border-radius:13px}.s2-analysis{grid-template-columns:1fr}.s2-analysis>section:not(:first-child){border-left:0;border-top:1px solid #e5ddcc;padding-left:0;padding-top:18px}.s2-hands-on{grid-template-columns:1fr}.s2-console{padding:19px 16px}.s2-kristie-note img{width:60px;height:60px}}
+@media(prefers-reduced-motion:reduce){.s2-screen *{scroll-behavior:auto;transition:none!important}}

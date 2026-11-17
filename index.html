@@ -3,51 +3,109 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#fff5d9" />
-  <meta name="description" content="Little Steps: Kristie’s Wondergarden — Season One, five little adventures, pathfinding and reinforcement learning." />
-  <title>Little Steps · Kristie’s Wondergarden + Cozy Cottage Home</title>
+  <meta name="theme-color" content="#fff0f2" />
+  <meta name="description" content="Little Steps — a storybook adventure across the Wondergarden, the Enchanted Isles, and future worlds." />
+  <title>Little Steps</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="season2.css" />
+  <link rel="stylesheet" href="season2-storybook.css" />
+  <link rel="stylesheet" href="season2-chapter1.css" />
+  <link rel="stylesheet" href="season2-story-harmony.css" />
+  <link rel="stylesheet" href="season2-tides.css" />
+  <link rel="stylesheet" href="season2-advanced.css" />
+  <link rel="stylesheet" href="main-menu.css" />
+  <link rel="stylesheet" href="wooden-boat.css" />
+  <link rel="stylesheet" href="pink-pages-v1.9.css" />
+  <link rel="stylesheet" href="maze-icons-v1.9.css" />
+  <link rel="stylesheet" href="isles-map-v2.0.css" />
   <script src="app.js" defer></script>
   <script src="home.js" defer></script>
+  <script src="season2-engine.js" defer></script>
+  <script src="season2.js" defer></script>
+  <script src="season2-tides-engine.js" defer></script>
+  <script src="season2-tides.js" defer></script>
+  <script src="season2-advanced-engine.js" defer></script>
+  <script src="season2-advanced.js" defer></script>
 </head>
 <body>
-  <!-- A fully interactive menu; the watercolor art is decorative, not fake UI. -->
   <main id="menu-screen" class="screen menu-screen" aria-label="Little Steps main menu">
     <div class="menu-page">
-      <div class="menu-topline"><span>✧ A STORYBOOK ROBOT ADVENTURE ✧</span><span>SEASON ONE · THE WONDERGARDEN ADVENTURES</span></div>
-      <div class="menu-logo-wrap"><img class="menu-logo" src="assets/little-steps-logo-transparent.webp" alt="Little Steps — Kristie’s Wondergarden. Every little step helps Kristie grow." /></div>
+      <header class="menu-heading">
+        <span class="menu-heading-bloom" aria-hidden="true">✿</span>
+        <h1>Little Steps</h1>
+        <p class="menu-quote">Every little step opens a new story.</p>
+      </header>
       <div class="menu-body">
         <div class="menu-illustration">
-          <img src="assets/kristie-storybook.webp" alt="Kristie, the little cream-and-teal robot with a pink scarf and flower satchel, in her watercolor garden" />
-          <div class="menu-illustration-caption"><span>✿ Meet Kristie</span><strong>Every adventure begins with a little step.</strong></div>
+          <img src="assets/menu-kristie-full-cottage.webp" alt="Kristie with her familiar rounded cream screen face, teal headphones and pink scarf reading beside the white kitten, grey kitten and golden puppy in front of her complete rose-roofed cottage" />
+          <p class="menu-illustration-caption">A little home for every adventure <span aria-hidden="true">♡</span></p>
         </div>
-        <nav class="menu-actions" aria-label="Main menu">
-          <div class="menu-intro"><span class="kicker">✦ ONCE UPON A LITTLE GARDEN...</span><h1>Welcome, little explorer!</h1><p>There are winding paths to discover, tiny lessons to learn, and a whole garden waiting for you.</p></div>
-          <button id="new-game" class="storybook-button main-action" type="button"><span class="button-icon">✦</span><span>Start Adventure<small>Begin a new journey</small></span><span aria-hidden="true">›</span></button>
-          <button id="continue-game" class="storybook-button" type="button" disabled><span class="button-icon">▤</span><span>Continue<small id="continue-hint">No saved adventure yet</small></span><span aria-hidden="true">›</span></button>
-          <button data-open-screen="chapters" class="storybook-button" type="button"><span class="button-icon">⌂</span><span>Chapters<small>Choose a little story</small></span><span aria-hidden="true">›</span></button>
-          <button data-open-screen="diary" class="storybook-button" type="button"><span class="button-icon">♡</span><span>Robot Diary<small>Remember how far you've come</small></span><span aria-hidden="true">›</span></button>
-          <div class="menu-mini-actions">
-            <button id="tutorial-menu" type="button">✧ How to Play</button>
-            <button id="builder-entry" type="button">⌂ My Little Home</button>
-            <button data-open-screen="settings" type="button">⚙ Settings</button>
+        <nav class="menu-actions" aria-label="Choose where to go">
+          <button id="continue-game" class="menu-route menu-route-primary" type="button"><span class="menu-route-icon"><svg class="route-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8l2.5 6.6 6.6 2.6-6.6 2.5L12 21l-2.5-6.5-6.6-2.5 6.6-2.6L12 2.8Z"/></svg></span><span class="menu-route-copy"><strong id="menu-resume-label">Start Journey</strong><small id="continue-hint">Begin with the first little step</small></span><span class="menu-route-arrow" aria-hidden="true">›</span></button>
+          <button id="worldbook-entry" data-open-screen="worldbook" class="menu-route " type="button"><span class="menu-route-icon"><svg class="route-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6c-2.8-2.3-6.8-2.7-10-1.5v14.4c3.3-1.1 7-.6 10 1.4 3-2 6.7-2.5 10-1.4V4.5C18.8 3.3 14.8 3.7 12 6Z"/><path d="M12 6v14.3M5.2 9.5c1.8-.1 3.4.3 4.5 1.2M14.4 10.7c1.3-.9 2.8-1.3 4.3-1.2"/></svg></span><span class="menu-route-copy"><strong>World Book</strong><small>Choose a season and explore</small></span><span class="menu-route-arrow" aria-hidden="true">›</span></button>
+          <button id="builder-entry" class="menu-route " type="button"><span class="menu-route-icon"><svg class="route-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V21H3v-9.5Z"/><path d="M7.5 21v-7h9v7M2 11.5l10-8.7 10 8.7"/><path d="M8 9.5h.1"/></svg></span><span class="menu-route-copy"><strong>Cozy Cottage</strong><small>Rest, decorate, and feel at home</small></span><span class="menu-route-arrow" aria-hidden="true">›</span></button>
+          <button data-open-screen="diary" class="menu-route " type="button"><span class="menu-route-icon"><svg class="route-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 3v18M12 9.5c1.5-2 4.8-.5 3 1.7L12 14l-3-2.8c-1.8-2.2 1.5-3.7 3-1.7Z"/></svg></span><span class="menu-route-copy"><strong>Robot Diary</strong><small>Remember how far you have come</small></span><span class="menu-route-arrow" aria-hidden="true">›</span></button>
+          <button data-open-screen="collection" class="menu-route " type="button"><span class="menu-route-icon"><svg class="route-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2.8 2.7 5.7 6.3.9-4.5 4.4 1.1 6.3-5.6-2.9-5.6 2.9 1.1-6.3L3 9.4l6.3-.9L12 2.8Z"/></svg></span><span class="menu-route-copy"><strong>Collection</strong><small>Stars, discoveries, and little treasures</small></span><span class="menu-route-arrow" aria-hidden="true">›</span></button>
+          <div class="menu-utilities">
+            <button type="button" id="tutorial-menu">How to play</button>
+            <button type="button" data-open-screen="settings">Settings</button>
           </div>
         </nav>
       </div>
-      <div class="menu-bottomline">Made with curiosity, courage & a little garden magic. <span>♡</span> Season One + Cozy Cottage Home · v1.2.3</div>
+      <button id="new-game" type="button" hidden aria-hidden="true" tabindex="-1">Begin a new journey</button>
+      <p class="menu-page-note">A storybook adventure about small discoveries and growing courage.</p>
     </div>
   </main>
 
+  <section id="worldbook-screen" class="screen sub-screen worldbook-screen" aria-labelledby="worldbook-title" hidden>
+    <div class="sub-page worldbook-page">
+      <button class="back-link" data-open-screen="menu" type="button">← Back to the storybook</button>
+      <header class="worldbook-title-wrap">
+        <span class="worldbook-eyebrow">KRISTIE'S WORLD BOOK</span>
+        <h1 id="worldbook-title">Which world shall we visit?</h1>
+        <p>Each chapter begins with a story. Each season opens a new little world.</p>
+      </header>
+      <div class="worldbook-grid" aria-label="Choose a season">
+        <article class="worldbook-card worldbook-garden">
+          <div class="worldbook-art"><img src="assets/kristie-storybook.webp" alt="Kristie exploring a sunny flower garden beside her cottage" loading="lazy" /></div>
+          <div class="worldbook-card-body"><span class="worldbook-index">BOOK ONE · FIVE GARDEN STORIES</span><h2>The Wondergarden</h2><p>Little paths, a first flower, and the courage to grow.</p><div class="worldbook-meta"><span id="worldbook-season1-progress">0 of 5 stories completed</span><span>Pathfinding & first steps</span></div><button class="worldbook-enter" data-open-screen="chapters" type="button">Open the garden <span aria-hidden="true">→</span></button></div>
+        </article>
+        <article class="worldbook-card worldbook-sea">
+          <div class="worldbook-art"><img src="assets/s2-story-harbour.webp" alt="A storybook coastline, a little boat, and the beginning of an island voyage" loading="lazy" /></div>
+          <div class="worldbook-card-body"><span class="worldbook-index">BOOK TWO · FIVE ISLAND VOYAGES</span><h2>The Enchanted Isles</h2><p>Set sail through currents, mist, wind and faraway lights.</p><div class="worldbook-meta"><span>All five island chapters</span><span>Reinforcement learning</span></div><button class="worldbook-enter" data-open-screen="season2" type="button">Explore the isles <span aria-hidden="true">→</span></button></div>
+        </article>
+        <article class="worldbook-card worldbook-magic">
+          <div class="worldbook-art worldbook-cloud-art" aria-label="A distant magical school in the clouds, to be explored in a future season" role="img">
+            <svg viewBox="0 0 500 315" aria-hidden="true"><defs><linearGradient id="magic-horizon" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ebe4f4"/><stop offset="1" stop-color="#f9e8e7"/></linearGradient></defs><rect width="500" height="315" fill="url(#magic-horizon)"/><g fill="#fffaf4" opacity=".95"><ellipse cx="145" cy="252" rx="132" ry="33"/><ellipse cx="333" cy="257" rx="149" ry="39"/><ellipse cx="278" cy="277" rx="172" ry="23"/></g><path d="M180 227 Q246 243 322 218 L341 236 Q255 263 159 240Z" fill="#c9d6ba"/><g fill="#e8d3ca" stroke="#a78c8e" stroke-width="3"><rect x="194" y="128" width="107" height="102" rx="5"/><rect x="226" y="87" width="40" height="141"/><path d="M189 135l58-55 62 55Z" fill="#d3a9bb"/><path d="M224 96l23-45 23 45Z" fill="#bba8c9"/><rect x="172" y="171" width="39" height="59"/><rect x="284" y="153" width="33" height="74"/><path d="M165 175l25-28 24 28ZM279 155l21-26 22 26Z" fill="#bba5c2"/></g><g fill="#fff1c5" stroke="#c6a18a" stroke-width="2"><path d="M238 127q9-15 18 0v24h-18Z"/><path d="M238 174q9-15 18 0v29h-18Z"/><path d="M177 194q8-12 15 0v17h-15Z"/></g><g fill="#fff7cd" stroke="#e3c38e" stroke-width="1.5"><circle cx="113" cy="86" r="4"/><circle cx="367" cy="103" r="5"/><circle cx="384" cy="60" r="3"/><circle cx="125" cy="171" r="3"/></g></svg>
+          </div>
+          <div class="worldbook-card-body"><span class="worldbook-index">BOOK THREE · A SECRET WAITING</span><h2>The Starlit Atlas</h2><p>A self-turning map, a floating academy in the clouds, and a new magical world waiting to open.</p><div class="worldbook-meta"><span>Floating gardens & magical library</span><span>Portals · observatory</span></div><div class="worldbook-coming" aria-label="Season Three coming soon">Coming in a later season <span aria-hidden="true">✧</span></div></div>
+        </article>
+      </div>
+      <p class="worldbook-bottom">And when Kristie needs a little rest, her <button type="button" data-open-screen="homebase">cozy cottage</button> is always waiting.</p>
+    </div>
+  </section>
+
+  <section id="collection-screen" class="screen sub-screen collection-screen" aria-labelledby="collection-title" hidden>
+    <div class="sub-page collection-page">
+      <button class="back-link" data-open-screen="menu" type="button">← Back to the storybook</button>
+      <header class="worldbook-title-wrap"><span class="worldbook-eyebrow">LITTLE THINGS WORTH KEEPING</span><h1 id="collection-title">Kristie's little treasures</h1><p>A gentle record of discoveries, stars and stories completed along the way.</p></header>
+      <div class="collection-stats" aria-label="Season One progress">
+        <article><span class="collection-stat-icon" aria-hidden="true">✧</span><strong id="collection-xp">0</strong><small>Experience points</small></article>
+        <article><span class="collection-stat-icon" aria-hidden="true">★</span><strong id="collection-stars">0 / 12</strong><small>Challenge stars</small></article>
+        <article><span class="collection-stat-icon" aria-hidden="true">♣</span><strong id="collection-clover">0 / 1</strong><small>Lucky clover</small></article>
+        <article><span class="collection-stat-icon" aria-hidden="true">▤</span><strong id="collection-pages">0 / 5</strong><small>Garden story pages</small></article>
+      </div>
+      <div class="collection-chapters"><h2>Stories remembered</h2><p>Each little adventure brings its own lesson.</p><div id="collection-badges" class="collection-badges"></div></div>
+      <div class="collection-visit"><p>Want to collect another memory?</p><button type="button" class="worldbook-enter" data-open-screen="worldbook">Open the World Book <span aria-hidden="true">→</span></button></div>
+    </div>
+  </section>
+
   <section id="chapters-screen" class="screen sub-screen" aria-labelledby="chapters-title" hidden>
-    <div class="sub-page"><button class="back-link" data-open-screen="menu" type="button">← Back to the garden gate</button>
+    <div class="sub-page"><button class="back-link" data-open-screen="worldbook" type="button">← Back to the World Book</button>
       <div class="sub-title"><span class="kicker">✿ LITTLE ADVENTURES</span><h1 id="chapters-title">Chapters in the garden</h1><p>One gentle story at a time.</p></div>
       <div id="chapter-cards" class="chapter-cards" aria-label="Season One chapters"></div>
-      <div class="season-future">
-        <article class="future-card"><span class="kicker">A STORY STILL TO COME</span><h2>☁️ Season 2 — Beyond the Garden</h2><p>After mastering her first garden, Kristie may one day visit distant skies and islands. Coming in the future.</p></article>
-        <article class="future-card"><span class="kicker">DREAMS FOR ANOTHER DAY</span><h2>🤝 Season 3 — Little Robots, Big Dreams</h2><p>Some adventures might be better with friends. A future dream, not yet playable.</p></article>
-      </div>
     </div>
   </section>
 
@@ -159,11 +217,169 @@
         <article class="cozy-summary-card">
           <span class="kicker">🕯 STORY PURPOSE</span>
           <h3>Between chapters and bigger adventures</h3>
-          <p>This is Kristie's resting place now, and it can later become the launching point for island maps, world maps, or a magical Season Two.</p>
+          <p>This is Kristie's resting place now, and it can later become the launching point for island voyages in Season Two and a magical Season Three.</p>
         </article>
       </section>
 
-      <footer class="homebase-footer">Home is where little adventures begin. <span>♡</span> Season One + Cozy Cottage Home · v1.2.3</footer>
+      <footer class="homebase-footer">Home is where little adventures begin. <span>♡</span> Season One · Cozy Cottage · Season Two · v2.0.0</footer>
+    </div>
+  </section>
+
+  <!-- Season Two · Chapter One: harmonized storybook art + interactive reinforcement learning lab. No external assets or dependencies. -->
+  <section id="season2-screen" class="screen s2-screen" aria-labelledby="s2-title" hidden>
+    <div class="s2-shell">
+      <header class="s2-topline">
+        <button class="s2-back" type="button" data-open-screen="worldbook">← World Book</button>
+        <span>Little Steps <span class="s2-season-mark">/</span> The Enchanted Isles</span>
+        <span class="s2-issue">Season 02 · Five island chapters</span>
+      </header>
+
+      <section class="s2-heading">
+        <div class="s2-heading-copy">
+          <p class="s2-overline">The next page in Kristie’s story</p>
+          <h1 id="s2-title">The Enchanted Isles</h1>
+          <p class="s2-intro-line">Beyond the garden, the sea has its own rules.</p>
+          <p>One morning, a folded map washes up at Kristie's cottage. Five islands are marked in faded ink. A note is tucked inside: <em>“You won't know every current. But you can learn to sail.”</em></p>
+          <div class="s2-kristie-note"><img src="assets/kristie-storybook.webp" alt="Kristie wearing her pink scarf and carrying her flower backpack" loading="lazy" /><div><span>Kristie's travel note</span><p>“I know my way through the garden. But how do I learn the sea?”</p></div></div>
+          <button id="s2-start" class="s2-primary" type="button">Begin Chapter 01 <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="s2-map-wrap">
+          <div class="s2-map" role="group" aria-label="Map of five coastal islands in Season Two">
+            <img class="s2-map-art" src="assets/season2-isles-map.webp" alt="A hand-painted map of five coastal islands: Lantern Bay, Tidal Island, Misty Reef, Windward Passage and Starharbor, connected by a white dotted sea route." draggable="false" />
+            <button class="s2-island s2-island-open" type="button" data-s2-go="lab" style="left:14%;top:61.5%" aria-label="Sail to Lantern Bay, chapter one"><span class="s2-island-number">01</span><span>Lantern Bay</span></button>
+            <button class="s2-island s2-island-open s2-tide-island" type="button" data-tide-go="story" style="left:44%;top:38%" aria-label="Explore Tidal Island, chapter two"><span class="s2-island-number">02</span><span>Tidal Island</span></button>
+            <button class="s2-island s2-island-open" type="button" data-s2a-chapter="misty" style="left:74.5%;top:33%" aria-label="Explore Misty Reef, chapter three"><span class="s2-island-number">03</span><span>Misty Reef</span></button>
+            <button class="s2-island s2-island-open" type="button" data-s2a-chapter="windward" style="left:81%;top:68%" aria-label="Explore Windward Passage, chapter four"><span class="s2-island-number">04</span><span>Windward</span></button>
+            <button class="s2-island s2-island-open" type="button" data-s2a-chapter="starharbor" style="left:47%;top:79%" aria-label="Explore Starharbor, chapter five"><span class="s2-island-number">05</span><span>Starharbor</span></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="s2-lab" id="s2-lab" aria-labelledby="s2-lab-title">
+        <div class="s2-lab-heading"><div><p class="s2-overline">Chapter 01 / The First Voyage</p><h2 id="s2-lab-title">Learning the currents</h2><p>Try steering a little boat through reef and shallow water. Then train Kristie to find a route without being given the answer.</p></div><span class="s2-study-flag">Kristie’s field notes · Reinforcement learning</span></div>
+        <nav class="s2-learning-path" aria-label="How to explore this chapter">
+          <div><span class="s2-step-number">1</span><span><strong>Sail</strong><small>Try the map yourself</small></span></div>
+          <div><span class="s2-step-number">2</span><span><strong>Train</strong><small>Choose Q-Learning or SARSA</small></span></div>
+          <div><span class="s2-step-number">3</span><span><strong>Observe</strong><small>Read the learning curve</small></span></div>
+          <div><span class="s2-step-number">4</span><span><strong>Compare</strong><small>See what she learned</small></span></div>
+        </nav>
+        <div class="s2-lab-actions-line"><button id="s2-replay-story" type="button">↶ Read the chapter story again</button><span>One lighthouse. Many possible routes.</span></div>
+        <div class="s2-lab-main">
+          <div class="s2-board-panel">
+            <div class="s2-board-header"><strong>Lantern Bay</strong><span id="s2-status">The harbor is quiet. Where shall we sail?</span></div>
+            <div id="s2-board" class="s2-board" role="grid" aria-label="Lantern Bay reinforcement learning grid world"></div>
+            <div class="s2-board-legend"><span><i class="s2-dot s2-legend-water"></i>Sea: 1</span><span><i class="s2-dot s2-legend-shallow"></i>Shallows: 2</span><span><i class="s2-dot s2-legend-rough"></i>Rough: 4</span><span><i class="s2-dot s2-legend-reef"></i>Reef: blocked</span><span><i class="s2-dot s2-legend-current"></i>Current: east</span></div>
+            <div class="s2-hands-on">
+              <div><strong>Try it yourself</strong><small>Arrow keys or WASD — watch how the current carries you.</small></div>
+              <div class="s2-hand-buttons"><button id="s2-manual" type="button">Take the helm</button><button id="s2-manual-reset" type="button">Restart sail</button></div>
+              <div class="s2-dpad" aria-label="Boat controls"><button data-s2-move="0" aria-label="Move north">↑</button><button data-s2-move="3" aria-label="Move west">←</button><button data-s2-move="2" aria-label="Move south">↓</button><button data-s2-move="1" aria-label="Move east">→</button></div>
+            </div>
+          </div>
+          <aside class="s2-console">
+            <div class="s2-console-title"><span>The learning desk</span><small>Real tabular training</small></div>
+            <fieldset class="s2-mode-select"><legend>Learning algorithm</legend><label><input name="s2-method" type="radio" value="qlearning" checked/> Q-Learning</label><label><input name="s2-method" type="radio" value="sarsa"/> SARSA</label></fieldset>
+            <label class="s2-setting" for="s2-alpha"><span>Learning rate <abbr title="Controls how strongly each new experience changes Q values">α</abbr></span><output id="s2-alpha-value">0.24</output><input id="s2-alpha" type="range" min="0.05" max="0.8" step="0.01" value="0.24"/><small class="s2-parameter-help">How much each experience changes what Kristie believes.</small></label>
+            <label class="s2-setting" for="s2-gamma"><span>Future reward weight <abbr title="Discount factor">γ</abbr></span><output id="s2-gamma-value">0.97</output><input id="s2-gamma" type="range" min="0.6" max="0.99" step="0.01" value="0.97"/><small class="s2-parameter-help">How much she values rewards that come later.</small></label>
+            <label class="s2-setting" for="s2-epsilon"><span>Initial exploration <abbr title="Probability of a random action at the start of training">ε</abbr></span><output id="s2-epsilon-value">0.60</output><input id="s2-epsilon" type="range" min="0.1" max="1" step="0.05" value="0.6"/><small class="s2-parameter-help">Chance of trying a random action at the start. This decreases with training.</small></label>
+            <label class="s2-seed" for="s2-seed"><span>Experiment seed <small>for repeatable training</small></span><input id="s2-seed" type="number" min="1" max="4294967295" step="1" value="42" /></label>
+            <div class="s2-exploration-state"><span>Exploration chance now</span><strong id="s2-epsilon-current">60%</strong><small>ε decays during training, down to 4.5%.</small></div>
+            <div class="s2-console-actions"><button id="s2-train-small" class="s2-console-primary" type="button">Train 200 episodes</button><button id="s2-train-big" type="button">Train +800</button></div>
+            <div class="s2-console-actions s2-console-actions-secondary"><button id="s2-show-policy" type="button">Show policy</button><button id="s2-show-route" type="button">Follow learned route</button><button id="s2-reset-model" type="button">Clear training</button></div>
+            <p class="s2-console-help" id="s2-console-help" aria-live="polite">No training yet. At first, Kristie knows nothing about this sea.</p>
+            <div class="s2-evaluation" aria-live="polite"><span>Greedy evaluation (no exploration)</span><strong id="s2-eval-result">Not evaluated yet</strong><small id="s2-eval-note">After training, see whether Kristie can reach the lighthouse using the actions she currently prefers.</small></div>
+            <div class="s2-formula"><span>Inside the algorithm</span><code>Q(s,a) ← Q(s,a) + α [ r + γ max Q(s′,a′) − Q(s,a) ]</code><small>SARSA uses the Q value of its <em>next chosen action</em> instead of the maximum.</small></div>
+          </aside>
+        </div>
+        <div class="s2-analysis">
+          <section class="s2-measurements" aria-label="Training evaluation"><div class="s2-analysis-head"><h3>Kristie’s learning record</h3><span>Calculated from real episodes</span></div><div class="s2-stat-row"><div><strong id="s2-episodes">0</strong><span>Episodes trained</span></div><div><strong id="s2-winrate">—</strong><span>Recent successes</span></div><div><strong id="s2-reward">—</strong><span>Mean reward</span></div></div><div class="s2-chart-switch" role="group" aria-label="Training chart metric"><button id="s2-chart-success" class="is-current" type="button" aria-pressed="true">Success rate</button><button id="s2-chart-reward" type="button" aria-pressed="false">Mean reward</button></div><div class="s2-graph-caption" id="s2-chart-caption">Training success rate · batches of 20 episodes (last 50 successes shown above)</div><svg id="s2-chart" viewBox="0 0 510 165" role="img" aria-label="Training success curve, empty before training"></svg></section>
+          <section class="s2-path-comparison"><div class="s2-analysis-head"><h3>Four approaches to the bay</h3><span>Same map, different knowledge</span></div><table class="s2-compare-table"><thead><tr><th>Method</th><th>Steps</th><th>Cost</th></tr></thead><tbody id="s2-compare"></tbody></table><p class="s2-comparison-note" id="s2-comparison-note">BFS and Dijkstra know the map in advance. Kristie starts with Q values of zero and has to learn by trial and error.</p></section>
+          <section class="s2-q-inspector"><div class="s2-analysis-head"><h3>Inside Kristie's decision</h3><span>Click any sea tile</span></div><p id="s2-selected">Select a tile to inspect the learned Q values.</p><div class="s2-qs" id="s2-q-values"><div>North —</div><div>East —</div><div>South —</div><div>West —</div></div><p class="s2-q-foot">Q(s, a) is Kristie's estimated discounted reward for taking that action from this square. Values are estimates, not route lengths.</p></section>
+        </div>
+        <p class="s2-disclaimer"><strong>Field notebook · </strong>Reward rule: +40 at the lighthouse; −0.15 per move and −0.35 × movement cost; −3.5 for a collision. All model updates use this same environment. Lab note: This first voyage uses a small, deterministic grid. Future islands will introduce changing tides, uncertainty and more difficult state spaces. A learned policy can be imperfect even after hundreds of episodes.</p>
+      </section>
+
+      <!-- Season Two / Chapter 02 · Time-expanded MDP; five actions including WAIT. -->
+      <section id="s2-tide-lab" class="s2-lab tide-lab" aria-labelledby="tide-title" hidden>
+        <div class="tide-heading">
+          <div><p class="s2-overline">Chapter 02 / The Tidal Island</p><h2 id="tide-title">The path that comes and goes</h2>
+          <p>The sandbar appears at low tide and disappears at high tide. Now Kristie must learn not only <em>where</em> to go, but <em>when</em> to move.</p></div>
+          <div class="tide-heading-actions"><button id="tide-replay" type="button">Read the story</button><button id="tide-back-world" type="button">← World Map</button></div>
+        </div>
+        <div class="tide-intro-strip"><div><span class="tide-step-num">1</span> Watch the tide</div><div><span class="tide-step-num">2</span> Sail or wait</div><div><span class="tide-step-num">3</span> Train Kristie</div><div><span class="tide-step-num">4</span> Compare policies</div></div>
+        <div class="tide-main">
+          <section class="tide-board-wrap" aria-labelledby="tide-board-heading">
+            <div class="tide-board-heading"><div><h3 id="tide-board-heading">A changing little island</h3><p id="tide-status" aria-live="polite">The tide is low. Your boat is waiting in the harbour.</p></div>
+              <div class="tide-clock" aria-label="Current tide and phase"><span id="tide-state-label">LOW TIDE</span><strong id="tide-state-name">Low · ebb</strong><small id="tide-next">Next: Low · turning</small></div>
+            </div>
+            <div class="tide-board-stage"><div class="tide-grid" id="tide-grid" role="grid" aria-label="Dynamic island grid, 7 rows and 9 columns"></div><p class="tide-board-caption">The sandbar is passable only during low tide. If high tide arrives while Kristie is on it, the waves carry her back to the harbour.</p></div>
+            <div class="tide-legend" aria-label="Map legend"><span><b class="tide-legend-sand"></b>Sandbar</span><span><b class="tide-legend-reef"></b>Rocks</span><span><b class="tide-legend-sea"></b>Rough water</span><span><b class="tide-legend-goal"></b>Lighthouse</span></div>
+            <div class="tide-game-actions"><button id="tide-manual" type="button">Take the helm</button><button id="tide-manual-reset" type="button">Restart voyage</button><span>WASD / arrows to move · <kbd>Space</kbd> to wait</span></div>
+            <div class="tide-pad" role="group" aria-label="Sailing controls"><button type="button" data-tide-action="0" aria-label="North">↑</button><button type="button" data-tide-action="3" aria-label="West">←</button><button type="button" data-tide-action="4" class="tide-wait-control" aria-label="Wait one tide step">Wait ↻</button><button type="button" data-tide-action="1" aria-label="East">→</button><button type="button" data-tide-action="2" aria-label="South">↓</button></div>
+          </section>
+          <aside class="tide-desk" aria-label="Tidal Island reinforcement learning desk">
+            <p class="s2-overline">Kristie's experiment notebook</p><h3>Learning to wait</h3>
+            <p class="tide-desk-sub">The state now includes <strong>(position, tide phase)</strong>. Kristie learns five possible actions, including <em>Wait</em>.</p>
+            <fieldset class="tide-methods"><legend>Algorithm</legend><label><input type="radio" name="tide-method" value="qlearning" checked> Q-Learning</label><label><input type="radio" name="tide-method" value="sarsa"> SARSA</label></fieldset>
+            <div class="tide-sliders">
+              <label for="tide-alpha"><span>Learning rate α</span><output id="tide-alpha-value">0.24</output><input id="tide-alpha" type="range" min="0.05" max="0.8" step="0.01" value="0.24"></label>
+              <label for="tide-gamma"><span>Discount γ</span><output id="tide-gamma-value">0.97</output><input id="tide-gamma" type="range" min="0.65" max="0.99" step="0.01" value="0.97"></label>
+              <label for="tide-epsilon"><span>Initial exploration ε</span><output id="tide-epsilon-value">0.65</output><input id="tide-epsilon" type="range" min="0.1" max="1" step="0.05" value="0.65"></label>
+            </div>
+            <label class="tide-seed-label" for="tide-seed">Random seed <input id="tide-seed" type="number" min="1" max="4294967295" value="42"></label>
+            <p class="tide-exploration">Current ε <strong id="tide-epsilon-current">65.0%</strong></p>
+            <div class="tide-train-actions"><button id="tide-train-200" type="button">Train 200 episodes</button><button id="tide-train-800" type="button">Train +800</button></div>
+            <div class="tide-secondary-actions"><button id="tide-show-policy" type="button">Show policy</button><button id="tide-follow" type="button">Follow learned route</button><button id="tide-clear" type="button">Clear model</button></div>
+            <p class="tide-model-status" id="tide-model-status" aria-live="polite">No episodes yet. Begin with a small experiment.</p>
+            <p class="tide-evaluation">Greedy policy: <strong id="tide-eval">Not trained yet</strong></p>
+          </aside>
+        </div>
+        <div class="tide-insights">
+          <section class="tide-chart-panel"><header><div><h3>What did Kristie learn?</h3><p>Real experience, grouped in batches of 25.</p></div><div class="tide-chart-switch" role="group" aria-label="Learning chart metric"><button id="tide-metric-success" class="is-active" type="button" aria-pressed="true">Success</button><button id="tide-metric-reward" type="button" aria-pressed="false">Reward</button></div></header><div class="tide-stats"><div><strong id="tide-episodes">0</strong><span>Episodes</span></div><div><strong id="tide-success">—</strong><span>Recent success</span></div><div><strong id="tide-reward">—</strong><span>Mean reward</span></div></div><svg id="tide-chart" viewBox="0 0 510 175" role="img" aria-label="Tidal Island training chart"></svg></section>
+          <section class="tide-inspector"><h3>Inside a decision</h3><p id="tide-selected">Choose a tile, then select a tide phase.</p><label for="tide-phase-inspect">Inspect phase <select id="tide-phase-inspect"><option value="0">Low · ebb</option><option value="1">Low · turning</option><option value="2">High · rising</option><option value="3">High · peak</option></select></label><div id="tide-qs" class="tide-qs"></div><p class="tide-inspector-caption">These five Q-values are learned estimates of discounted reward, not distances. Each phase has its own state.</p></section>
+          <section class="tide-comparison"><h3>Different knowledge, same tide</h3><table><thead><tr><th>Method</th><th>Moves</th><th>Waits</th><th>Travel cost</th></tr></thead><tbody id="tide-comparison-rows"></tbody></table><p id="tide-comparison-note">The planning baselines know the entire tide cycle. The reinforcement-learning agents do not.</p></section>
+        </div>
+        <p class="tide-science-note"><strong>Lab notes.</strong> The tide changes every action (including Wait). Phases repeat in four steps: low, low, high, high. Stepping onto the sandbar when the next tide is high causes a reset to the harbour. Reward: +40 on arrival, −0.28 for waiting, −0.28 − 0.24 × terrain cost for a move, −2.5 for a blocked move, and −5.5 if swept away. This deterministic, fully observable time-expanded MDP is an educational simplification—not a physical tide model.</p>
+      </section>
+
+      <section class="s2a-lab" id="s2a-lab" aria-labelledby="s2a-lab-title" hidden>
+        <div class="s2a-lab-heading">
+          <div><p class="s2-overline" id="s2a-lab-overline">Chapter 03 / Misty Reef</p><h2 id="s2a-lab-title">The Secret of the Mist</h2><p id="s2a-lab-subtitle">Follow the distant silver bell through hidden reefs.</p><p class="s2a-notes" id="s2a-notes"></p></div>
+          <span class="s2a-study-flag">Season Two research notebook · <span id="s2a-current-name">Misty Reef</span></span>
+        </div>
+        <nav class="s2a-learning-path" aria-label="How to explore the selected advanced chapter">
+          <div id="s2a-path-1"></div><div id="s2a-path-2"></div><div id="s2a-path-3"></div><div id="s2a-path-4"></div>
+        </nav>
+        <div class="s2a-lab-actions-line"><button id="s2a-replay-story" type="button">↶ Read the story again</button><span>Each island asks a different reinforcement-learning question.</span></div>
+        <div class="s2a-layout">
+          <section class="s2a-board-panel">
+            <div class="s2a-board-header"><strong id="s2a-board-title">Misty Reef</strong><span id="s2a-status">Ready for a new voyage.</span></div>
+            <div id="s2a-board" class="s2a-board" role="grid" aria-label="Season Two advanced chapter grid"></div>
+            <div class="s2a-legend"><span><i class="i-water"></i> Calm water</span><span><i class="i-rough"></i> Rough sea</span><span><i class="i-reef"></i> Reef / cliff</span><span><i class="i-goal"></i> <span id="s2a-goal-legend">Silver sea bell</span></span><span><i class="i-beacon"></i> Beacon</span><span><i class="i-wind"></i> Gust lane</span></div>
+            <div class="s2a-game-actions"><div><strong>Try the map yourself</strong><small>Arrow keys or WASD also work.</small></div><div><button id="s2a-manual" type="button">Take the helm</button><button id="s2a-manual-reset" type="button">Restart voyage</button></div></div>
+            <div class="s2a-pad" role="group" aria-label="Sailing controls"><button class="pad-up" type="button" data-s2a-action="0" aria-label="North">↑</button><button class="pad-left" type="button" data-s2a-action="3" aria-label="West">←</button><button class="pad-right" type="button" data-s2a-action="1" aria-label="East">→</button><button class="pad-down" type="button" data-s2a-action="2" aria-label="South">↓</button></div>
+          </section>
+          <aside class="s2a-desk" aria-label="Season Two advanced learning desk">
+            <p class="s2-overline">Kristie's experiment notebook</p><h3>Train the little sailor</h3><p class="s2a-desk-sub">Choose a learning rule, adjust α / γ / ε, and watch what the real training data shows.</p>
+            <fieldset class="s2a-methods"><legend class="sr-only">Algorithm</legend><label><input type="radio" name="s2a-method" value="qlearning" checked> Q-Learning</label><label><input type="radio" name="s2a-method" value="sarsa"> SARSA</label></fieldset>
+            <div class="s2a-sliders">
+              <label for="s2a-alpha"><span>Learning rate α <output id="s2a-alpha-value">0.24</output></span><input id="s2a-alpha" type="range" min="0.05" max="0.8" step="0.01" value="0.24"></label>
+              <label for="s2a-gamma"><span>Discount γ <output id="s2a-gamma-value">0.96</output></span><input id="s2a-gamma" type="range" min="0.65" max="0.99" step="0.01" value="0.96"></label>
+              <label for="s2a-epsilon"><span>Initial exploration ε <output id="s2a-epsilon-value">0.55</output></span><input id="s2a-epsilon" type="range" min="0.10" max="1" step="0.05" value="0.55"></label>
+            </div>
+            <label class="s2a-seed-label" for="s2a-seed">Random seed <input id="s2a-seed" type="number" min="1" max="4294967295" value="42"></label>
+            <p class="s2a-exploration">Current ε <strong id="s2a-epsilon-current">55.0%</strong></p>
+            <div class="s2a-train-actions"><button id="s2a-train-200" type="button">Train 200 episodes</button><button id="s2a-train-800" type="button">Train +800</button></div>
+            <div class="s2a-desk-actions"><button id="s2a-show-policy" type="button">Show policy</button><button id="s2a-show-route" type="button">Follow learned route</button><button id="s2a-clear" type="button">Clear model</button></div>
+            <p class="s2a-model-status" id="s2a-help">Each chapter keeps its own saved learning history.</p><p class="s2a-evaluation">Greedy policy: <strong id="s2a-eval">Not trained yet</strong></p><p class="s2a-model-status" id="s2a-eval-note"></p>
+          </aside>
+        </div>
+        <div class="s2a-insights">
+          <section class="s2a-chart-panel"><header><div><h3>What did Kristie learn?</h3><p>Real training experience, grouped in batches of 20 episodes.</p></div><div class="s2a-chart-switch" role="group" aria-label="Learning chart metric"><button id="s2a-chart-success" class="is-current" type="button">Success</button><button id="s2a-chart-reward" type="button">Reward</button></div></header><div class="s2a-stats"><div><strong id="s2a-episodes">0</strong><span>Episodes</span></div><div><strong id="s2a-success">—</strong><span>Recent success</span></div><div><strong id="s2a-reward">—</strong><span>Mean reward</span></div></div><svg id="s2a-chart" viewBox="0 0 560 175" role="img" aria-label="Advanced chapter training chart"></svg></section>
+          <section class="s2a-inspector"><h3>Inside one decision</h3><p id="s2a-selected">Select a square to inspect its learned Q-values.</p><label id="s2a-inspector-mask-wrap" for="s2a-inspector-mask" hidden>Inspect beacon memory <select id="s2a-inspector-mask"></select></label><div id="s2a-q-values" class="s2a-q-values"></div></section>
+          <section class="s2a-experiment-panel"><h3>Chapter experiment</h3><p id="s2a-experiment-caption">Run a chapter-specific experiment.</p><button id="s2a-experiment-btn" type="button">Run experiment</button><div id="s2a-experiment-results"></div></section>
+        </div>
+      </section>
+      <footer class="s2-footer">Kristie sailed away with a map. What she brings back depends on what she learns.</footer>
     </div>
   </section>
 
@@ -173,7 +389,7 @@
     <header class="topbar">
       <button class="brand brand-button" id="back-to-menu" type="button" aria-label="Return to Little Steps main menu">
         <span class="brand-icon" aria-hidden="true"><img src="assets/favicon.svg" alt="" /></span>
-        <span><strong>Little Steps</strong><small>Kristie's Wondergarden</small></span>
+        <span><strong>Little Steps</strong><small>A little storybook adventure</small></span>
       </button>
       <div class="top-note"><span class="tiny-sparkle">✧</span> A little world to grow in <span class="tiny-sparkle">✧</span></div>
       <div class="chapter-pill">✿ <span id="chapter-pill-number">Chapter 01</span> <span>·</span> <span id="chapter-pill-name">The First Flower</span></div>
@@ -381,7 +597,7 @@
         </aside>
       </section>
     </main>
-    <footer>Every little step helps Kristie grow. <span>✿</span> Little Steps · Season One + Cozy Cottage Home · v1.2.3</footer>
+    <footer>Every little step helps Kristie grow. <span>✿</span> Little Steps · Season One · Cozy Cottage · Season Two · v2.0.0</footer>
   </div>
   </section>
   <div id="finish-overlay" class="finish-overlay" role="dialog" aria-modal="true" aria-labelledby="finish-title" hidden>
@@ -421,5 +637,45 @@
       </div>
     </div>
   </div>
+      <!-- Season 2 / Chapter 1: a true three-page intro, not part of the training engine. -->
+      <div id="s2-story" class="s2-story-overlay" role="dialog" aria-modal="true" aria-labelledby="s2-story-title" aria-describedby="s2-story-text" hidden>
+        <div class="s2-story-book">
+          <div class="s2-story-top"><span>CHAPTER 01 · THE FIRST VOYAGE</span><button id="s2-story-skip" type="button">Skip story <span aria-hidden="true">×</span></button></div>
+          <div class="s2-story-spread">
+            <div class="s2-story-illustration">
+              <img id="s2-story-art" src="assets/s2-story-harbour.webp" alt="A small harbor with Kristie's cottage, a little sailboat and a blue sea." />
+              <span class="s2-story-photo-label" id="s2-story-image-label">The little harbour</span>
+            </div>
+            <div class="s2-story-writing">
+              <p id="s2-story-counter" class="s2-story-counter">PAGE 1 OF 3</p>
+              <h2 id="s2-story-title">A letter by the sea</h2>
+              <p id="s2-story-text">Beyond the garden, another adventure is waiting.</p>
+              <blockquote id="s2-story-quote" class="s2-story-quote"></blockquote>
+              <div class="s2-story-progress"><div id="s2-story-dots" class="s2-story-dots" aria-label="Story page 1 of 3"></div><div class="s2-story-navigation"><button id="s2-story-prev" class="s2-story-prev" type="button">← Back</button><button id="s2-story-next" class="s2-story-next" type="button">Turn the page →</button></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="s2a-story" class="s2a-story-overlay" role="dialog" aria-modal="true" aria-labelledby="s2a-story-title" aria-describedby="s2a-story-text" hidden>
+        <div class="s2a-story-book">
+          <div class="s2a-story-top"><span id="s2a-story-chapter">CHAPTER 03 · MISTY REEF</span><button id="s2a-story-skip" type="button">Skip story ×</button></div>
+          <div class="s2a-story-spread">
+            <div class="s2a-story-illustration" id="s2a-story-art"></div>
+            <div class="s2a-story-writing"><p id="s2a-story-counter" class="s2a-story-counter">PAGE 1 OF 3</p><h2 id="s2a-story-title">A bell in the fog</h2><p id="s2a-story-text"></p><blockquote id="s2a-story-quote" class="s2a-story-quote"></blockquote><div class="s2a-story-progress"><div id="s2a-story-dots" class="s2a-story-dots" aria-label="Story progress"></div><div class="s2a-story-navigation"><button id="s2a-story-prev" type="button">← Back</button><button id="s2a-story-next" class="primary" type="button">Turn the page →</button></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tide-story" class="s2-story-overlay" role="dialog" aria-modal="true" aria-labelledby="tide-story-title" aria-describedby="tide-story-text" hidden>
+        <div class="s2-story-book">
+          <div class="s2-story-top"><span>CHAPTER 02 · THE TIDAL ISLAND</span><button id="tide-story-skip" type="button">Skip story ×</button></div>
+          <div class="s2-story-spread">
+            <div class="s2-story-illustration"><img id="tide-story-art" src="assets/s2-tidal-low-tide.webp" alt="Kristie discovers a winding sandbar on a flower-covered island." /></div>
+            <div class="s2-story-writing"><p id="tide-story-counter" class="s2-story-counter">PAGE 1 OF 3</p><h2 id="tide-story-title">A path in the sand</h2><p id="tide-story-text"></p><blockquote id="tide-story-quote" class="s2-story-quote"></blockquote><div class="s2-story-progress"><div id="tide-story-dots" class="s2-story-dots" aria-label="Story page 1 of 3"></div><div class="s2-story-navigation"><button id="tide-story-prev" class="s2-story-prev" type="button">← Back</button><button id="tide-story-next" class="s2-story-next" type="button">Turn the page →</button></div></div></div>
+          </div>
+        </div>
+      </div>
+
 </body>
 </html>

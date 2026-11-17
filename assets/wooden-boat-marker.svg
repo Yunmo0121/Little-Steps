@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 95" aria-hidden="true">
+<defs><linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d2a06f"/><stop offset="1" stop-color="#9c6d4d"/></linearGradient></defs>
+<path d="M12 49 Q60 61 108 49 L91 76 Q60 88 29 76 Z" fill="url(#wood)" stroke="#775744" stroke-width="4" stroke-linejoin="round"/>
+<path d="M12 49 Q60 41 108 49 Q61 64 12 49Z" fill="#ead0a5" stroke="#775744" stroke-width="3"/>
+<path d="M25 66 Q60 80 95 66" stroke="#f0d7b0" fill="none" stroke-width="3" opacity=".65"/>
+<path d="M31 73 Q61 84 89 73" stroke="#845d41" fill="none" stroke-width="2"/>
+<path d="M37 50 L45 59 M84 51 L76 60" stroke="#775744" stroke-width="3" stroke-linecap="round"/>
+</svg>

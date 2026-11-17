@@ -1,151 +1,177 @@
-<p align="center">
-  <img src="assets/little-steps-logo-transparent.webp" alt="Little Steps — Kristie's Wondergarden" width="530" />
-</p>
-
-<h1 align="center">Little Steps · Kristie's Wondergarden 🌷</h1>
-
-<p align="center"><strong>Every little step helps Kristie grow.</strong></p>
+<h1 align="center">Little Steps</h1>
+<p align="center"><em>Every little step opens a new story.</em></p>
+<p align="center">A storybook adventure about a little robot, finding your way, and learning from experience.</p>
 
 <p align="center">
-  A little robot. Five storybook adventures. One garden full of lessons about finding your own way.
+  <a href="https://yunmo0121.github.io/Little-Steps/"><strong>Play in your browser</strong></a>
+  · <a href="开始使用_中文.md">中文游玩指南</a>
+  · <a href="#getting-started">Getting started</a>
+  · <a href="#reinforcement-learning-lab">RL experiments</a>
 </p>
 
 <p align="center">
-  <a href="https://yunmo0121.github.io/Little-Steps/"><strong>🎮 Play the game</strong></a>
-  &nbsp;·&nbsp;
-  <a href="开始使用_中文.md">📖 中文使用说明</a>
-  &nbsp;·&nbsp;
-  <a href="#-how-to-play">How to play</a>
+  <img src="docs/screenshots/pink-main-menu-desktop.png" alt="Little Steps main menu with Kristie, her cottage and the five main entries" width="78%" />
 </p>
 
----
+## Welcome to Little Steps
 
-## ✨ Once upon a little garden...
+Meet **Kristie**, a small cream-and-teal robot with a pink scarf, a flower satchel and a growing curiosity about the world. In this interactive storybook game, you can explore with her, choose your own route, compare pathfinding algorithms, and train a reinforcement-learning agent to navigate unfamiliar environments.
 
-Meet **Kristie**, a tiny cream-and-teal robot with a pink scarf and a flower satchel. She is learning to explore, make choices, help friends and discover that every mistake can be the beginning of something new.
+**Version 2.0.0 completes two playable seasons (ten chapters)** and includes a quiet home between them: **Kristie's Cozy Cottage**. The focus is not on flashy simulations, but on connecting the *reasoning* behind an algorithm to something you can actually try.
 
-*Little Steps* is a browser-based storybook game that combines **interactive pathfinding**, **tabular reinforcement learning**, and a gentle five-chapter growth story. You can guide Kristie yourself, watch an algorithm plan a route, or let her learn through practice.
+This is a personal creative-coding and learning project, built with HTML, CSS and vanilla JavaScript. It runs entirely in the browser; no sign-in, backend or package installation is required to play.
 
-The game includes a quiet stop between adventures: **My Little Wondergarden — Kristie's Cozy Cottage**, with an outdoor garden and an indoor loft. The cottage is currently a **storybook home preview**, not yet a free-placement decorating editor.
+## Explore the worlds
 
-## 🌼 A peek inside
+| World | Chapters | What you'll discover | Status |
+| :-- | :--: | :-- | :-- |
+| **Season One — The Wondergarden** | 5 | Garden stories, pathfinding, and an introduction to learning by trial and error | Playable |
+| **Season 1.5 — Cozy Cottage** | — | An outdoor garden and a warm indoor loft, with locally saved view preferences | Available home preview |
+| **Season Two — The Enchanted Isles** | 5 | Sailing, tides, fog, uncertain winds and multi-goal reinforcement learning | **Complete & playable in v2.0.0** |
+| **Season Three — The Starlit Atlas** | — | A floating magical academy, mysterious maps and possible new learning challenges | Concept only |
 
 <p align="center">
-  <img src="docs/screenshots/little-garden-corner.png" alt="Little Garden Corner with Kristie's cottage, movement tip and saved treasures" width="49%" />
-  <img src="docs/screenshots/cozy-cottage-outdoor.png" alt="Cozy Cottage outdoor home view with rose-covered cottage and pastel garden" width="49%" />
+  <img src="docs/screenshots/world-book-desktop.png" alt="World Book, showing the playable garden and island worlds and a future magical-world preview" width="80%" />
 </p>
 
-*Illustrated scenery, real gameplay controls and a diary that remembers Kristie's progress.*
+### Season One · The Wondergarden
 
-## 📖 Season One · The Wondergarden Adventures
+Five gentle adventures introduce Kristie to making decisions and finding a route.
 
-| Chapter | Little adventure | What Kristie learns |
+| Chapter | Story | Learning theme |
 | :-- | :-- | :-- |
-| **01 · The First Flower 🌼** | Find a glowing flower and learn your first route. | **Courage** — take the first step. |
-| **02 · Muddy Meadow 🌦️** | Explore puddles and a bridge; compare short routes with low-cost routes. | **Wisdom** — the shortest route isn't always the best. |
-| **03 · Mushroom Village 🍄** | Find a lost rabbit before bringing her back to the cottage. | **Kindness** — sometimes the journey is for someone else. |
-| **04 · Whispering Woods 🌲** | Adapt when the wind changes the obstacles and the route. | **Adaptability** — a changed plan isn't a failed plan. |
-| **05 · Starlight Garden 🌙** | Collect two starlight fragments before reaching the final star. | **Confidence** — you've come further than you think. |
+| 01 — The First Flower | Find the first glowing flower | Courage; introductory routes |
+| 02 — Muddy Meadow | Compare short and low-cost paths | Wisdom; BFS vs Dijkstra/A* |
+| 03 — Mushroom Village | Help a lost rabbit find her home | Kindness; multi-stage objectives |
+| 04 — Whispering Woods | Replan when the path changes | Adaptability |
+| 05 — Starlight Garden | Collect starlight and finish the journey | Confidence |
 
-The five chapters have replayable opening stories, themed objectives and a closing scene. The first completion of each chapter awards **50 XP** (up to **250 XP** for Season One); Chapters 2–5 also have replayable three-star challenges. There is no combat or failure penalty for exploring.
+The season includes illustrated opening stories, manual movement, map-editing tools, BFS, Dijkstra, A*, and tabular Q-Learning. First-time chapter completion awards XP; later chapters offer replayable star challenges.
 
-> “The world is bigger than I ever imagined.”
->
-> — Kristie, at the end of Season One
+### Season Two · The Enchanted Isles
 
-## 🎮 How to play
+A hand-painted map connects **five playable island chapters**. Each has a three-page illustrated story and a learning environment with its own question to investigate.
 
-1. Open the **[playable website](https://yunmo0121.github.io/Little-Steps/)** or download this repository and open `index.html` locally. The site is a static HTML/CSS/JavaScript project — no installation or account required.
-2. Choose **Start Adventure** to begin from Chapter 1. **If you already have progress, choose Continue instead:** Start Adventure begins a new journey and resets the saved chapter progress in that browser.
-3. Read (or skip) the illustrated opening story, then follow **How to Play** if you'd like an optional guided introduction to BFS and Q-Learning.
-4. Choose **Let Me Try** to move Kristie with **WASD**, **arrow keys**, or the on-screen directional pad. Explore the garden and discover the goal.
-5. Try **BFS**, **Dijkstra** or **A\*** to see another way through the map. Use **Train Kristie** to run a tabular Q-Learning experiment, then **Show Learned Route** once a route is available.
-6. Visit **Chapters** for unlocked stories, **Robot Diary** for progress and training notes, or **My Little Home** to see the outdoor cottage and indoor loft.
+<p align="center">
+  <img src="assets/season2-isles-map.webp" alt="Illustrated map linking Lantern Bay, Tidal Island, Misty Reef, Windward Passage and Starharbor" width="88%" />
+</p>
 
-Need a hand? See the [Chinese player's guide](开始使用_中文.md) for controls, stars, saves and troubleshooting.
-
-## 🧠 The algorithms behind the adventure
-
-| Algorithm | How it works in the game | Important distinction |
+| Chapter | Adventure | Core RL concept |
 | :-- | :-- | :-- |
-| **BFS** | Explores the grid by number of moves. | Finds a path with the fewest steps on an unweighted grid; it ignores mud costs. |
-| **Dijkstra** | Uses movement cost to select a lowest-cost route. | Grass costs **1**, mud costs **3**. |
-| **A\*** | Uses weighted path cost and a Manhattan-distance heuristic. | Also seeks a lowest-cost route, with heuristic guidance. |
-| **Tabular Q-Learning** | Learns action values from simulated episodes, epsilon-greedy exploration and rewards. | Learns a policy through experience; unlike the planners, success depends on training. |
+| **01 — Lantern Bay** | Sail past reefs and an eastward current to reach a lighthouse | Finite MDPs, Q-Learning vs SARSA, rewards and exploration |
+| **02 — Tidal Island** | Cross a sandbar that changes with the tide; sometimes wait | State representation `(position, tide phase)` and a **WAIT** action |
+| **03 — Misty Reef** | Explore fogbound coral reefs and find the ancient silver sea bell | **Exploration vs exploitation**, map discovery and ε comparisons |
+| **04 — Windward Passage** | Navigate a channel where gusts can redirect your boat | **Stochastic transitions** and multi-seed policy evaluation |
+| **05 — Starharbor** | Visit three beacons and return to the harbour | **Multi-goal state**, rewards and generalisation probes |
 
-**An example from Chapter 2's default map:** BFS finds a **14-step route costing 26**, while Dijkstra and A\* can choose **16-step routes costing 16**. The shortest route in steps is not necessarily the cheapest one.
+The wooden sailing boat, Kristie's robot design and her three companions — a white cat, a grey cat and a golden puppy — carry the story from one island to the next.
 
-This is an educational interactive prototype, not a claim that reinforcement learning outperforms classical graph search. The algorithms have different information and training assumptions.
+The final chapter plants a clue for a future season: a self-turning atlas that reveals a magical academy high above the clouds. **Season Three is not implemented or playable yet.**
 
-## 🏡 Season 1.5 · Kristie's Cozy Cottage
+## Getting started
 
-Between the first garden and the next big adventure is a small place Kristie can call home.
+**Play online:** [yunmo0121.github.io/Little-Steps](https://yunmo0121.github.io/Little-Steps/) (the live site updates after this release is pushed to GitHub Pages).
 
-- **Outdoor:** rosy cottage roof, white picket fence, potted clover, flowers and a peaceful garden.
-- **Indoor Loft:** a warm duplex-style attic with a tiny upstairs bed, staircase, reading corner and tea table.
-- **Home progress:** displays the number of Season One challenge stars collected (**out of 12**).
-- **Daytime-only design:** a soft, clear storybook palette matching the rest of the game.
-
-The outdoor/indoor view choice is remembered locally. **Moving furniture, purchasing decorations, and freely editing the cottage are planned features, not available in v1.2.3.** The terrain editor in adventure chapters is a separate tool for experimenting with maps.
-
-## 💾 Saving progress
-
-Progress is saved in your browser's `localStorage`. This includes chapter completion, XP, challenge stars and selected chapter information; the cottage remembers the most recently selected view. The game has **no cloud save or account sync**.
-
-- **Continue** restores a saved journey where possible.
-- **Start Adventure** starts from Chapter 1 and **resets adventure progress without a separate confirmation**.
-- **Settings → Reset save** asks for confirmation before erasing saved adventure data.
-- Different browsers, devices and origins (such as `file://` and GitHub Pages) do **not** automatically share save data.
-
-If local-file storage behaves inconsistently, run a local static server from the project folder:
+**Run locally:** Download the complete repository, keep the directory structure intact, and open `index.html`. If browser storage or local-file restrictions cause problems, serve the folder locally:
 
 ```bash
+cd Little-Steps
 python3 -m http.server 8000
 ```
 
-Then open `http://localhost:8000/`. No backend or external dependencies are used by the game.
+Open `http://localhost:8000/` in your browser. You don't need Python if you simply open the HTML file and your browser allows it.
 
-## 🛠️ Tech stack & project structure
+**Navigate:**
 
-- **HTML, CSS, vanilla JavaScript** — interface, stories, character animation and route visualization.
-- **Graph search & tabular Q-Learning** — implemented directly in JavaScript.
-- **Browser localStorage** — local save state.
-- **Node.js (optional)** — dependency-free test scripts.
+1. **Start / Continue Journey** returns to the garden story. Existing progress is saved in your browser.
+2. **World Book** lets you enter Season One or Season Two. Season Three is a preview, not a working button.
+3. **Cozy Cottage** opens the outdoor garden and indoor loft.
+4. **Robot Diary** and **Collection** show stored memories, XP, story pages and treasures.
+5. **How to play** explains the controls; **Settings** contains save-related options.
+
+**Controls:** Use **WASD** or **arrow keys**, or the on-screen direction buttons. On **Tidal Island**, **Space** or **Wait** advances the tide without moving. Choose **Take the helm / Let Me Try** where shown to enable manual movement. Story pages can be read or skipped.
+
+> **Save note:** Progress and training tables are stored in your browser's `localStorage`; there is no account or cloud sync. Different devices, browsers, or `file://` versus GitHub Pages do not share saves. Use **Continue** if you have progress; starting a new garden journey may reset Season One progress.
+
+For more detail, see [中文游玩指南](开始使用_中文.md).
+
+## Reinforcement learning lab
+
+Season Two is designed for *doing* as well as watching. Start by sailing yourself, then train a policy and inspect what changes.
+
+1. **Try:** Navigate the sea grid manually and notice the obstacles, tides or gusts.
+2. **Train:** Select **Q-Learning** (off-policy) or **SARSA** (on-policy), adjust learning rate **α**, discount factor **γ**, exploration probability **ε**, and the random seed.
+3. **Observe:** Inspect training history, episode rewards, success rates, action values and the learned greedy policy.
+4. **Compare:** Where provided, compare the learned route with known-model BFS/Dijkstra baselines, or run the chapter-specific exploration/robustness/generalisation experiment.
+
+<p align="center">
+  <img src="docs/screenshots/season2-rl-training.png" alt="The Season Two RL learning desk with training controls, an interactive grid and a learning curve" width="82%" />
+</p>
+
+**Learning method:** These are actual tabular updates over discrete simulated episodes, not prerecorded animations. Q-Learning uses a maximum next-state action value; SARSA uses the value of the *next action actually selected*. Fixed seeds make selected training experiments reproducible. Each island has its own environment and saved learning data.
+
+**Important distinctions:**
+
+- BFS and Dijkstra are **planning algorithms**, not reinforcement-learning algorithms. Their information and objectives differ from model-free RL.
+- A **greedy rollout** is one policy evaluation, not an empirical success rate. Training success rates include exploratory actions.
+- **Misty Reef's fog is a visual discovery mechanic.** The learner still uses the underlying state in its tabular model; this is **not** a full POMDP implementation.
+- Tides, wind and reward functions are deliberately simplified educational environments, not a realistic navigation simulator.
+- The generalisation tests in Starharbor are small probes, **not** evidence that broad transfer learning has been solved.
+
+For the modelling details, see [Season Two design notes](docs/SEASON_TWO_DESIGN.md), [RL lab guide (中文)](docs/SEASON_TWO_LAB_CN.md), and [Tidal Island notes (中文)](docs/TIDAL_ISLAND_LAB_CN.md).
+
+## Cozy Cottage
+
+A little resting place between seasons. Switch between a rose-covered outdoor cottage and a duplex-style indoor loft; your selected view is remembered locally. Challenge stars earned during Season One appear in the home display.
+
+<p align="center">
+  <img src="docs/screenshots/cozy-cottage-outdoor.png" alt="Cozy Cottage garden" width="48%" />
+  <img src="docs/screenshots/indoor-loft-mobile.png" alt="Cozy Cottage indoor loft" width="37%" />
+</p>
+
+The cottage is a **scene-switching home preview**. Drag-and-drop furniture placement, item purchases and a fully editable garden are future ideas, not features of this release.
+
+## Built with
+
+- **HTML + CSS + vanilla JavaScript** for the interface, storybook transitions and interactive grids.
+- **Graph search** (BFS, Dijkstra, A*) and **tabular Q-Learning / SARSA**, implemented in JavaScript.
+- **`localStorage`** for progress and training state; no login or hosted API.
+- **Node.js** for dependency-free automated tests (optional for players).
+
+The project is a static site: there is no build step or `npm install` required.
 
 ```text
 Little-Steps/
-├── index.html                 # Game entry point
-├── app.js                     # Five chapters, pathfinding, RL and saves
-├── styles.css                 # Main game and storybook UI
-├── home.js                    # Cottage view switching and star display
-├── home.css                   # Cottage and garden corner styling
-├── assets/                    # Artwork and favicon
-├── docs/
-│   ├── screenshots/           # Actual gameplay previews
-│   ├── GAME_DESIGN.md
-│   └── FUTURE_ROADMAP.md
-├── tests/                     # Automated tests (Node.js)
-├── 开始使用_中文.md              # Chinese player's guide
-├── CHANGELOG.md
-└── PUBLISH_GUIDE_CN.md         # Maintainer's GitHub publishing guide
+├── index.html                  # Open the game
+├── app.js, styles.css          # Season One gameplay and shared UI
+├── season2*.js, season2*.css  # Five island chapters, RL engines and visualisation
+├── home.js, home.css           # Cozy Cottage
+├── main-menu.css               # Main menu, World Book and Collection
+├── assets/                     # Character art, maps, story illustrations, maze icons
+├── docs/                       # Design notes and screenshots
+├── tests/                      # Node.js checks
+├── 开始使用_中文.md              # Chinese playing guide
+└── README.md
 ```
 
-Run the tests (requires Node.js, **no npm install**):
+### Tests
+
+If you have Node.js installed, run all included test scripts from the repository root:
 
 ```bash
-node tests/test_algorithms.cjs
-node tests/test_corner.cjs
-node tests/test_homebase.cjs
+for file in tests/*.cjs; do node "$file" || exit 1; done
 ```
 
-## 🌊 Beyond the Garden · What's next?
+The seven included checks cover Season One algorithms and story behaviour, home/diary interactions, Season Two RL models, tide mechanics, advanced chapter story assets, and the Silver Bell goal. These are **automated regression and engine checks**, not a substitute for playing through every interaction in multiple browsers.
 
-The next dream is **The Enchanted Isles** — a magical archipelago with a **World Map**, a little boat, tides, lighthouses, cloud bridges and new friends. We also hope to develop the Cozy Cottage into a genuine decorating game, so Kristie can bring little souvenirs home after her adventures.
+## Future chapters
 
-**Season Two and the World Map are concepts, not yet playable.** Read [Future Roadmap](docs/FUTURE_ROADMAP.md) for the design direction.
+**Season Three — The Starlit Atlas** is a story concept inspired by the wonder of magical schools and illustrated fantasy books. A mysterious atlas leads Kristie towards a floating academy, gardens, a library, portals and an observatory. Possible future research topics include sparse rewards, hierarchical decisions and transfer between environments. None of these are claimed as current features.
 
-## ♡ Credits & notes
+A freely editable Cozy Cottage, richer accessibility options and better experiments are also possibilities for future versions. See [Future Roadmap](docs/FUTURE_ROADMAP.md).
 
-Created as a personal creative-coding and learning project by **[@Yunmo0121](https://github.com/Yunmo0121)**, with AI-assisted coding and illustration development. The project's storybook visual assets are generated and curated for this game; the algorithm implementations and interactive UI are included in this repository for inspection.
+## Creator & notes
 
-*Little Steps is a learning project, lovingly made one little step at a time.* 🌷
+A personal creative-coding project by **[@Yunmo0121](https://github.com/Yunmo0121)**, made out of curiosity about algorithms, interactive storytelling and small worlds. AI tools assisted with parts of the implementation and visual asset creation; the repository includes the runnable code and tests for inspection.
+
+*One little step at a time.*

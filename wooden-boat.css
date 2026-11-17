@@ -1,0 +1,15 @@
+/* Season Two: natural wooden dinghy marker, shared by all five game boards. */
+.s2-boat,.tide-boat-symbol,.s2a-boat,.s2a-dock{
+  position:absolute!important; inset:0!important; left:0!important;top:0!important;
+  transform:none!important; width:100%!important;height:100%!important;
+  display:block!important;z-index:6; pointer-events:none;
+  font-size:0!important;line-height:0!important;color:transparent!important;
+  filter:drop-shadow(0 2px 1px rgba(52,65,70,.28))!important;
+}
+.s2-boat::before,.tide-boat-symbol::before,.s2a-boat::before,.s2a-dock::before{
+  content:""; position:absolute!important;left:12%!important;top:16%!important;
+  width:76%!important;height:74%!important;
+  background:url("assets/wooden-boat-marker.svg") center/contain no-repeat!important;
+  border:none!important;clip-path:none!important;
+}
+.s2-boat::after,.tide-boat-symbol::after,.s2a-boat::after,.s2a-dock::after{content:none!important;display:none!important}
