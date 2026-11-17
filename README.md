@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/screenshots/pink-main-menu-desktop.png" alt="Little Steps main menu with Kristie, her cottage and the five main entries" width="78%" />
+  <img src="docs/screenshots/little-steps-home-final-20261117.png" alt="Little Steps main menu with Kristie, her cottage and the five main entries" width="850" />
 </p>
 
 ## Welcome to Little Steps
@@ -31,7 +31,7 @@ This is a personal creative-coding and learning project, built with HTML, CSS an
 | **Season Three — The Starlit Atlas** | — | A floating magical academy, mysterious maps and possible new learning challenges | Concept only |
 
 <p align="center">
-  <img src="docs/screenshots/world-book-desktop.png" alt="World Book, showing the playable garden and island worlds and a future magical-world preview" width="80%" />
+  <img src="docs/screenshots/world-book-final-20261117.png" alt="World Book, showing the playable garden and island worlds and a future magical-world preview" width="850" />
 </p>
 
 ### Season One · The Wondergarden
@@ -50,11 +50,12 @@ The season includes illustrated opening stories, manual movement, map-editing to
 
 ### Season Two · The Enchanted Isles
 
-A hand-painted map connects **five playable island chapters**. Each has a three-page illustrated story and a learning environment with its own question to investigate.
+The updated illustrated map connects **five playable island chapters**. Each has a three-page illustrated story and a learning environment with its own question to investigate.
 
 <p align="center">
-  <img src="assets/season2-isles-map.webp" alt="Illustrated map linking Lantern Bay, Tidal Island, Misty Reef, Windward Passage and Starharbor" width="88%" />
+  <img src="docs/screenshots/enchanted-isles-current-map-20261117.png" alt="Season Two: redesigned hand-painted five-island world map" width="920" />
 </p>
+<p align="center"><sub>Season Two world map — five illustrated islands.</sub></p>
 
 | Chapter | Adventure | Core RL concept |
 | :-- | :-- | :-- |
@@ -105,8 +106,9 @@ Season Two is designed for *doing* as well as watching. Start by sailing yoursel
 4. **Compare:** Where provided, compare the learned route with known-model BFS/Dijkstra baselines, or run the chapter-specific exploration/robustness/generalisation experiment.
 
 <p align="center">
-  <img src="docs/screenshots/season2-rl-training.png" alt="The Season Two RL learning desk with training controls, an interactive grid and a learning curve" width="82%" />
+  <img src="docs/screenshots/lantern-bay-rl-lab-20261117.png" alt="Lantern Bay reinforcement learning lab: sea maze, wooden boat, policy arrows and training controls" width="920" />
 </p>
+<p align="center"><sub>Lantern Bay RL lab — maze, training controls and learned policy.</sub></p>
 
 **Learning method:** These are actual tabular updates over discrete simulated episodes, not prerecorded animations. Q-Learning uses a maximum next-state action value; SARSA uses the value of the *next action actually selected*. Fixed seeds make selected training experiments reproducible. Each island has its own environment and saved learning data.
 
@@ -125,9 +127,13 @@ For the modelling details, see [Season Two design notes](docs/SEASON_TWO_DESIGN.
 A little resting place between seasons. Switch between a rose-covered outdoor cottage and a duplex-style indoor loft; your selected view is remembered locally. Challenge stars earned during Season One appear in the home display.
 
 <p align="center">
-  <img src="docs/screenshots/cozy-cottage-outdoor.png" alt="Cozy Cottage garden" width="48%" />
-  <img src="docs/screenshots/indoor-loft-mobile.png" alt="Cozy Cottage indoor loft" width="37%" />
+  <img src="docs/screenshots/cozy-cottage-outdoor-pink-20261117.png" alt="Cozy Cottage outdoor garden in the updated soft pink interface" width="920" />
 </p>
+<p align="center"><sub>Cozy Cottage · Outdoor garden</sub></p>
+<p align="center">
+  <img src="docs/screenshots/cozy-cottage-indoor-pink-20261117.png" alt="Cozy Cottage indoor loft with the matching soft pink interface" width="920" />
+</p>
+<p align="center"><sub>Cozy Cottage · Indoor loft</sub></p>
 
 The cottage is a **scene-switching home preview**. Drag-and-drop furniture placement, item purchases and a fully editable garden are future ideas, not features of this release.
 
